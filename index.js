@@ -23,6 +23,7 @@ if (opts['eslint-react']) {
   deps.add('eslint-plugin-react');
   deps.add('@typescript-eslint/eslint-plugin');
   deps.add('@typescript-eslint/parser');
+  deps.add('eslint-plugin-react-hooks');
 
   fs.writeFile(file, content, (e) => {
     if (e) {

@@ -36,7 +36,7 @@ Alternatively, you can use the examples in the next section.
 
 - .eslintrc-ts-react.js
 
-  `yarn add -D eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser`
+  `yarn add -D eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-react-hooks`
 
   `module.exports = require('@merrywhether/config/.eslintrc-ts-react.js');`
 
