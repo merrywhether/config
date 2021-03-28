@@ -1,17 +1,31 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
-    "isolatedModules": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "resolveJsonModule": true,
+    "target": "esnext",
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "lint": {
+          "duplicateProperties": "error",
+          "zeroUnits": "error"
+        }
+      }
+    ]
   }
 }

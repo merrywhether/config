@@ -12,58 +12,38 @@ Installation:
 yarn add -D @merrywhether/config
 ```
 
-The easiest way to use this is via invoking its executable from the root of your
-app (or the directory where you want the config files created):
+Use this is via invoking its executable from the root of your app (or the
+directory where you want the config files created):
 
 ```sh
-yarn mw-config -EpT
+yarn mw-config -ept
 ```
 
 This will generate the requested config files for you, and it supports the
 following flags:
 
-- `--eslint-react` / `-E`
+- `--eslint` / `-e`
 - `--prettier` / `-p`
-- `--ts` / `-t`
-- `--ts-styled` / `-T`
+- `--typescript` / `-t`
 
-Upon completion, it will print the required `yarn add` command for all of the
-corresponding dependencies.
+## Configs
 
-Alternatively, you can use the examples in the next section.
+### ESLint
 
-## Available configuration files with dependencies and usage
+Includes the following plugins:
 
-- .eslintrc-ts-react.js
+- `@typescript-eslint`
+- `import`
+- `prettier`
+- `react`
+- `react-hooks`
 
-  `yarn add -D eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-react-hooks`
+Also includes a variety of specific extra rules, including type-aware linting.
 
-  `module.exports = require('@merrywhether/config/.eslintrc-ts-react.js');`
+### Prettier
 
-- prettier.config.js
+Single quotes because this is JS! 😛
 
-  `yarn add -D prettier`
+### Typescript
 
-  `module.exports = require('@merrywhether/config/prettier.config.js');`
-
-- tsconfig.json
-
-  `yarn add -D typescript`
-
-  ```
-  {
-    "extends": "@merrywhether/config/tsconfig.json",
-    "include": ["src/**/*"]
-  }
-  ```
-
-- tsconfig-styled.json
-
-  `yarn add -D typescript typescript-styled-plugin`
-
-  ```
-  {
-    "extends": "@merrywhether/config/tsconfig-styled.json",
-    "include": ["src/**/*"]
-  }
-  ```
+All the strict settings, and also typescript-styled-plugin.
