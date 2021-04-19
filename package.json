@@ -10,7 +10,7 @@
     "url": "git+https://github.com/merrywhether/config.git"
   },
   "author": "merrywhether",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/merrywhether/config#readme",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.21.0",
