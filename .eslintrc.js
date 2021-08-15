@@ -12,7 +12,16 @@ module.exports = {
     browser: true,
     node: true,
   },
-  plugins: ['@typescript-eslint', 'import', 'react', 'react-hooks'],
+  reportUnusedDisableDirectives: true,
+  plugins: [
+    '@typescript-eslint',
+    'import',
+    'react',
+    'react-hooks',
+    'sort-destructure-keys',
+    'sort-keys-fix',
+    'typescript-sort-keys',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -21,6 +30,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    'plugin:typescript-sort-keys/recommended',
   ],
   rules: {
     // eslint
@@ -33,6 +43,8 @@ module.exports = {
     'no-floating-decimal': 'error',
     'no-implicit-coercion': 'error',
     'no-template-curly-in-string': 'error',
+    'no-throw-literal': 'error',
+    'no-unused-expressions': ['error', { enforceForJSX: true }],
     'no-useless-computed-key': 'error',
     'object-shorthand': ['error', 'always'],
     'prefer-const': 'error',
@@ -40,10 +52,11 @@ module.exports = {
     'prefer-template': 'error',
     'quote-props': ['error', 'as-needed'],
     'sort-imports': ['error', { ignoreDeclarationSort: true }],
-    'sort-keys': ['error', 'asc', { natural: true }],
+    'symbol-description': 'error',
+    'valid-typeof': ['error', { requireStringLiterals: true }],
     // typescript
+    '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
-    '@typescript-eslint/no-duplicate-imports': 'error',
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/object-curly-spacing': ['error', 'always'],
@@ -61,6 +74,7 @@ module.exports = {
     'import/first': 'error',
     'import/newline-after-import': 'error',
     'import/no-cycle': 'error',
+    'import/no-duplicates': 'error',
     'import/no-default-export': 'error',
     'import/no-namespace': 'error',
     'import/no-useless-path-segments': 'error',
@@ -77,12 +91,20 @@ module.exports = {
     'react/display-name': [2, { ignoreTranspilerName: true }],
     'react/jsx-boolean-value': 'error',
     'react/jsx-no-constructed-context-values': 'error',
+    'react/jsx-sort-props': 'error',
     'react/no-array-index-key': 'error',
     'react/no-children-prop': 'off',
     'react/prop-types': 'off',
     'react/self-closing-comp': 'error',
-    // hooks
+    // react hooks
     'react-hooks/exhaustive-deps': 'error',
+    // sort destructure
+    'sort-destructure-keys/sort-destructure-keys': [
+      'error',
+      { caseSensitive: true },
+    ],
+    // sort keys
+    'sort-keys-fix/sort-keys-fix': ['error', 'asc', { natural: true }],
   },
   overrides: [
     // next app pages require a default export
