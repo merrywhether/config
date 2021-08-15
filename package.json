@@ -1,6 +1,6 @@
 {
   "name": "@merrywhether/config",
-  "version": "1.0.1",
+  "version": "1.1.0-beta.0",
   "description": "Common config files for @merrywhether projects",
   "bin": {
     "mw-config": "./index.js"
@@ -13,17 +13,20 @@
   "license": "MIT",
   "homepage": "https://github.com/merrywhether/config#readme",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.21.0",
-    "@typescript-eslint/parser": "^4.21.0",
-    "command-line-args": "^5.1.1",
-    "eslint": "^7.24.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.22.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "command-line-args": "^5.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1",
-    "typescript": "^4.2.4",
-    "typescript-styled-plugin": "^0.15.0"
+    "eslint-plugin-sort-destructure-keys": "^1.3.5",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-typescript-sort-keys": "^1.7.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5",
+    "typescript-styled-plugin": "^0.18.1"
   }
 }
