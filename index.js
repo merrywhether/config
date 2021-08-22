@@ -13,7 +13,10 @@ const optionDefinitions = [
 
 const opts = cla(optionDefinitions);
 
-if (opts['eslint']) {
+// if no opts passed, we fall back to the defaults
+const defaultExec = Object.keys(opts).length === 0;
+
+if (opts['eslint'] || defaultExec) {
   const content = `module.exports = {
   root: true,
   extends: [require.resolve('@merrywhether/config/.eslintrc.js')],
@@ -27,7 +30,7 @@ if (opts['eslint']) {
   });
 }
 
-if (opts['prettier']) {
+if (opts['prettier'] || defaultExec) {
   const content = `module.exports = require('@merrywhether/config/prettier.config.js');`;
   const file = path.resolve(process.cwd(), 'prettier.config.js');
 
@@ -38,7 +41,7 @@ if (opts['prettier']) {
   });
 }
 
-if (opts['typescript']) {
+if (opts['typescript'] || defaultExec) {
   const content = `{
   "extends": "@merrywhether/config/tsconfig.json",
   "compilerOptions": {},

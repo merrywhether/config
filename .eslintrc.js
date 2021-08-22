@@ -109,7 +109,7 @@ module.exports = {
   overrides: [
     // next app pages require a default export
     {
-      files: ['**/pages/*'],
+      files: ['**/pages/**'],
       rules: {
         'import/no-default-export': 'off',
       },
