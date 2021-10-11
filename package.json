@@ -13,8 +13,8 @@
   "license": "MIT",
   "homepage": "https://github.com/merrywhether/config#readme",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
-    "@typescript-eslint/parser": "^4.29.2",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "command-line-args": "^5.2.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
