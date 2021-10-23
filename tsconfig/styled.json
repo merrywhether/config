@@ -1,0 +1,14 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "lint": {
+          "duplicateProperties": "error",
+          "zeroUnits": "error"
+        }
+      }
+    ]
+  }
+}

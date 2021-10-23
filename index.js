@@ -1,56 +1,87 @@
 #! /usr/bin/env node
 
-const cla = require('command-line-args');
 const fs = require('fs');
 const path = require('path');
 const process = require('process');
+const cla = require('command-line-args');
 
 const optionDefinitions = [
-  { name: 'eslint', alias: 'e', type: Boolean },
-  { name: 'prettier', alias: 'p', type: Boolean },
-  { name: 'typescript', alias: 't', type: Boolean },
+  { alias: 'e', defaultValue: true, name: 'eslint', type: Boolean },
+  { alias: 'p', defaultValue: true, name: 'prettier', type: Boolean },
+  { alias: 't', defaultValue: true, name: 'typescript', type: Boolean },
+  { alias: 'r', name: 'react', type: Boolean },
+  { name: 'solid', type: Boolean },
+  { name: 'styled', type: Boolean },
 ];
 
 const opts = cla(optionDefinitions);
 
-// if no opts passed, we fall back to the defaults
-const defaultExec = Object.keys(opts).length === 0;
+if (opts.eslint) {
+  const eslintConfigs = [
+    `require.resolve('@merrywhether/config/eslint/base.js')`,
+  ];
+  if (opts.prettier) {
+    eslintConfigs.push(
+      `require.resolve('@merrywhether/config/eslint/prettier.js')`,
+    );
+  }
+  if (opts.typescript) {
+    eslintConfigs.push(
+      `require.resolve('@merrywhether/config/eslint/typescript.js')`,
+    );
+  }
+  if (opts.react) {
+    eslintConfigs.push(
+      `require.resolve('@merrywhether/config/eslint/react.js')`,
+    );
+  }
+  if (opts.solid) {
+    eslintConfigs.push(
+      `require.resolve('@merrywhether/config/eslint/solid.js')`,
+    );
+  }
 
-if (opts['eslint'] || defaultExec) {
-  const content = `module.exports = {
+  const eslintContent = `module.exports = {
   root: true,
-  extends: [require.resolve('@merrywhether/config/.eslintrc.js')],
-};`;
-  const file = path.resolve(process.cwd(), '.eslintrc.js');
+  extends: [
+    ${eslintConfigs.join(',\n    ')},
+  ],
+};\n`;
+  const eslintFile = path.resolve(process.cwd(), '.eslintrc.js');
 
-  fs.writeFile(file, content, (e) => {
+  fs.writeFile(eslintFile, eslintContent, (e) => {
     if (e) {
       console.error('Error writing eslint config:\n', e);
     }
   });
 }
 
-if (opts['prettier'] || defaultExec) {
-  const content = `module.exports = require('@merrywhether/config/prettier.config.js');`;
-  const file = path.resolve(process.cwd(), 'prettier.config.js');
+if (opts.prettier) {
+  const prettierContent = `module.exports = require('@merrywhether/config/prettier.config.js');\n`;
+  const prettierFile = path.resolve(process.cwd(), 'prettier.config.js');
 
-  fs.writeFile(file, content, (e) => {
+  fs.writeFile(prettierFile, prettierContent, (e) => {
     if (e) {
       console.error('Error writing prettier config:\n', e);
     }
   });
 }
 
-if (opts['typescript'] || defaultExec) {
-  const content = `{
-  "extends": "@merrywhether/config/tsconfig.json",
+if (opts.typescript) {
+  const typescriptConfig = opts.solid
+    ? 'solid'
+    : opts.styled
+    ? 'styled'
+    : 'base';
+
+  const typescriptContent = `{
+  "extends": "@merrywhether/config/tsconfig/${typescriptConfig}.json",
   "compilerOptions": {},
-  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }`;
-  const file = path.resolve(process.cwd(), 'tsconfig.json');
+  const typescriptFile = path.resolve(process.cwd(), 'tsconfig.json');
 
-  fs.writeFile(file, content, (e) => {
+  fs.writeFile(typescriptFile, typescriptContent, (e) => {
     if (e) {
       console.error('Error writing typescript config:\n', e);
     }

@@ -17,34 +17,72 @@ Use this is via invoking its executable from the root of your app (or the
 directory where you want the config files created):
 
 ```sh
-yarn mw-config -ept
+yarn mw-config
 ```
 
-This will generate the requested config files for you, and it supports the
-following flags:
+This will generate your config files for you, with support for the following
+options with corresponding effects:
 
-- `--eslint` / `-e`
-- `--prettier` / `-p`
-- `--typescript` / `-t`
+| option     | alias | default on? | Δ eslintrc | Δ prettier.config | Δ tsconfig |
+| ---------- | ----- | ----------- | ---------- | ----------------- | ---------- |
+| eslint     | e     | ✅          | ✅         |                   |            |
+| prettier   | p     | ✅          | ✅         | ✅                |            |
+| typescript | t     | ✅          | ✅         |                   | ✅         |
+| react      | r     |             | ✅         |                   |            |
+| solid      |       |             | ✅         |                   | ✅         |
+| styled     |       |             |            |                   | ✅         |
 
-## Configs
+## Configuration Details
 
 ### ESLint
 
-Includes the following plugins:
+The base ESLint configuration includes the following plugins/configs:
 
-- `@typescript-eslint`
-- `import`
-- `prettier`
-- `react`
-- `react-hooks`
+- [`eslint`](https://eslint.org/docs/rules/) (recommended++)
+- [`import`](https://github.com/import-js/eslint-plugin-import#rules)
+- [`prettier`](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration)
+  (recommended)
+- [`sort-destructure-keys`](https://github.com/mthadley/eslint-plugin-sort-destructure-keys#usage)
+- [`sort-keys-fix`](https://github.com/leo-buneev/eslint-plugin-sort-keys-fix#usage)
 
-Also includes a variety of specific extra rules, including type-aware linting.
+When the `typescript` option is selected, the following are added:
+
+- [`@typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules)
+  (recommended++, including type-aware)
+- [`typescript-sort-keys`](https://github.com/infctr/eslint-plugin-typescript-sort-keys#usage)
+  (recommended)
+
+When the `react` option is selected, the following are added:
+
+- [`react`](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
+  (recommended++, jsx-runtime)
+- [`react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation)
+  (recommended++)
+
+When the `solid` option is selected, the following are added:
+
+- [`solid`](https://github.com/joshwilsonvu/eslint-plugin-solid#rules)
+  (recommended)
+- [`react`](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
+  (JSX-specific rules)
 
 ### Prettier
 
-Single quotes because this is JS! 😛
+Uses the [default Prettier settings](https://prettier.io/docs/en/options.html)
+with the following changes:
+
+- `singleQuote: true` (because this is JS! 😛)
+- `trailingComma: all` (embrace the future)
+- `proseWrap: always` (wrapping Markdown).
 
 ### Typescript
 
-All the strict settings, and also typescript-styled-plugin.
+The base configuration has all of the strictest settings enabled and targets
+`esnext`.
+
+When the `styled` option is selected,
+[`typescript-styled-plugin`](https://github.com/microsoft/typescript-styled-plugin#configuration)
+is added.
+
+When the `solid` option is selected, the `jsxImportSource` is appropriately
+updated.
