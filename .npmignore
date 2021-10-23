@@ -1,0 +1,8 @@
+.DS_Store
+.github/
+node_modules/
+.eslintignore
+.eslintrc.js
+.gitignore
+renovate.json
+yarn.lock

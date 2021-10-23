@@ -4,6 +4,9 @@ module.exports = {
     es2021: true,
     node: true,
   },
+  parserOptions: {
+    sourceType: 'module',
+  },
   reportUnusedDisableDirectives: true,
   plugins: ['import', 'sort-destructure-keys', 'sort-keys-fix'],
   extends: ['eslint:recommended'],
