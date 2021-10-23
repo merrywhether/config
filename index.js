@@ -1,14 +1,14 @@
 #! /usr/bin/env node
 
-const cla = require('command-line-args');
 const fs = require('fs');
 const path = require('path');
 const process = require('process');
+const cla = require('command-line-args');
 
 const optionDefinitions = [
-  { name: 'eslint', alias: 'e', type: Boolean },
-  { name: 'prettier', alias: 'p', type: Boolean },
-  { name: 'typescript', alias: 't', type: Boolean },
+  { alias: 'e', name: 'eslint', type: Boolean },
+  { alias: 'p', name: 'prettier', type: Boolean },
+  { alias: 't', name: 'typescript', type: Boolean },
 ];
 
 const opts = cla(optionDefinitions);

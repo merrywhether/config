@@ -12,6 +12,9 @@
   "author": "merrywhether",
   "license": "MIT",
   "homepage": "https://github.com/merrywhether/config#readme",
+  "scripts": {
+    "lint": "eslint './'"
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
@@ -22,6 +25,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-solid": "^0.1.2",
     "eslint-plugin-sort-destructure-keys": "^1.3.5",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-typescript-sort-keys": "^2.0.0",
