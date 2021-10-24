@@ -6,15 +6,24 @@ const process = require('process');
 const cla = require('command-line-args');
 
 const optionDefinitions = [
-  { alias: 'e', defaultValue: true, name: 'eslint', type: Boolean },
-  { alias: 'p', defaultValue: true, name: 'prettier', type: Boolean },
-  { alias: 't', defaultValue: true, name: 'typescript', type: Boolean },
+  { alias: 'd', defaultValue: true, name: 'default', type: Boolean },
+  { alias: 'e', name: 'eslint', type: Boolean },
+  { alias: 'p', name: 'prettier', type: Boolean },
   { alias: 'r', name: 'react', type: Boolean },
+  { name: 'renovate', type: Boolean },
   { name: 'solid', type: Boolean },
   { name: 'styled', type: Boolean },
+  { alias: 't', name: 'typescript', type: Boolean },
 ];
 
 const opts = cla(optionDefinitions);
+
+if (opts.default) {
+  opts.eslint ??= true;
+  opts.prettier ??= true;
+  opts.typescript ??= true;
+  opts.renovate ??= true;
+}
 
 if (opts.eslint) {
   const eslintConfigs = [
@@ -63,6 +72,19 @@ if (opts.prettier) {
   fs.writeFile(prettierFile, prettierContent, (e) => {
     if (e) {
       console.error('Error writing prettier config:\n', e);
+    }
+  });
+}
+
+if (opts.renovate) {
+  const renovateContent = `{
+  "extends": ["github>merrywhether/config"]
+}`;
+  const renovateFile = path.resolve(process.cwd(), 'renovate.json');
+
+  fs.writeFile(renovateFile, renovateContent, (e) => {
+    if (e) {
+      console.error('Error writing renovatre config:\n', e);
     }
   });
 }

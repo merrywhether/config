@@ -15,6 +15,7 @@ module.exports = {
       rules: {
         // typescript
         '@typescript-eslint/consistent-indexed-object-style': 'error',
+        '@typescript-eslint/consistent-type-exports': 'error',
         '@typescript-eslint/consistent-type-imports': 'error',
         '@typescript-eslint/default-param-last': 'error',
         '@typescript-eslint/explicit-module-boundary-types': 'error',

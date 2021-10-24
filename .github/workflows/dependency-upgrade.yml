@@ -1,0 +1,50 @@
+name: Dependency Upgrade
+
+on:
+  push:
+    branches:
+      - renovate/**
+
+jobs:
+  Check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        # https://github.com/marketplace/actions/setup-node-js-environment
+        with:
+          # https://medium.com/prompt/trigger-another-github-workflow-without-using-a-personal-access-token-f594c21373ef
+          ssh-key: ${{ secrets.COMMIT_KEY }}
+      - name: Setup yarn caching
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+      - name: Install
+        run: yarn install
+      - name: Upgrade
+        run: yarn upgrade
+      - name: Commit Changes
+        run: |
+          git config user.name mergewhether
+          git config user.email bot@risto.io
+          git commit -am "Upgrade transitive dependencies" || exit 0
+          git push
+          exit 1
+  Lint:
+    needs: Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup yarn caching
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+      - name: Install
+        run: yarn install
+      - name: Lint
+        run: yarn lint
