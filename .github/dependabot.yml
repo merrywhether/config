@@ -1,9 +1,18 @@
+# https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates
+
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
-    schedule:
-      interval: "daily"
+    commit-message:
+      prefix: "npm"
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
+    schedule:
+      #interval: "weekly"
+      interval: "daily"
+      day: "friday"
+      time: "08:00"
+      timezone: "America/Los_Angeles"
+    versioning-strategy: increase
