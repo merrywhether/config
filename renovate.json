@@ -5,5 +5,10 @@
     "helpers:disableTypesNodeMajor"
   ],
   "schedule": ["before 8am"],
-  "timezone": "America/Los_Angeles"
+  "timezone": "America/Los_Angeles",
+  "allowedPostUpgradeCommands": ["^yarn upgrade$"],
+  "postUpgradeTasks": {
+    "commands": ["yarn upgrade"],
+    "executionMode": "branch"
+  }
 }

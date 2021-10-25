@@ -82,7 +82,7 @@ if (opts.renovate) {
 }`;
   const renovateFile = path.resolve(process.cwd(), 'renovate.json');
 
-  fs.writeFile(prettierFile, prettierContent, (e) => {
+  fs.writeFile(renovateFile, renovateContent, (e) => {
     if (e) {
       console.error('Error writing renovatre config:\n', e);
     }
