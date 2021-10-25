@@ -28,6 +28,7 @@ jobs:
         run: |
           git diff-index --quiet HEAD --
           echo "::set-output name=changes::$?"
+          exit 0
       - name: No changes
         if: ${{ steps.check_diff.outputs.changes == 0 }}
         run: echo "No yarn.lock changes"
