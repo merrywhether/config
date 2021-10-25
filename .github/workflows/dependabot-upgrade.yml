@@ -1,4 +1,4 @@
-name: [DB] Upgrade
+name: DB Upgrade
 
 on:
   push:

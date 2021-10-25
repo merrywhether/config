@@ -1,4 +1,4 @@
-name: [DB] Auto-merge
+name: DB Auto-merge
 
 on: pull_request_target
 
