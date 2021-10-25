@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
         # https://github.com/marketplace/actions/setup-node-js-environment
         with:
-          # token: ${{ secrets.MERGEWHETHER_TOKEN }}
+          # https://medium.com/prompt/trigger-another-github-workflow-without-using-a-personal-access-token-f594c21373ef
           ssh-key: ${{ secrets.COMMIT_KEY }}
       - name: Setup yarn caching
         uses: actions/setup-node@v2
@@ -27,22 +27,11 @@ jobs:
         run: yarn install
       - name: Upgrade
         run: yarn upgrade
-      - name: Check Diff
-        id: check_diff
+      - name: Commit Changes
         run: |
-          changes=0
-          git diff-index --quiet HEAD -- || changes=$?
-          echo "::set-output name=changes::${changes}"
-      - name: No changes
-        if: ${{ steps.check_diff.outputs.changes == 0 }}
-        run: echo "No yarn.lock changes"
-      - name: Update Branch
-        if: ${{ steps.check_diff.outputs.changes != 0 }}
-        run: |
-          echo "changes ${{ steps.check_diff.outputs.changes }}"
           git config user.name mergewhether
           git config user.email bot@risto.io
-          git commit -am "Upgrade transitive dependencies"
+          git commit -am "Upgrade transitive dependencies" || exit 0
           git push
           exit 1
   Lint:
