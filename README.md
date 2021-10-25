@@ -23,14 +23,19 @@ yarn mw-config
 This will generate your config files for you, with support for the following
 options with corresponding effects:
 
-| option     | alias | default on? | Δ eslintrc | Δ prettier.config | Δ tsconfig |
+| option     | alias | default set | Δ eslintrc | Δ prettier.config | Δ tsconfig |
 | ---------- | ----- | ----------- | ---------- | ----------------- | ---------- |
 | eslint     | e     | ✅          | ✅         |                   |            |
 | prettier   | p     | ✅          | ✅         | ✅                |            |
-| typescript | t     | ✅          | ✅         |                   | ✅         |
 | react      | r     |             | ✅         |                   |            |
+| renovate   |       | ✅          |            |                   |            |
 | solid      |       |             | ✅         |                   | ✅         |
 | styled     |       |             |            |                   | ✅         |
+| typescript | t     | ✅          | ✅         |                   | ✅         |
+
+The defaults are controlled by the `--default`/`-d` flag, which defaults to
+`true`. Disabling the default enables a la carte selection of any of the other
+targeted options.
 
 ## Configuration Details
 
