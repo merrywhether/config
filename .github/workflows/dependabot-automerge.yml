@@ -1,9 +1,9 @@
-name: Dependabot Patch
+name: Auto-merge
 
 on: pull_request_target
 
 jobs:
-  AutoMerge:
+  CheckPatch:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'dependabot[bot]' }}
     permissions:

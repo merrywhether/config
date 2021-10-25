@@ -1,4 +1,4 @@
-name: Dependabot Upgrade
+name: Dependencies
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - dependabot/**
 
 jobs:
-  Check:
+  Upgrade:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -39,7 +39,7 @@ jobs:
         if: ${{ steps.check_diff.outputs.changes != 0 }}
         run: |
           echo "Committing yarn.lock changes"
-          git config user.name merrywhether-bot
+          git config user.name merrywhether[bot]
           git config user.email bot@risto.io
           git add .
           git commit -m "Upgrade transitive dependencies"
