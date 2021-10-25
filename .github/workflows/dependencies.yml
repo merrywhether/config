@@ -4,13 +4,12 @@ on:
   pull_request:
     branches:
       - dependabot/**
-  push:
-    branches:
-      - dependabot/**
 
 jobs:
   Upgrade:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,18 +39,35 @@ jobs:
           git add .
           git commit -m "Upgrade transitive dependencies"
           git push
-  AutoMerge_Patch:
+  # AutoMerge_Patch:
+  #   needs: Upgrade
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pull-requests: write
+  #     contents: write
+  #   steps:
+  #     - name: Get Dependabot metadata
+  #       id: metadata
+  #       uses: dependabot/fetch-metadata@v1.1.1
+  #       with:
+  #         github-token: "${{ secrets.GITHUB_TOKEN }}"
+  #     - name: Auto-merge for Dependabot patch PRs
+  #       if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' }}
+  #       run: gh pr merge --auto --merge "$PR_URL"
+  #       env:
+  #         PR_URL: ${{github.event.pull_request.html_url}}
+  #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  yarn.lock_Changes:
     needs: Upgrade
+    # needs: AutoMerge_Patch
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - name: Get Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1.1.1
+      - name: Checkout
+        uses: actions/checkout@v2
+      # https://github.com/marketplace/actions/yarn-lock-changes
+      - name: Yarn Lock Changes
+        uses: Simek/yarn-lock-changes@main
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Auto-merge for Dependabot patch PRs
-        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' }}
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.GITHUB_TOKEN }}
