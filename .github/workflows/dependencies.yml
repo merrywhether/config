@@ -40,7 +40,7 @@ jobs:
           git add .
           git commit -m "Upgrade transitive dependencies"
           git push
-  Auto-Merge Patch (Dependabot):
+  AutoMerge Patch:
     needs: Upgrade
     runs-on: ubuntu-latest
     steps:
