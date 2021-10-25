@@ -1,6 +1,9 @@
 name: Dependabot
 
 on:
+  pull_request:
+    branches:
+      - dependabot/**
   push:
     branches:
       - dependabot/**
