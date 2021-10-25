@@ -16,7 +16,8 @@ jobs:
         uses: actions/checkout@v2
         # https://github.com/marketplace/actions/setup-node-js-environment
         with:
-          token: "${{ secrets.MERGEWHETHER_TOKEN }}"
+          # token: ${{ secrets.MERGEWHETHER_TOKEN }}
+          ssh-key: ${{ secrets.COMMIT_KEY }}
       - name: Setup yarn caching
         uses: actions/setup-node@v2
         with:
