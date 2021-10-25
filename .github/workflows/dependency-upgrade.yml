@@ -1,9 +1,10 @@
-name: DB Upgrade
+name: Dependency Upgrade
 
 on:
   push:
     branches:
       - dependabot/**
+      - renovate/**
 
 jobs:
   Check:
@@ -25,23 +26,29 @@ jobs:
         run: yarn install
       - name: Upgrade
         run: yarn upgrade
-      - name: Check Diff
-        id: check_diff
-        run: |
-          changes=0\
-          git diff-index --quiet HEAD -- || changes=$?
-          echo "::set-output name=changes::${changes}"
-      - name: No changes
-        if: ${{ steps.check_diff.outputs.changes == 0 }}
-        run: echo "No yarn.lock changes"
-      - name: Update Branch
-        if: ${{ steps.check_diff.outputs.changes != 0 }}
+      - name: Set Commit Author
         run: |
           git config user.name merrywhether[bot]
           git config user.email bot@risto.io
-          git commit -am "Upgrade transitive dependencies"
-          git push
-          exit 1
+      - run: "git commit -am 'Upgrade transitive dependencies' || exit 0"
+      - run: "git push"
+      # - name: Check Diff
+      #   id: check_diff
+      #   run: |
+      #     changes=0\
+      #     git diff-index --quiet HEAD -- || changes=$?
+      #     echo "::set-output name=changes::${changes}"
+      # - name: No changes
+      #   if: ${{ steps.check_diff.outputs.changes == 0 }}
+      #   run: echo "No yarn.lock changes"
+      # - name: Update Branch
+      #   if: ${{ steps.check_diff.outputs.changes != 0 }}
+      #   run: |
+      #     git config user.name merrywhether[bot]
+      #     git config user.email bot@risto.io
+      #     git commit -am "Upgrade transitive dependencies"
+      #     git push
+      #     exit 1
   Lint:
     needs: Check
     runs-on: ubuntu-latest
