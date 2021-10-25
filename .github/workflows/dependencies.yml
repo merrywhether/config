@@ -1,9 +1,6 @@
 name: Dependabot
 
 on:
-  pull_request:
-    branches:
-      - dependabot/**
   push:
     branches:
       - dependabot/**
@@ -60,9 +57,8 @@ jobs:
   #       env:
   #         PR_URL: ${{github.event.pull_request.html_url}}
   #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  yarn.lock_Changes:
+  yarnlock_Changes:
     needs: Upgrade
-    # needs: AutoMerge_Patch
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -74,3 +70,18 @@ jobs:
         uses: Simek/yarn-lock-changes@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+  Lint:
+    needs: Upgrade
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup yarn caching
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+      - name: Install
+        run: yarn install
+      - name: Lint
+        run: yarn lint
