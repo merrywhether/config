@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - dependabot/**
+  push:
+    branches:
+      - dependabot/**
 
 jobs:
   Upgrade:
