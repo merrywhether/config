@@ -11,13 +11,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install and cache
-      # https://github.com/marketplace/actions/setup-node-js-environment
+        # https://github.com/marketplace/actions/setup-node-js-environment
+      - name: Setup yarn caching
         uses: actions/setup-node@v2
         with:
           node-version: 'lts/*'
           cache: 'yarn'
-      - run: yarn install
+      - name: Install
+        run: yarn install
       - name: Upgrade
         run: yarn upgrade
       - name: Check Diff
