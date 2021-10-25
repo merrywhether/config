@@ -5,8 +5,6 @@ on:
     branches-ignore:
       - dependabot/**
 
-
-
 jobs:
   Check:
     runs-on: ubuntu-latest
