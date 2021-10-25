@@ -24,14 +24,15 @@ jobs:
       - name: Upgrade
         run: yarn upgrade
       - name: Check Diff
+        id: check_diff
         run: |
           git diff-index --quiet HEAD --
-          exit $?
+          echo "::set-output name=changes::$?"
       - name: No changes
-        if: ${{ success() }}
+        if: ${{ steps.check_diff.outputs.changes == 0 }}
         run: echo "No yarn.lock changes"
       - name: Update Branch
-        if: ${{ failure() }}
+        if: ${{ steps.check_diff.outputs.changes != 0 }}
         run: |
           echo "Committing yarn.lock changes"
           git config user.name github-actions
