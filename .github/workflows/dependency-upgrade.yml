@@ -39,6 +39,7 @@ jobs:
       - name: Update Branch
         if: ${{ steps.check_diff.outputs.changes != 0 }}
         run: |
+          echo "changes ${{ steps.check_diff.outputs.changes }}"
           git config user.name mergewhether
           git config user.email bot@risto.io
           git commit -am "Upgrade transitive dependencies"
