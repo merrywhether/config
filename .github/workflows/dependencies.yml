@@ -26,9 +26,9 @@ jobs:
       - name: Check Diff
         id: check_diff
         run: |
-          git diff-index --quiet HEAD --
-          echo "::set-output name=changes::$?"
-          exit 0
+          changes=0
+          git diff-index --quiet HEAD -- || changes=$?
+          echo "::set-output name=changes::${changes}"
       - name: No changes
         if: ${{ steps.check_diff.outputs.changes == 0 }}
         run: echo "No yarn.lock changes"
@@ -41,24 +41,6 @@ jobs:
           git add .
           git commit -m "Upgrade transitive dependencies"
           git push
-  # AutoMerge_Patch:
-  #   needs: Upgrade
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     pull-requests: write
-  #     contents: write
-  #   steps:
-  #     - name: Get Dependabot metadata
-  #       id: metadata
-  #       uses: dependabot/fetch-metadata@v1.1.1
-  #       with:
-  #         github-token: "${{ secrets.GITHUB_TOKEN }}"
-  #     - name: Auto-merge for Dependabot patch PRs
-  #       if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' }}
-  #       run: gh pr merge --auto --merge "$PR_URL"
-  #       env:
-  #         PR_URL: ${{github.event.pull_request.html_url}}
-  #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   yarnlock_Changes:
     needs: Upgrade
     runs-on: ubuntu-latest
@@ -87,3 +69,24 @@ jobs:
         run: yarn install
       - name: Lint
         run: yarn lint
+  AutoMerge_Patch:
+    needs: Lint
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Get Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.1.1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Auto-merge for Dependabot patch PRs
+        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' }}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Await manual approval for Dependabot non-patch PRs
+        if: ${{ steps.metadata.outputs.update-type != 'version-update:semver-patch' }}
+        run: echo "Needs human approval"
