@@ -1,7 +1,7 @@
 # &#64;merrywhether/config
 
 [![npm version](https://badge.fury.io/js/%40merrywhether%2Fconfig.svg)](https://www.npmjs.com/package/%40merrywhether%2Fconfig)
-[![Renovate dashboard](https://david-dm.org/merrywhether/config.svg)](https://app.renovatebot.com/dashboard)
+[![Renovate dashboard](https://img.shields.io/badge/dependencies%20by-renovate-%231A1F6C?logo=renovatebot)](https://app.renovatebot.com/dashboard)
 
 Common config files for &#64;merrywhether projects
 
