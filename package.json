@@ -17,7 +17,7 @@
   },
   "engineStrict": true,
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=v14.18.1"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.2.0",
