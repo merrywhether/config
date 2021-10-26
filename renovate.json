@@ -1,4 +1,9 @@
 {
   "extends": ["config:base", "helpers:disableTypesNodeMajor"],
+  "commitMessageAction": "Renovate",
+  "labels": ["dependencies"],
+  "patch": {
+    "automerge": true
+  },
   "rangeStrategy": "bump"
 }
