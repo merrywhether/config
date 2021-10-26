@@ -13,7 +13,8 @@
   "license": "MIT",
   "homepage": "https://github.com/merrywhether/config#readme",
   "scripts": {
-    "lint": "eslint './'"
+    "lint": "eslint './'",
+    "fix": "yarn lint --fix"
   },
   "engineStrict": true,
   "engines": {
