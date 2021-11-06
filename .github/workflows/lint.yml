@@ -2,8 +2,10 @@ name: Lint
 
 on:
   push:
-    branches-ignore:
-      - renovate/**
+    branches-ignore: [renovate/**]
+  workflow_run:
+    workflows: ['Dependency Upgrade']
+    types: [completed]
 
 jobs:
   Check:

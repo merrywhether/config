@@ -6,7 +6,7 @@ const process = require('process');
 const cla = require('command-line-args');
 
 const optionDefinitions = [
-  { alias: 'd', defaultValue: true, name: 'default', type: Boolean },
+  { alias: 'd', name: 'default', type: Boolean },
   { alias: 'e', name: 'eslint', type: Boolean },
   { alias: 'p', name: 'prettier', type: Boolean },
   { alias: 'r', name: 'react', type: Boolean },
@@ -79,7 +79,7 @@ if (opts.prettier) {
 if (opts.renovate) {
   const renovateContent = `{
   "extends": ["github>merrywhether/config"]
-}`;
+}\n`;
   const renovateFile = path.resolve(process.cwd(), 'renovate.json');
 
   fs.writeFile(renovateFile, renovateContent, (e) => {
