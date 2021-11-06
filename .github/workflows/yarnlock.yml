@@ -15,4 +15,5 @@ jobs:
       - name: Yarn Lock Changes
         uses: Simek/yarn-lock-changes@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.COMMENT_KEY }}
+          updateComment: true

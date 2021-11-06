@@ -33,9 +33,8 @@ options with corresponding effects:
 | styled     |       |             |            |                   | ✅         |
 | typescript | t     | ✅          | ✅         |                   | ✅         |
 
-The defaults are controlled by the `--default`/`-d` flag, which defaults to
-`true`. Disabling the default enables a la carte selection of any of the other
-targeted options.
+The defaults are controlled by the `--default`/`-d` flag. Disabling the default
+enables a la carte selection of any of the other targeted options.
 
 ## Configuration Details
 
