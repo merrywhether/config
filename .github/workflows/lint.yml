@@ -22,4 +22,5 @@ jobs:
       - name: ESLint
         run: yarn lint:es
       - name: Prettier
+        if: ${{ always() }}
         run: yarn lint:md
