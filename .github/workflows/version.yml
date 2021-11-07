@@ -1,0 +1,29 @@
+name: Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Next Version'
+        required: true
+
+jobs:
+  Version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ssh-key: ${{ secrets.COMMIT_KEY }}
+      - name: Setup yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+      - name: Version
+        run: yarn version --new-version ${{ github.event.inputs.version }}
+      - name: Push Changes
+        run: |
+          git config user.name mergewhether
+          git config user.email bot@risto.io
+          git push --follow-tags
