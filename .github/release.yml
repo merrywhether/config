@@ -1,0 +1,23 @@
+changelog:
+  categories:
+    - title: New Features 🃏
+      labels:
+        - feature
+    - title: ESLint Changes 🧯
+      labels:
+        - eslint
+    - title: tsconfig Changes 🧬
+      labels:
+        - typescript
+    - title: Documentation Improvements 📜
+      labels:
+        - documentation
+    - title: Bug Fixes 💊
+      labels:
+        - bug
+    - title: Dependency Updates 🧶
+      labels:
+        - dependencies
+    - title: Other Changes 🏴‍☠️
+      labels:
+        - '*'
