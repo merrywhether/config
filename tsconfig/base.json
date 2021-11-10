@@ -6,6 +6,7 @@
     "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
     "importsNotUsedAsValues": "error",
+    "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
