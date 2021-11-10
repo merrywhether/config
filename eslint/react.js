@@ -21,6 +21,7 @@ module.exports = {
     'react/jsx-sort-props': 'error',
     'react/no-array-index-key': 'error',
     'react/no-children-prop': 'off',
+    'react/no-invalid-html-attribute': 'error',
     'react/prop-types': 'off',
     'react/self-closing-comp': 'error',
     // react hooks
