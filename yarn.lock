@@ -505,17 +505,17 @@ eslint-plugin-react@^7.28.0:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
 
-eslint-plugin-solid@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-solid/-/eslint-plugin-solid-0.3.0.tgz#8fe553c9384668b79c563facb1615bb616c3a372"
-  integrity sha512-MqHehZOR4tgFvWHdq1wHxBEJPDVOwcWf5JfcV/VpJisr0r/8XWWkzAtPRm66upnaFADSWKlaCOayvQj2BHKnhQ==
+eslint-plugin-solid@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-solid/-/eslint-plugin-solid-0.3.1.tgz#d93d103238bbcdd2f7e9f1ac909d5dc6d1eb6bc1"
+  integrity sha512-BZd7KDYPtZWpfhgv9D76yqlFJo8jC1pBC+GMtjfRemI0hvPax0BZcZrYJvDaXF/ZRID7OyKgpueqv5UdmtFlSQ==
   dependencies:
     eslint-utils "^3.0.0"
     estraverse "^5.3.0"
     is-html "^2.0.0"
     jsx-ast-utils "^3.2.0"
     kebab-case "^1.0.1"
-    known-css-properties "^0.23.0"
+    known-css-properties "^0.24.0"
     style-to-object "^0.3.0"
 
 eslint-plugin-sort-destructure-keys@^1.4.0:
@@ -1074,10 +1074,10 @@ kebab-case@^1.0.1:
   resolved "https://registry.yarnpkg.com/kebab-case/-/kebab-case-1.0.1.tgz#bf734fc95400a3701869215d99a902bd3fe72f60"
   integrity sha512-txPHx6nVLhv8PHGXIlAk0nYoh894SpAqGPXNvbg2hh8spvHXIah3+vT87DLoa59nKgC6scD3u3xAuRIgiMqbfQ==
 
-known-css-properties@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.23.0.tgz#e643e1bab2b1f8ba292eea9557121cc02e9846a0"
-  integrity sha512-h9ivI88e1lFNmTT4HovBN33Ysn0OIJG7IPG2mkpx2uniQXFWqo35QdiX7w0TovlUFXfW8aPFblP5/q0jlOr2sA==
+known-css-properties@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.24.0.tgz#19aefd85003ae5698a5560d2b55135bf5432155c"
+  integrity sha512-RTSoaUAfLvpR357vWzAz/50Q/BmHfmE6ETSWfutT0AJiw10e6CmcdYRQJlLRd95B53D0Y2aD1jSxD3V3ySF+PA==
 
 levn@^0.4.1:
   version "0.4.1"
