@@ -505,13 +505,11 @@ eslint-plugin-react@^7.28.0:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
 
-eslint-plugin-solid@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-solid/-/eslint-plugin-solid-0.3.1.tgz#d93d103238bbcdd2f7e9f1ac909d5dc6d1eb6bc1"
-  integrity sha512-BZd7KDYPtZWpfhgv9D76yqlFJo8jC1pBC+GMtjfRemI0hvPax0BZcZrYJvDaXF/ZRID7OyKgpueqv5UdmtFlSQ==
+eslint-plugin-solid@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-solid/-/eslint-plugin-solid-0.4.0.tgz#73b19a1cfe0b08613eec36bafe24acacb4f572ad"
+  integrity sha512-JS9pZ+e1TSs7OYvcrC72t9kMY1YvlHchIAa9Iz1/4zL/1YQNNCIWvrEzOJeDTFNfGgnuj9YlYJTgAIBDT574dA==
   dependencies:
-    eslint-utils "^3.0.0"
-    estraverse "^5.3.0"
     is-html "^2.0.0"
     jsx-ast-utils "^3.2.0"
     kebab-case "^1.0.1"
