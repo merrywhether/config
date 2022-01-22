@@ -96,7 +96,7 @@
     semver "^7.3.5"
     tsutils "^3.21.0"
 
-"@typescript-eslint/experimental-utils@^5.0.0":
+"@typescript-eslint/experimental-utils@^5.0.0", "@typescript-eslint/experimental-utils@^5.9.0":
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-5.10.0.tgz#e039664f294eb7ab1d3ede7125f5e01be67acc7f"
   integrity sha512-GeQAPqQMI5DVMGOUwGbSR+NdsirryyKOgUFRTWInhlsKUArns/MVnXmPpzxfrzB1nU36cT5WJAwmfCsjoaVBWg==
@@ -500,11 +500,12 @@ eslint-plugin-react@^7.28.0:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
 
-eslint-plugin-solid@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-solid/-/eslint-plugin-solid-0.4.0.tgz#73b19a1cfe0b08613eec36bafe24acacb4f572ad"
-  integrity sha512-JS9pZ+e1TSs7OYvcrC72t9kMY1YvlHchIAa9Iz1/4zL/1YQNNCIWvrEzOJeDTFNfGgnuj9YlYJTgAIBDT574dA==
+eslint-plugin-solid@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-solid/-/eslint-plugin-solid-0.4.1.tgz#13fb519b8dee1ce874221b912aca09b5aff2821a"
+  integrity sha512-7+zeIR9n/1aGqCP22UlsVVeDPNU98NSveTR2jzTBtrNIaAoi8jKWdyOEU29CLnKr8fLG7TqyqchDvwiRaSRo3Q==
   dependencies:
+    "@typescript-eslint/experimental-utils" "^5.9.0"
     is-html "^2.0.0"
     jsx-ast-utils "^3.2.0"
     kebab-case "^1.0.1"
