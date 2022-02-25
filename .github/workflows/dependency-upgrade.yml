@@ -17,7 +17,7 @@ jobs:
           ssh-key: ${{ secrets.COMMIT_KEY }}
         # https://github.com/marketplace/actions/setup-node-js-environment
       - name: Setup yarn caching
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
           cache: 'yarn'
