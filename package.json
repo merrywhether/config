@@ -22,7 +22,7 @@
   },
   "engineStrict": true,
   "engines": {
-    "node": ">=v16.13.2"
+    "node": ">=v18.16.1"
   },
   "dependencies": {
     "@styled/typescript-styled-plugin": "^1.0.0",
