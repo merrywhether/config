@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: '20'
       - name: Version
         run: |
           git config user.name mergewhether
