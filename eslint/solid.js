@@ -1,7 +1,7 @@
 module.exports = {
+  extends: ['plugin:solid/typescript'],
   // we add a few useful JSX rules from React
   plugins: ['react'],
-  extends: ['plugin:solid/recommended'],
   rules: {
     'react/jsx-boolean-value': 'error',
     'react/jsx-no-duplicate-props': 'error',
