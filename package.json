@@ -20,7 +20,6 @@
     "lint:md": "prettier '**/*.md' --check",
     "lint:md:fix": "prettier '**/*.md' --write"
   },
-  "engineStrict": true,
   "engines": {
     "node": ">=20.0.0"
   },
