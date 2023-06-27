@@ -11,16 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup yarn caching
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v3
+      - name: Setup caching
+        uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install
-        run: yarn install
+        run: pnpm install
       - name: ESLint
-        run: yarn lint:es
+        run: pnpm lint:es
       - name: Prettier
         if: ${{ always() }}
-        run: yarn lint:md
+        run: pnpm lint:md

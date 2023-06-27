@@ -13,16 +13,16 @@
   "license": "MIT",
   "homepage": "https://github.com/merrywhether/config#readme",
   "scripts": {
-    "fix": "yarn lint:es:fix && yarn lint:md:fix",
-    "lint": "yarn lint:es && yarn lint:md",
+    "fix": "pnpm lint:es:fix && pnpm lint:md:fix",
+    "lint": "pnpm lint:es && pnpm lint:md",
     "lint:es": "eslint './'",
-    "lint:es:fix": "yarn lint:es --fix",
-    "lint:md": "yarn prettier '**/*.md' --check",
-    "lint:md:fix": "yarn prettier '**/*.md' --write"
+    "lint:es:fix": "pnpm lint:es --fix",
+    "lint:md": "prettier '**/*.md' --check",
+    "lint:md:fix": "prettier '**/*.md' --write"
   },
   "engineStrict": true,
   "engines": {
-    "node": ">=v16.13.2"
+    "node": ">=20.0.0"
   },
   "dependencies": {
     "@styled/typescript-styled-plugin": "^1.0.0",

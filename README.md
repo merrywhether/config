@@ -12,14 +12,14 @@ Common config files for &#64;merrywhether projects
 Installation:
 
 ```sh
-yarn add -D @merrywhether/config
+pnpm add -D @merrywhether/config
 ```
 
 Use this is via invoking its executable from the root of your app (or the
 directory where you want the config files created):
 
 ```sh
-yarn mw-config
+pnpm mw-config
 ```
 
 This will generate your config files for you, with support for the following
@@ -86,7 +86,7 @@ The base configuration has all of the strictest settings enabled and targets
 `esnext`.
 
 When the `styled` option is selected,
-[`typescript-styled-plugin`](https://github.com/microsoft/typescript-styled-plugin#configuration)
+[`@styled/typescript-styled-plugin`](https://github.com/styled-components/typescript-styled-plugin)
 is added.
 
 When the `solid` option is selected, the `jsxImportSource` is appropriately
