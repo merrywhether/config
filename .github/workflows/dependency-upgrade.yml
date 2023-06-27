@@ -16,7 +16,11 @@ jobs:
           # https://medium.com/prompt/trigger-another-github-workflow-without-using-a-personal-access-token-f594c21373ef
           ssh-key: ${{ secrets.COMMIT_KEY }}
         # https://github.com/marketplace/actions/setup-node-js-environment
-      - name: Setup Caching
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+      - name: Setup Node + caching
         uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
