@@ -54,8 +54,6 @@ When the `typescript` option is selected, the following are added:
 
 - [`@typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules)
   (recommended++, including type-aware)
-- [`typescript-sort-keys`](https://github.com/infctr/eslint-plugin-typescript-sort-keys#usage)
-  (recommended)
 
 When the `react` option is selected, the following are added:
 
