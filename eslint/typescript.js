@@ -27,6 +27,10 @@ const typeRules = {
     'error',
     { fixMixedExportsWithInlineTypeSpecifier: true },
   ],
+  '@typescript-eslint/no-misused-promises': [
+    'error',
+    { checksVoidReturn: { attributes: false } },
+  ],
   '@typescript-eslint/no-throw-literal': 'error',
   '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
   '@typescript-eslint/no-unnecessary-condition': 'error',
