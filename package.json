@@ -24,10 +24,12 @@
     "node": ">=v20.5.1"
   },
   "dependencies": {
+    "command-line-args": "^5.2.1"
+  },
+  "peerDependencies": {
     "@styled/typescript-styled-plugin": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
-    "command-line-args": "^5.2.1",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
@@ -39,6 +41,44 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "prettier": "^3.0.2",
     "typescript": "^5.2.2"
+  },
+  "peerDependenciesMeta": {
+    "@styled/typescript-styled-plugin": {
+      "optional": true
+    },
+    "@typescript-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@typescript-eslint/parser": {
+      "optional": true
+    },
+    "eslint-plugin-prettier": {
+      "optional": true
+    },
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-solid": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    },
+    "typescript": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-sort-destructure-keys": "^1.5.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "prettier": "^3.0.2"
   },
   "packageManager": "pnpm@8.6.12"
 }
