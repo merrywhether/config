@@ -61,6 +61,8 @@ When the `react` option is selected, the following are added:
   (recommended++, jsx-runtime)
 - [`react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation)
   (recommended++)
+- [`typescript-sort-keys`](https://github.com/infctr/eslint-plugin-typescript-sort-keys#usage)
+  (recommended)
 
 When the `solid` option is selected, the following are added:
 

@@ -6,12 +6,13 @@ const baseRules = {
   '@typescript-eslint/default-param-last': 'error',
   '@typescript-eslint/explicit-function-return-type': 'error',
   '@typescript-eslint/explicit-module-boundary-types': 'error',
-  '@typescript-eslint/member-ordering': [
-    'error',
-    {
-      default: { optionalityOrder: 'required-first', order: 'alphabetically' },
-    },
-  ],
+  // pending https://github.com/typescript-eslint/typescript-eslint/issues/2296
+  // '@typescript-eslint/member-ordering': [
+  //   'error',
+  //   {
+  //     default: { optionalityOrder: 'required-first', order: 'alphabetically' },
+  //   },
+  // ],
   '@typescript-eslint/no-import-type-side-effects': 'error',
   '@typescript-eslint/no-shadow': 'error',
   '@typescript-eslint/no-unused-expressions': [
@@ -20,6 +21,12 @@ const baseRules = {
   ],
   '@typescript-eslint/sort-type-constituents': 'error',
   'no-unused-expressions': 'off',
+  'typescript-sort-keys/interface': [
+    'error',
+    // `requiredFirst: true` is only non-default value
+    'asc',
+    { caseSensitive: true, natural: false, requiredFirst: true },
+  ],
 };
 
 const typeRules = {
@@ -44,6 +51,7 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended-type-checked',
         'plugin:@typescript-eslint/stylistic-type-checked',
+        'plugin:typescript-sort-keys/recommended',
       ],
       // only enable TS rules for TS files
       files: ['*.ts', '*.tsx'],
