@@ -1,6 +1,6 @@
 {
   "name": "@merrywhether/config",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "description": "Common config files for @merrywhether projects",
   "bin": {
     "mw-config": "./index.js"
