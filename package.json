@@ -21,7 +21,7 @@
     "lint:md:fix": "prettier '**/*.md' --write"
   },
   "engines": {
-    "node": ">=20.12.0"
+    "node": ">=20.12.1"
   },
   "dependencies": {
     "command-line-args": "^5.2.1"
