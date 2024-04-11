@@ -38,9 +38,9 @@ const typeRules = {
     'error',
     { checksVoidReturn: { attributes: false } },
   ],
-  '@typescript-eslint/no-throw-literal': 'error',
   '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
   '@typescript-eslint/no-unnecessary-condition': 'error',
+  '@typescript-eslint/only-throw-error': 'error',
   '@typescript-eslint/prefer-reduce-type-parameter': 'error',
   '@typescript-eslint/switch-exhaustiveness-check': 'error',
 };
