@@ -1,5 +1,5 @@
-module.exports = {
-  experimentalTernaries: true,
-  proseWrap: 'always',
-  singleQuote: true,
+import config from '@merrywhether/config/prettier';
+
+export default {
+  ...config,
 };
