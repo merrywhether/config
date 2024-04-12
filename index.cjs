@@ -26,37 +26,20 @@ if (opts.default) {
 }
 
 if (opts.eslint) {
-  const eslintConfigs = [
-    `require.resolve('@merrywhether/config/eslint/base.js')`,
-  ];
-  if (opts.prettier) {
-    eslintConfigs.push(
-      `require.resolve('@merrywhether/config/eslint/prettier.js')`,
-    );
-  }
-  if (opts.typescript) {
-    eslintConfigs.push(
-      `require.resolve('@merrywhether/config/eslint/typescript.js')`,
-    );
-  }
-  if (opts.react) {
-    eslintConfigs.push(
-      `require.resolve('@merrywhether/config/eslint/react.js')`,
-    );
-  }
-  if (opts.solid) {
-    eslintConfigs.push(
-      `require.resolve('@merrywhether/config/eslint/solid.js')`,
-    );
-  }
+  const eslintConfig =
+    opts.solid ? 'solid'
+    : opts.react ? 'react'
+    : opts.typescript ? 'typescript'
+    : 'base';
 
-  const eslintContent = `module.exports = {
-  root: true,
-  extends: [
-    ${eslintConfigs.join(',\n    ')},
-  ],
-};\n`;
-  const eslintFile = path.resolve(process.cwd(), '.eslintrc.js');
+  const eslintContent = `import config from '@merrywhether/config/eslint';
+
+export default [
+  ...config.${eslintConfig},
+];
+`;
+
+  const eslintFile = path.resolve(process.cwd(), 'eslint.config.mjs');
 
   fs.writeFile(eslintFile, eslintContent, (e) => {
     if (e) {
@@ -66,7 +49,12 @@ if (opts.eslint) {
 }
 
 if (opts.prettier) {
-  const prettierContent = `module.exports = require('@merrywhether/config/prettier.config.js');\n`;
+  const prettierContent = `import config from '@merrywhether/config/prettier';
+
+export default {
+  ...config,
+};
+`;
   const prettierFile = path.resolve(process.cwd(), 'prettier.config.js');
 
   fs.writeFile(prettierFile, prettierContent, (e) => {
@@ -79,7 +67,8 @@ if (opts.prettier) {
 if (opts.renovate) {
   const renovateContent = `{
   "extends": ["github>merrywhether/config"]
-}\n`;
+}
+`;
   const renovateFile = path.resolve(process.cwd(), 'renovate.json');
 
   fs.writeFile(renovateFile, renovateContent, (e) => {
@@ -90,17 +79,17 @@ if (opts.renovate) {
 }
 
 if (opts.typescript) {
-  const typescriptConfig = opts.solid
-    ? 'solid'
-    : opts.styled
-    ? 'styled'
-    : 'base';
+  const typescriptConfig =
+    opts.solid ? 'ts-solid'
+    : opts.styled ? 'ts-styled'
+    : 'ts-base';
 
   const typescriptContent = `{
-  "extends": "@merrywhether/config/tsconfig/${typescriptConfig}.json",
+  "extends": "@merrywhether/config/${typescriptConfig}",
   "compilerOptions": {},
   "exclude": ["node_modules"]
-}`;
+}
+`;
   const typescriptFile = path.resolve(process.cwd(), 'tsconfig.json');
 
   fs.writeFile(typescriptFile, typescriptContent, (e) => {
