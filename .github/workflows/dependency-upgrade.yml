@@ -20,11 +20,11 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           run_install: false
-      - name: Setup Node + caching
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
           cache: 'pnpm'
+          node-version: '20'
       - name: Install
         run: pnpm install --ignore-scripts --frozen-lockfile
       - name: Dedupe

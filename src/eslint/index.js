@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import js from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
@@ -5,10 +7,10 @@ import reactPlugin from 'eslint-plugin-react';
 import reactJsx from 'eslint-plugin-react/configs/jsx-runtime.js';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import hooksPlugin from 'eslint-plugin-react-hooks';
-import solidRecommended from 'eslint-plugin-solid/configs/typescript.js';
+import solidRecommended from 'eslint-plugin-solid/dist/configs/typescript.js';
 import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
 import sortKeysFixPlugin from 'eslint-plugin-sort-keys-fix';
-import tsSortKeysRecommended from 'eslint-plugin-typescript-sort-keys';
+import tsSortKeysPlugin from 'eslint-plugin-typescript-sort-keys';
 import globals from 'globals';
 import { config, configs as tsConfigs } from 'typescript-eslint';
 import { rules } from './rules.js';
@@ -48,12 +50,20 @@ const ts = config({
     // eslint v9: https://github.com/typescript-eslint/typescript-eslint/issues/8211
     ...tsConfigs.recommendedTypeChecked,
     ...tsConfigs.stylisticTypeChecked,
-    // eslint v9: https://github.com/infctr/eslint-plugin-typescript-sort-keys/issues/77
-    tsSortKeysRecommended.configs.recommended,
   ],
   files: tsFiles,
+  languageOptions: {
+    parserOptions: {
+      project: true,
+    },
+  },
   name: 'mw-config/ts',
+  plugins: {
+    // eslint v9: https://github.com/infctr/eslint-plugin-typescript-sort-keys/issues/77
+    'typescript-sort-keys': tsSortKeysPlugin,
+  },
   rules: {
+    ...tsSortKeysPlugin.configs.recommended.rules,
     ...rules.tsBase,
     ...rules.tsType,
   },
