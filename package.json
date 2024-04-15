@@ -12,11 +12,17 @@
   ],
   "exports": {
     ".": {
-      "types": "./@types/index.js",
+      "types": "./@types/projen/index.d.ts",
       "default": "./src/projen/index.js"
     },
-    "./eslint": "./src/eslint/index.js",
-    "./prettier": "./src/prettier.js",
+    "./eslint": {
+      "types": "./@types/eslint/index.d.ts",
+      "default": "./src/eslint/index.js"
+    },
+    "./prettier": {
+      "types": "./@types/prettier.d.ts",
+      "default": "./src/prettier.js"
+    },
     "./ts-base": "./src/ts/base.json",
     "./ts-solid": "./src/ts/solid.json",
     "./ts-styled": "./src/ts/styled.json"

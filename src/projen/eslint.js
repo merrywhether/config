@@ -18,7 +18,7 @@ export class MwEslint extends MwJsConfigFile {
   constructor(project, { ignores = [], ...opts }) {
     super(project, { ...opts, type: 'eslint' });
     this.ignores = ignores;
-    this.ignores.unshift(this.filePath, '.cache/**');
+    this.ignores.unshift('.cache/**', this.filePath);
   }
 
   /** @override */

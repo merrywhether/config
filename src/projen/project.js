@@ -63,8 +63,8 @@ export class MwProject extends Project {
         ...gitIgnoreOptions,
         ignorePatterns: [
           ...(gitIgnoreOptions?.ignorePatterns ?? []),
-          '.env',
-          '.cache',
+          '.env*',
+          '.cache/',
           '*.tsbuildinfo',
           '.DS_Store',
         ],
