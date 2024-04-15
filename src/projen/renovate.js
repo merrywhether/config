@@ -42,7 +42,7 @@ const renovateAppOptions = {
 const renovatePackageOptions = {
   overrideConfig: {
     patch: {
-      automerge: true,
+      automergeType: 'pr',
     },
     rebaseWhen: 'behind-base-branch',
   },

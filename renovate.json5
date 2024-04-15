@@ -21,7 +21,7 @@
   "rangeStrategy": "bump",
   "timezone": "America/Los_Angeles",
   "patch": {
-    "automerge": true
+    "automergeType": "pr"
   },
   "rebaseWhen": "behind-base-branch"
 }
