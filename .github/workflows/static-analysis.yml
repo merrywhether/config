@@ -16,7 +16,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           run_install: false
-      - name: Setup Node + caching
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           cache: 'pnpm'
@@ -25,11 +25,11 @@ jobs:
         run: pnpm install
       - name: Generate types
         run: pnpm build:types
+      - name: Typecheck
+        run: pnpm typecheck
       - name: ESLint
+        if: ${{ always() }}
         run: pnpm lint:es
       - name: Prettier
         if: ${{ always() }}
         run: pnpm lint:md
-      - name: Prettier
-        if: ${{ always() }}
-        run: pnpm typecheck
