@@ -85,7 +85,6 @@ const react = config({
   },
   name: 'mw-config/react',
   plugins: {
-    react: reactPlugin,
     // eslint v9: https://github.com/facebook/react/pull/28773
     'react-hooks': hooksPlugin,
   },
