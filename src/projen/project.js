@@ -22,11 +22,12 @@ import { genFilePath, setMjs } from './util.js';
  *
  * @typedef {Object} MwProjectOpts
  * @prop {EslintOpts} eslint
- * @prop {import('projen').LicenseOptions} [license]
+ * @prop {import('projen').LicenseOptions | '_skip_'} [license]
  * @prop {boolean} [mise=true]
  * @prop {import('./renovate.js').RenovatebotPreset} [renovatebotPreset]
  * @prop {Pick<import('./prettier.js').MwPrettierOpts, 'customConfig'>} [prettier]
  * @prop {MwProjectTsConfig & import('./typescript.js').MwTsConfigOpts} [typescript]
+ * @prop {boolean} [useMjs]
  * @prop {Record<string, unknown>} [vscSettings]
  */
 
@@ -52,6 +53,7 @@ export class MwProject extends Project {
       include: tsInclude = [],
       ...typescript
     } = {},
+    useMjs,
     vscSettings,
     ...opts
   }) {
@@ -61,8 +63,10 @@ export class MwProject extends Project {
         ...gitIgnoreOptions,
         ignorePatterns: [
           ...(gitIgnoreOptions?.ignorePatterns ?? []),
-          '.DS_Store',
+          '.env',
+          '.cache',
           '*.tsbuildinfo',
+          '.DS_Store',
         ],
       },
       renovatebot: !!renovatebotPreset,
@@ -77,7 +81,7 @@ export class MwProject extends Project {
         genFilePath('mw.config.js')
       : undefined;
 
-    setMjs(false);
+    setMjs(!!useMjs);
 
     if (this.customConfigFile) {
       new SampleFile(this, this.customConfigFile, {
@@ -92,7 +96,9 @@ export class MwProject extends Project {
       ignores: [mwPrettier.filePath, ...eslintIgnores],
     });
 
-    new License(this, license);
+    if (license !== '_skip_') {
+      new License(this, license);
+    }
 
     if (mise) {
       new TomlFile(this, '.mise.toml', {
@@ -115,7 +121,11 @@ export class MwProject extends Project {
       if (this.customConfigFile) {
         tsInclude.unshift(this.customConfigFile);
       }
-      tsInclude.unshift('.projenrc.js', mwEslint.filePath, mwPrettier.filePath);
+      tsInclude.unshift(
+        genFilePath('.projenrc.js'),
+        mwEslint.filePath,
+        mwPrettier.filePath,
+      );
     }
 
     new MwTsConfig(this, {
