@@ -16,9 +16,7 @@ const project = new MwProject({
     compilerOptions: {
       checkJs: true,
     },
-    extends: './src/ts/base',
     include: ['src', 'scripts'],
-    preset: '_skip_',
   },
 });
 

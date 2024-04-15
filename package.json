@@ -17,9 +17,9 @@
     },
     "./eslint": "./src/eslint/index.js",
     "./prettier": "./src/prettier.js",
-    "./ts-base": "./src/tsconfig/base.json",
-    "./ts-solid": "./src/tsconfig/solid.json",
-    "./ts-styled": "./src/tsconfig/styled.json"
+    "./ts-base": "./src/ts/base.json",
+    "./ts-solid": "./src/ts/solid.json",
+    "./ts-styled": "./src/ts/styled.json"
   },
   "repository": {
     "type": "git",
