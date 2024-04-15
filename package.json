@@ -2,11 +2,19 @@
   "name": "@merrywhether/config",
   "version": "2.9.1",
   "description": "Common config files for @merrywhether projects",
-  "bin": {
-    "mw-config": "./index.js"
-  },
   "type": "module",
+  "files": [
+    "@types/",
+    "scripts/",
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
   "exports": {
+    ".": {
+      "types": "./@types/index.js",
+      "default": "./src/projen/index.js"
+    },
     "./eslint": "./src/eslint/index.js",
     "./prettier": "./src/prettier.js",
     "./ts-base": "./src/tsconfig/base.json",
@@ -21,12 +29,17 @@
   "license": "MIT",
   "homepage": "https://github.com/merrywhether/config#readme",
   "scripts": {
+    "build:types": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf @types *.tsbuildinfo",
     "fix": "pnpm lint:es:fix && pnpm lint:md:fix",
     "lint": "pnpm lint:es && pnpm lint:md",
     "lint:es": "eslint './'",
     "lint:es:fix": "pnpm lint:es --fix",
     "lint:md": "prettier '**/*.md' --check",
-    "lint:md:fix": "prettier '**/*.md' --write"
+    "lint:md:fix": "prettier '**/*.md' --write",
+    "pj": "node .projenrc.js",
+    "postinstall": "node scripts/postinstall.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "engines": {
     "node": ">=20.12.2"
@@ -47,7 +60,9 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-typescript-sort-keys": "^3.2.0",
     "globals": "^15.0.0",
+    "knitwork": "^1.1.0",
     "prettier": "^3.2.5",
+    "projen": "^0.81.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.6.0"
   },
@@ -58,6 +73,9 @@
     "@styled/typescript-styled-plugin": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7"
   },
   "packageManager": "pnpm@8.15.7"
 }

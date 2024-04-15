@@ -1,4 +1,4 @@
-name: Lint
+name: Static Analysis
 
 on:
   push:
@@ -19,12 +19,17 @@ jobs:
       - name: Setup Node + caching
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
           cache: 'pnpm'
+          node-version: '20'
       - name: Install
         run: pnpm install
+      - name: Generate types
+        run: pnpm build:types
       - name: ESLint
         run: pnpm lint:es
       - name: Prettier
         if: ${{ always() }}
         run: pnpm lint:md
+      - name: Prettier
+        if: ${{ always() }}
+        run: pnpm typecheck

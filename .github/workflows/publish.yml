@@ -18,8 +18,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
+          cache: 'pnpm'
           node-version: '20'
           registry-url: https://registry.npmjs.org/
+      - name: Install
+        run: pnpm install
+      - name: Generate types
+        run: pnpm build:types
       - name: Publish
         run: pnpm publish --access public --no-git-checks
         env:

@@ -15,27 +15,9 @@ Installation:
 pnpm add -D @merrywhether/config
 ```
 
-Use this is via invoking its executable from the root of your app (or the
-directory where you want the config files created):
-
-```sh
-pnpm mw-config
-```
-
-This will generate your config files for you, with support for the following
-options with corresponding effects:
-
-| option     | alias | default set | Δ eslintrc | Δ prettier.config | Δ tsconfig |
-| ---------- | ----- | ----------- | ---------- | ----------------- | ---------- |
-| eslint     | e     | ✅          | ✅         |                   |            |
-| prettier   | p     | ✅          | ✅         | ✅                |            |
-| react      | r     |             | ✅         |                   |            |
-| renovate   |       | ✅          |            |                   |            |
-| solid      |       |             | ✅         |                   | ✅         |
-| styled     |       |             |            |                   | ✅         |
-| typescript | t     | ✅          | ✅         |                   | ✅         |
-
-The defaults are controlled by the `--default`/`-d` flag.
+This will generate a `.projenrc.js` file in the root of your project. Update
+that config with your desired settings and then run `node .projenrc.js` to have
+it create the appropriate configuration files.
 
 ## Configuration Details
 
@@ -76,9 +58,9 @@ When the `solid` option is selected, the following are added:
 Uses the [default Prettier settings](https://prettier.io/docs/en/options.html)
 with the following changes:
 
-- `singleQuote: true` (because this is JS! 😛)
-- `trailingComma: all` (embrace the future)
+- `experimentalTernaries: true` (embrace the future)
 - `proseWrap: always` (wrapping Markdown).
+- `singleQuote: true` (because this is JS! 😛)
 
 ### Typescript
 

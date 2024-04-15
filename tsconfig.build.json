@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "@types",
+    "rootDir": "src/projen"
+  },
+  "include": ["src/projen"]
+}
