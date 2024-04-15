@@ -5,6 +5,7 @@ import config from '@merrywhether/config/eslint';
 export default [
   {
     ignores: [
+      '.cache/**',
       'eslint.config.js',
       'prettier.config.js',
       '@types',
