@@ -85,12 +85,18 @@ const react = config({
   },
   name: 'mw-config/react',
   plugins: {
+    react: reactPlugin,
     // eslint v9: https://github.com/facebook/react/pull/28773
     'react-hooks': hooksPlugin,
   },
   rules: {
     ...rules.react,
     ...hooksPlugin.configs.recommended.rules,
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 });
 
@@ -100,12 +106,24 @@ const solid = config({
     solidRecommended,
   ],
   files: allFiles,
+  languageOptions: {
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+    },
+  },
   name: 'mw-config/solid',
   plugins: {
     react: reactPlugin,
   },
   // we add a few useful JSX rules from React
   rules: rules.solidReact,
+  settings: {
+    react: {
+      version: 'latest',
+    },
+  },
 });
 
 // prettier always last
