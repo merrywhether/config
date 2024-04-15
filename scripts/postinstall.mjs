@@ -8,12 +8,17 @@ const sourcePath = join(
   'sample/.projenrc.js',
 );
 
-const targetPath = join(process.env.INIT_CWD ?? cwd(), '.projenrc.js');
+const extension = process.env.npm_package_type === 'module' ? 'js' : 'mjs';
+
+const targetPath = join(
+  process.env.INIT_CWD ?? cwd(),
+  `.projenrc.${extension}`,
+);
 
 try {
   copyFileSync(sourcePath, targetPath, constants.COPYFILE_EXCL);
   console.log(
-    '@merrywhether/config ready!\nConsider adding `"pj": "node .projenrc.js"` to package.json.\n',
+    `@merrywhether/config ready!\nConsider adding '"pj": "node .projenrc.${extension}"' to package.json.\n`,
   );
 } catch (e) {
   if (e instanceof Error && 'code' in e && e.code === 'EEXIST') {
