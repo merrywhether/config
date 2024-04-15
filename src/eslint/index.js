@@ -75,7 +75,14 @@ const react = config({
     reactRecommended,
     reactJsx,
   ],
-  files: tsFiles,
+  files: allFiles,
+  languageOptions: {
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+    },
+  },
   name: 'mw-config/react',
   plugins: {
     // eslint v9: https://github.com/facebook/react/pull/28773
@@ -92,7 +99,7 @@ const solid = config({
     // eslint v9: https://github.com/solidjs-community/eslint-plugin-solid/issues/137
     solidRecommended,
   ],
-  files: tsFiles,
+  files: allFiles,
   name: 'mw-config/solid',
   plugins: {
     react: reactPlugin,

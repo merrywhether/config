@@ -27,7 +27,7 @@ import { genFilePath, setMjs } from './util.js';
  * @prop {import('./renovate.js').RenovatebotPreset} [renovatebotPreset]
  * @prop {Pick<import('./prettier.js').MwPrettierOpts, 'customConfig'>} [prettier]
  * @prop {MwProjectTsConfig & import('./typescript.js').MwTsConfigOpts} [typescript]
- * @prop {boolean} [useMjs]
+ * @prop {boolean} [useMjs] set to override autodetection
  * @prop {Record<string, unknown>} [vscSettings]
  */
 
@@ -76,12 +76,12 @@ export class MwProject extends Project {
       ),
     });
 
+    setMjs(useMjs ?? process.env.npm_package_type !== 'module');
+
     this.customConfigFile =
       eslint.customConfig || prettier.customConfig ?
         genFilePath('mw.config.js')
       : undefined;
-
-    setMjs(!!useMjs);
 
     if (this.customConfigFile) {
       new SampleFile(this, this.customConfigFile, {

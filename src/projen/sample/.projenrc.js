@@ -5,6 +5,7 @@ const project = new MwProject({
   eslint: {
     preset: 'typescript',
   },
+  name: '__NAME__',
   projenCommand: 'pn pj',
   typescript: {
     include: ['src'],
