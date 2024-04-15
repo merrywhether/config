@@ -12,7 +12,9 @@
   ],
   "commitMessageAction": "Renovate",
   "dependencyDashboard": true,
-  "postUpdateOptions": "pnpmDedupe",
+  "postUpdateOptions": [
+    "pnpmDedupe"
+  ],
   "rangeStrategy": "bump",
   "timezone": "America/Los_Angeles",
   "patch": {

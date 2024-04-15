@@ -12,7 +12,7 @@ const renovateCommonOptions = {
     ignoreDeps: undefined,
     // unsetting the default packageRules from projen
     packageRules: undefined,
-    postUpdateOptions: 'pnpmDedupe',
+    postUpdateOptions: ['pnpmDedupe'],
     rangeStrategy: 'bump',
     timezone: 'America/Los_Angeles',
   },
