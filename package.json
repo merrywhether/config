@@ -1,6 +1,6 @@
 {
   "name": "@merrywhether/config",
-  "version": "2.9.1",
+  "version": "3.0.0",
   "description": "Common config files for @merrywhether projects",
   "type": "module",
   "files": [
