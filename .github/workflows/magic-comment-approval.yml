@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check for magic comment
+      - name: Approve PR if magic comment
         id: check_comment
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
+        if:
+          ${{ github.event.comment.body == 'lgtm' &&
+          github.event.comment.user.login == 'merrywhether' }}
+        uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const comment = context.payload.comment.body.toLowerCase();
-            const isLgtm = comment.includes('lgtm');
-            const isOwner = context.payload.repository.owner.login === context.payload.comment.user.login;
-            console.log(isLgtm, isOwner);
-            return { approve: isLgtm && isOwner && 'true' };
-
-      - name: Approve PR
-        if: steps.check_comment.outputs.approve == 'true'
-        run: |
-          gh pr review --approve ${{ github.event.issue.pull_request.number }}
+            github.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'APPROVE',
+              body: 'LGTM'
+            })
