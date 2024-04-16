@@ -13,7 +13,7 @@ jobs:
       - name: Approve PR if magic comment
         id: check_comment
         if:
-          ${{ github.event.comment.body == 'lgtm' &&
+          ${{ github.event.comment.body == 'Approve' &&
           github.event.comment.user.login == 'merrywhether' }}
         uses: actions/github-script@v4
         with:
