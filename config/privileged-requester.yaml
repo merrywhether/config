@@ -1,0 +1,6 @@
+---
+requesters:
+  merrywhether:
+    labels:
+      - dependencies
+      - github_actions

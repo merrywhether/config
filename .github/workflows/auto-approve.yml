@@ -1,0 +1,24 @@
+name: Auto-approve
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  Check:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/marketplace/actions/privileged-requester
+      - uses: github/privileged-requester@v2.1.0
+        with:
+          github_token: ${{ secrets.APPROVAL_KEY }}
+          handle: 'mergewhether[bot]'
+          path: config/privileged-requester.yaml
+          prCreator: ${{ github.event.pull_request.user.login }}
+          prNumber: ${{ github.event.pull_request.number }}
+          checkDiff: 'false'
+          checkLabels: 'false'
