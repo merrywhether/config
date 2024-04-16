@@ -20,9 +20,9 @@ jobs:
             const isLgtm = comment.includes('lgtm');
             const isOwner = context.payload.repository.owner.login === context.payload.comment.user.login;
             console.log(isLgtm, isOwner);
-            return { approve: isLgtm && isOwner };
+            return { approve: isLgtm && isOwner && 'true' };
 
       - name: Approve PR
-        if: ${{ steps.check_comment.outputs.approve }}
+        if: steps.check_comment.outputs.approve == 'true'
         run: |
           gh pr review --approve ${{ github.event.issue.pull_request.number }}
