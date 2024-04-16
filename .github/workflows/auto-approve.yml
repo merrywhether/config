@@ -15,7 +15,7 @@ jobs:
       # https://github.com/marketplace/actions/privileged-requester
       - uses: github/privileged-requester@v2.1.0
         with:
-          github_token: ${{ secrets.APPROVAL_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           handle: 'mergewhether[bot]'
           path: config/privileged-requester.yaml
           prCreator: ${{ github.event.pull_request.user.login }}
