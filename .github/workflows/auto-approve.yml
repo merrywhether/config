@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # https://github.com/marketplace/actions/privileged-requester
-      - uses: github/privileged-requester@v2.1.0
+      - uses: github/privileged-requester@f8d60d9344e1c10976aad5c1af0c7c977badd677 # v2.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           path: .github/config/privileged-requester.yaml
