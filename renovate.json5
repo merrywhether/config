@@ -21,7 +21,5 @@
     "automerge": true
   },
   "rebaseWhen": "behind-base-branch",
-  "minor": {
-    "automerge": true
-  }
+  "automerge": true
 }

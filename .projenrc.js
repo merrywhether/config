@@ -14,9 +14,7 @@ const project = new MwProject({
   renovatebotOptions: {
     overrideConfig: {
       // repo requires approvals
-      minor: {
-        automerge: true,
-      },
+      automerge: true,
     },
   },
   renovatebotPreset: 'package',
