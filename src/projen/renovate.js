@@ -5,9 +5,6 @@ const renovateCommonOptions = {
   ignoreProjen: false,
   labels: ['dependencies'],
   overrideConfig: {
-    automerge: true,
-    automergeComment: '+reno',
-    automergeType: 'pr-comment',
     commitMessageAction: 'Renovate',
     dependencyDashboard: true,
     extends: ['config:recommended', 'helpers:pinGitHubActionDigests'],
@@ -42,7 +39,7 @@ const renovateAppOptions = {
 const renovatePackageOptions = {
   overrideConfig: {
     patch: {
-      automergeType: 'pr',
+      automerge: true,
     },
     rebaseWhen: 'behind-base-branch',
   },

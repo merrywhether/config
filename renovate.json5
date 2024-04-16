@@ -10,9 +10,6 @@
     "config:recommended",
     "helpers:pinGitHubActionDigests"
   ],
-  "automerge": true,
-  "automergeComment": "+reno",
-  "automergeType": "pr-comment",
   "commitMessageAction": "Renovate",
   "dependencyDashboard": true,
   "postUpdateOptions": [
@@ -21,7 +18,10 @@
   "rangeStrategy": "bump",
   "timezone": "America/Los_Angeles",
   "patch": {
-    "automergeType": "pr"
+    "automerge": true
   },
-  "rebaseWhen": "behind-base-branch"
+  "rebaseWhen": "behind-base-branch",
+  "minor": {
+    "automerge": true
+  }
 }

@@ -11,6 +11,14 @@ const project = new MwProject({
   },
   name: '@merrywhether/config',
   projenCommand: 'pn pj',
+  renovatebotOptions: {
+    overrideConfig: {
+      // repo requires approvals
+      minor: {
+        automerge: true,
+      },
+    },
+  },
   renovatebotPreset: 'package',
   typescript: {
     compilerOptions: {
