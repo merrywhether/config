@@ -1,4 +1,5 @@
 import { SourceCode } from 'projen';
+
 import { genFilePath, genImportString } from './util.js';
 
 /**
@@ -30,17 +31,6 @@ export class MwJsConfigFile extends SourceCode {
     this.type = type;
   }
 
-  #renderImports() {
-    this.line(`// ${this.marker}`);
-    this.line();
-
-    this.line(genImportString(`@merrywhether/config/${this.type}`, 'config'));
-    if (this.customConfig) {
-      this.line(genImportString('./mw.config.js', 'customConfig'));
-    }
-    this.line();
-  }
-
   #renderExport() {
     this.line(`export default ${this.type === 'eslint' ? '[' : '{'}`);
     this.open();
@@ -59,12 +49,15 @@ export class MwJsConfigFile extends SourceCode {
     this.line();
   }
 
-  synthesize() {
-    this.#renderImports();
+  #renderImports() {
+    this.line(`// ${this.marker}`);
+    this.line();
 
-    this.renderBody();
-
-    this.#renderExport();
+    this.line(genImportString(`@merrywhether/config/${this.type}`, 'config'));
+    if (this.customConfig) {
+      this.line(genImportString('./mw.config.js', 'customConfig'));
+    }
+    this.line();
   }
 
   renderBody() {}
@@ -72,4 +65,12 @@ export class MwJsConfigFile extends SourceCode {
   renderExportHead() {}
 
   renderExportTail() {}
+
+  synthesize() {
+    this.#renderImports();
+
+    this.renderBody();
+
+    this.#renderExport();
+  }
 }

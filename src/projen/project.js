@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { License, Project, SampleFile, TomlFile, vscode } from 'projen';
+
 import { MwEslint } from './eslint.js';
 import { MwPrettier } from './prettier.js';
 import { getRenovatebotOptions } from './renovate.js';

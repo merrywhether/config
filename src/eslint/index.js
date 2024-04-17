@@ -2,23 +2,23 @@
 
 import js from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
+import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommended-natural';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
 import reactJsx from 'eslint-plugin-react/configs/jsx-runtime.js';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import hooksPlugin from 'eslint-plugin-react-hooks';
 import solidRecommended from 'eslint-plugin-solid/dist/configs/typescript.js';
-import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
-import sortKeysFixPlugin from 'eslint-plugin-sort-keys-fix';
-import tsSortKeysPlugin from 'eslint-plugin-typescript-sort-keys';
 import globals from 'globals';
 import { config, configs as tsConfigs } from 'typescript-eslint';
+
 import { rules } from './rules.js';
 
 const tsFiles = ['**/*.{ts,tsx,mtsx}'];
 const allFiles = ['**/*.{js,mjs,cjs,jsx,mjsx}', ...tsFiles];
 
 const base = config({
+  extends: [perfectionistNatural],
   files: allFiles,
   languageOptions: {
     globals: {
@@ -34,14 +34,10 @@ const base = config({
     // eslint flat: https://github.com/import-js/eslint-plugin-import/issues/2556
     // eslint v9: https://github.com/import-js/eslint-plugin-import/issues/2948
     import: importPlugin,
-    // eslint v9: https://github.com/mthadley/eslint-plugin-sort-destructure-keys/issues/266
-    'sort-destructure-keys': sortDestructureKeysPlugin,
-    'sort-keys-fix': sortKeysFixPlugin,
   },
   rules: {
     ...rules.eslint,
     ...rules.import,
-    ...rules.sortKeys,
   },
 });
 
@@ -58,12 +54,7 @@ const ts = config({
     },
   },
   name: 'mw-config/ts',
-  plugins: {
-    // eslint v9: https://github.com/infctr/eslint-plugin-typescript-sort-keys/issues/77
-    'typescript-sort-keys': tsSortKeysPlugin,
-  },
   rules: {
-    ...tsSortKeysPlugin.configs.recommended.rules,
     ...rules.tsBase,
     ...rules.tsType,
   },
