@@ -14,7 +14,7 @@ jobs:
         id: check_comment
         if:
           ${{ github.event.comment.user.login == 'merrywhether' &&
-          contains(toLower(github.event.comment.body), 'approved') }}
+          contains(github.event.comment.body, 'Approved') }}
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
