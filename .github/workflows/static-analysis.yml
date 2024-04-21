@@ -7,7 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  Check:
+  check:
+    name: 'analyze'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

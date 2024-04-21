@@ -9,7 +9,8 @@ permissions:
   contents: read
 
 jobs:
-  Check:
+  check:
+    name: 'check PR author'
     runs-on: ubuntu-latest
     steps:
       # https://github.com/marketplace/actions/privileged-requester
