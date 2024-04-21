@@ -5,7 +5,8 @@ on:
     branches: [renovate/**]
 
 jobs:
-  Check:
+  check:
+    name: 'dedupe deps'
     runs-on: ubuntu-latest
     permissions:
       contents: write
