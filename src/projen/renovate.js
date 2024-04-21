@@ -25,12 +25,9 @@ const renovateAppOptions = {
       ...renovateCommonOptions.overrideConfig.extends,
       'group:allNonMajor',
     ],
-    groupName: 'all dependencies',
-    groupSlug: 'all',
     lockFileMaintenance: {
       enabled: false,
     },
-    separateMajorMinor: false,
   },
   scheduleInterval: ['before 6:00am on Friday every 4 weeks'],
 };
