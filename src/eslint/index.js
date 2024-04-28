@@ -91,10 +91,7 @@ const react = config({
 });
 
 const solid = config({
-  extends: [
-    // eslint v9: https://github.com/solidjs-community/eslint-plugin-solid/issues/137
-    solidRecommended,
-  ],
+  extends: [solidRecommended],
   files: allFiles,
   languageOptions: {
     parserOptions: {
