@@ -57,8 +57,8 @@ importers:
         specifier: ^3.2.5
         version: 3.2.5
       projen:
-        specifier: ^0.81.5
-        version: 0.81.5(constructs@10.3.0)
+        specifier: ^0.81.13
+        version: 0.81.13(constructs@10.3.0)
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -1080,8 +1080,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  projen@0.81.5:
-    resolution: {integrity: sha512-INiusfzl31lnBkSxrwgsZ5gEgoIE8WufZ2ihDjYzn0BqJcWuFhLX+ayi0vZ9HS7mjyUx3KSy2gTLznt2t+OgpQ==}
+  projen@0.81.13:
+    resolution: {integrity: sha512-gmH+/lvhUitjrCNNvV2ZRmiQ6D4sbGVfOBHND5bsEUm/58b5zz5LUvjj3wn5O3/2dECNMlimaYTBAyNuzV1aCw==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     peerDependencies:
@@ -2549,7 +2549,7 @@ snapshots:
 
   prettier@3.2.5: {}
 
-  projen@0.81.5(constructs@10.3.0):
+  projen@0.81.13(constructs@10.3.0):
     dependencies:
       constructs: 10.3.0
 
