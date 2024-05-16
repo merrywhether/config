@@ -106,7 +106,7 @@ export class MwProject extends Project {
         committed: true,
         obj: {
           tools: {
-            node: '20.12',
+            node: process.env.npm_package_engines_node,
           },
         },
       });
