@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { License, Project, SampleFile, TomlFile, vscode } from 'projen';
+import { coerce } from 'semver';
 
 import { MwEslint } from './eslint.js';
 import { MwPrettier } from './prettier.js';
@@ -102,11 +103,13 @@ export class MwProject extends Project {
     }
 
     if (mise) {
+      const nodeTarget = coerce(process.env.npm_package_engines_node);
       new TomlFile(this, '.mise.toml', {
         committed: true,
         obj: {
           tools: {
-            node: process.env.npm_package_engines_node,
+            node:
+              nodeTarget ? `${nodeTarget.major}.${nodeTarget.minor}` : 'lts',
           },
         },
       });
