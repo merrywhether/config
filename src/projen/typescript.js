@@ -14,7 +14,6 @@ export class MwTsConfig extends javascript.TypescriptConfig {
    * @param {import("projen").Project} project
    * @param {MwTsConfigOpts} opts
    */
-
   constructor(project, { extends: _extends = [], preset = 'base', ...opts }) {
     const extendsArr = Array.isArray(_extends) ? _extends : [_extends];
     if (preset !== '_skip_') {
