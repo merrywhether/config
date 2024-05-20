@@ -34,6 +34,6 @@ jobs:
         run: |
           git config user.name mergewhether
           git config user.email bot@risto.io
-          git commit -am "Upgrade transitive dependencies" || exit 0
+          git commit -am "Propagate node upgrade" || exit 0
           git push
           exit 1
