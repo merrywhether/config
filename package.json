@@ -48,7 +48,7 @@
     "typecheck": "tsc --noEmit"
   },
   "engines": {
-    "node": ">=20.12.2"
+    "node": ">=20.13.1"
   },
   "dependencies": {
     "@eslint/js": "^8.57.0",
@@ -80,7 +80,7 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^20.12.8",
+    "@types/node": "^20.12.12",
     "@types/semver": "^7.5.8"
   },
   "packageManager": "pnpm@9.1.1"
