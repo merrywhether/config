@@ -17,7 +17,7 @@ const targetPath = join(
 
 try {
   copyFileSync(sourcePath, targetPath, constants.COPYFILE_EXCL);
-  console.log(
+  console.info(
     `@merrywhether/config ready for package type ${process.env.npm_package_type}!\nConsider adding '"pj": "node .projenrc.${extension}"' to package.json.\n`,
   );
 } catch (e) {

@@ -1,6 +1,6 @@
 import { SourceCode } from 'projen';
 
-import { genFilePath, genImportString } from './util.js';
+import { genFilePath, genImportString } from './util/index.js';
 
 /**
  * @typedef {Object} MwJsConfigFileState

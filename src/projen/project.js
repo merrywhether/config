@@ -1,12 +1,12 @@
 import { join } from 'node:path';
-import { License, Project, SampleFile, TomlFile, vscode } from 'projen';
-import { coerce } from 'semver';
+import { License, Project, SampleFile, vscode } from 'projen';
 
 import { MwEslint } from './eslint.js';
+import { MwMiseConfig } from './mise.js';
 import { MwPrettier } from './prettier.js';
 import { getRenovatebotOptions } from './renovate.js';
 import { MwTsConfig } from './typescript.js';
-import { genFilePath, setMjs } from './util.js';
+import { genFilePath, setMjs } from './util/index.js';
 
 /**
  * @typedef {Object} MwCustomConfigFile
@@ -25,7 +25,7 @@ import { genFilePath, setMjs } from './util.js';
  * @typedef {Object} MwProjectOpts
  * @prop {EslintOpts} eslint
  * @prop {import('projen').LicenseOptions | '_skip_'} [license]
- * @prop {boolean} [mise=true]
+ * @prop {import('./mise.js').MwMiseConfigOpts} [mise]
  * @prop {import('./renovate.js').RenovatebotPreset} [renovatebotPreset]
  * @prop {Pick<import('./prettier.js').MwPrettierOpts, 'customConfig'>} [prettier]
  * @prop {MwProjectTsConfig & import('./typescript.js').MwTsConfigOpts} [typescript]
@@ -46,7 +46,7 @@ export class MwProject extends Project {
     eslint: { ignores: eslintIgnores = [], ...eslint },
     gitIgnoreOptions,
     license = { copyrightOwner: 'Risto Keravuori', spdx: 'MIT' },
-    mise = true,
+    mise = { version: 'lts' },
     prettier = {},
     renovatebotOptions = {},
     renovatebotPreset,
@@ -103,16 +103,7 @@ export class MwProject extends Project {
     }
 
     if (mise) {
-      const nodeTarget = coerce(process.env.npm_package_engines_node);
-      new TomlFile(this, '.mise.toml', {
-        committed: true,
-        obj: {
-          tools: {
-            node:
-              nodeTarget ? `${nodeTarget.major}.${nodeTarget.minor}` : 'lts',
-          },
-        },
-      });
+      new MwMiseConfig(this, mise);
     }
 
     const vsc = new vscode.VsCode(this);
