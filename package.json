@@ -48,7 +48,7 @@
     "typecheck": "tsc --noEmit"
   },
   "engines": {
-    "node": ">=20.13.1"
+    "node": ">=20.14.0"
   },
   "dependencies": {
     "@eslint/js": "^8.57.0",
