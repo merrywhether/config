@@ -1,4 +1,5 @@
 import { TomlFile } from 'projen';
+/** @import { Project } from 'projen' */
 
 import { getNodeTarget } from './util/index.js';
 
@@ -11,7 +12,7 @@ import { getNodeTarget } from './util/index.js';
 export class MwMiseConfig extends TomlFile {
   /**
    * @constructor
-   * @param {import("projen").Project} project
+   * @param {Project} project
    * @param {MwMiseConfigOpts} opts
    */
   constructor(project, { autodetect = true, version }) {

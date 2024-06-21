@@ -1,18 +1,21 @@
+/** @import { Project } from 'projen' */
+
 import { MwJsConfigFile } from './js-config.js';
+/** @import { MwJsConfigFileOpts } from './js-config.js' */
 
 /**
  * @typedef {Object} MwEslintState
  * @prop {'base' | 'typescript' | 'react' | 'solid'} preset
  * @prop {string[]} [ignores]
  *
- * @typedef {MwEslintState & Omit<import("./js-config.js").MwJsConfigFileOpts, 'type' | 'preset'>} MwEslintOpts
+ * @typedef {MwEslintState & Omit<MwJsConfigFileOpts, 'type' | 'preset'>} MwEslintOpts
  */
 
 /** @implements {Required<Omit<MwEslintState, 'preset'>>} */
 export class MwEslint extends MwJsConfigFile {
   /**
    * @constructor
-   * @param {import("projen").Project} project
+   * @param {Project} project
    * @param {MwEslintOpts} opts
    */
   constructor(project, { ignores = [], ...opts }) {

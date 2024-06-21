@@ -1,4 +1,4 @@
-/** @typedef {import("projen").RenovatebotOptions} RenovatebotOptions */
+/** @import { RenovatebotOptions } from 'projen' */
 
 /** @type {RenovatebotOptions} */
 const renovateCommonOptions = {

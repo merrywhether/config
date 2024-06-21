@@ -2,7 +2,9 @@
 {
   "extends": "@merrywhether/config/ts-base",
   "compilerOptions": {
-    "checkJs": true
+    "allowJs": true,
+    "checkJs": true,
+    "isolatedDeclarations": false
   },
   "include": [
     ".projenrc.js",

@@ -27,7 +27,7 @@ function testFilePath(specifier) {
 }
 
 /**
- * @typedef {Required<Parameters<import('knitwork').genImport>>} importParams
+ * @typedef {Required<Parameters<genImport>>} importParams
  *
  * @param {importParams[0]} specifier Package name or file path without extension
  * @param {importParams[1]} imports String for default export, string[] for named exports
