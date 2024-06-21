@@ -1,4 +1,5 @@
 import { SourceCode } from 'projen';
+/** @import { Project, SourceCodeOptions } from 'projen' */
 
 import { genFilePath, genImportString } from './util/index.js';
 
@@ -8,7 +9,7 @@ import { genFilePath, genImportString } from './util/index.js';
  * @prop {string | undefined} [preset]
  * @prop {'eslint' | 'prettier'} type
  *
- * @typedef {MwJsConfigFileState & import("projen").SourceCodeOptions} MwJsConfigFileOpts
+ * @typedef {MwJsConfigFileState & SourceCodeOptions} MwJsConfigFileOpts
  */
 
 /** @implements {Required<MwJsConfigFileState>} */
@@ -19,7 +20,7 @@ export class MwJsConfigFile extends SourceCode {
 
   /**
    * @constructor
-   * @param {import("projen").Project} project
+   * @param {Project} project
    * @param {MwJsConfigFileOpts} opts
    */
   constructor(project, { customConfig = false, preset, type, ...opts }) {

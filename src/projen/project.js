@@ -1,16 +1,23 @@
 import { join } from 'node:path';
 import { License, Project, SampleFile, vscode } from 'projen';
+/** @import { LicenseOptions, ProjectOptions } from 'projen' */
+/** @import { config as tsEslintConfig } from "typescript-eslint" */
 
 import { MwEslint } from './eslint.js';
+/** @import { MwEslintOpts } from './eslint.js' */
 import { MwMiseConfig } from './mise.js';
+/** @import { MwMiseConfigOpts } from './mise.js' */
 import { MwPrettier } from './prettier.js';
+/** @import { MwPrettierOpts } from './prettier.js' */
 import { getRenovatebotOptions } from './renovate.js';
+/** @import { RenovatebotPreset } from './renovate.js' */
 import { MwTsConfig } from './typescript.js';
+/** @import { MwTsConfigOpts } from './typescript.js' */
 import { genFilePath, setMjs } from './util/index.js';
 
 /**
  * @typedef {Object} MwCustomConfigFile
- * @prop {ReturnType<import("typescript-eslint").config>} eslint
+ * @prop {ReturnType<tsEslintConfig>} eslint
  * @prop {Record<string, unknown>} prettier
  */
 
@@ -20,15 +27,15 @@ import { genFilePath, setMjs } from './util/index.js';
  */
 
 /**
- * @typedef {Pick<import('./eslint.js').MwEslintOpts, 'preset'> & Partial<Pick<import('./eslint.js').MwEslintOpts, 'customConfig' | 'ignores' >>} EslintOpts
+ * @typedef {Pick<MwEslintOpts, 'preset'> & Partial<Pick<MwEslintOpts, 'customConfig' | 'ignores' >>} EslintOpts
  *
  * @typedef {Object} MwProjectOpts
  * @prop {EslintOpts} eslint
- * @prop {import('projen').LicenseOptions | '_skip_'} [license]
- * @prop {import('./mise.js').MwMiseConfigOpts} [mise]
- * @prop {import('./renovate.js').RenovatebotPreset} [renovatebotPreset]
- * @prop {Pick<import('./prettier.js').MwPrettierOpts, 'customConfig'>} [prettier]
- * @prop {MwProjectTsConfig & import('./typescript.js').MwTsConfigOpts} [typescript]
+ * @prop {LicenseOptions | '_skip_'} [license]
+ * @prop {MwMiseConfigOpts} [mise]
+ * @prop {Pick<MwPrettierOpts, 'customConfig'>} [prettier]
+ * @prop {RenovatebotPreset} [renovatebotPreset]
+ * @prop {MwProjectTsConfig & MwTsConfigOpts} [typescript]
  * @prop {boolean} [useMjs] set to override autodetection
  * @prop {Record<string, unknown>} [vscSettings]
  */
@@ -40,7 +47,7 @@ export class MwProject extends Project {
 
   /**
    * @constructor
-   * @param {MwProjectOpts & Omit<import("projen").ProjectOptions, 'renovatebot'>} opts
+   * @param {MwProjectOpts & Omit<ProjectOptions, 'renovatebot'>} opts
    */
   constructor({
     eslint: { ignores: eslintIgnores = [], ...eslint },

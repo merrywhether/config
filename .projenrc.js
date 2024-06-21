@@ -20,7 +20,10 @@ const project = new MwProject({
   renovatebotPreset: 'package',
   typescript: {
     compilerOptions: {
+      allowJs: true,
       checkJs: true,
+      // @ts-expect-error: pending type update in projen
+      isolatedDeclarations: false,
     },
     include: ['src', 'scripts'],
   },
