@@ -63,7 +63,7 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-solid": "^0.14.1",
-    "globals": "^15.7.0",
+    "globals": "^15.8.0",
     "knitwork": "^1.1.0",
     "prettier": "^3.3.2",
     "projen": "^0.82.8",
