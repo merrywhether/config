@@ -51,11 +51,11 @@
     "node": ">=20.15.0"
   },
   "dependencies": {
-    "@eslint/js": "^8.57.0",
+    "@eslint/js": "^9.6.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "command-line-args": "^5.2.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.6.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-perfectionist": "^2.11.0",
