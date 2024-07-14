@@ -4,7 +4,7 @@ const project = new MwProject({
   commitGenerated: true,
   eslint: {
     ignores: ['@types'],
-    preset: 'typescript',
+    preset: 'react',
   },
   gitIgnoreOptions: {
     ignorePatterns: ['@types'],
@@ -25,7 +25,7 @@ const project = new MwProject({
       // @ts-expect-error: pending type update in projen
       isolatedDeclarations: false,
     },
-    include: ['src', 'scripts'],
+    include: ['src', 'scripts', 'playground'],
   },
 });
 

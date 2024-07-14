@@ -11,5 +11,5 @@ export default [
       '@types',
     ],
   },
-  ...config.typescript,
+  ...config.react,
 ];

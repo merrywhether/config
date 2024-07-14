@@ -1,5 +1,6 @@
-import { SourceCode } from 'projen';
 /** @import { Project, SourceCodeOptions } from 'projen' */
+
+import { SourceCode } from 'projen';
 
 import { genFilePath, genImportString } from './util/index.js';
 

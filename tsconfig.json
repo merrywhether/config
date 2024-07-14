@@ -11,7 +11,8 @@
     "eslint.config.js",
     "prettier.config.js",
     "src",
-    "scripts"
+    "scripts",
+    "playground"
   ],
   "exclude": [
     "node_modules"
