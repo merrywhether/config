@@ -16,12 +16,12 @@ const eslintRules = {
   'valid-typeof': ['error', { requireStringLiterals: true }],
 };
 
-// https://github.com/import-js/eslint-plugin-import
-const importRules = {
-  'import/first': 'error',
-  'import/newline-after-import': 'error',
-  'import/no-duplicates': ['error', { 'prefer-inline': true }],
-  'import/no-useless-path-segments': ['error'],
+// https://github.com/un-ts/eslint-plugin-import-x
+const importXRules = {
+  'import-x/first': 'error',
+  'import-x/newline-after-import': 'error',
+  'import-x/no-duplicates': ['error', { 'prefer-inline': true }],
+  'import-x/no-useless-path-segments': ['error'],
 };
 
 // https://typescript-eslint.io/rules/
@@ -79,7 +79,7 @@ const solidReactRules = {
 
 export const rules = {
   eslint: eslintRules,
-  import: importRules,
+  importX: importXRules,
   react: reactRules,
   solidReact: solidReactRules,
   tsBase: tsBaseRules,
