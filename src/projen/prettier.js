@@ -1,11 +1,11 @@
-/** @import { Project } from 'projen' */
+/**
+ * @import { Project } from 'projen'
+ * @import { MwJsConfigFileOpts } from './js-config.js'
+ */
 
 import { MwJsConfigFile } from './js-config.js';
-/** @import { MwJsConfigFileOpts } from './js-config.js' */
 
-/**
- * @typedef {Omit<MwJsConfigFileOpts, 'type' | 'preset'>} MwPrettierOpts
- */
+/** @typedef {Omit<MwJsConfigFileOpts, 'type' | 'preset'>} MwPrettierOpts */
 
 export class MwPrettier extends MwJsConfigFile {
   /**

@@ -51,6 +51,7 @@
     "node": ">=20.15.1"
   },
   "dependencies": {
+    "@eslint/compat": "^1.1.1",
     "@eslint/js": "^8.57.0",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
@@ -80,7 +81,9 @@
     }
   },
   "devDependencies": {
+    "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
     "@types/semver": "^7.5.8"
   },
   "packageManager": "pnpm@9.5.0"

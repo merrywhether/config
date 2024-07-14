@@ -1,5 +1,6 @@
-import { TomlFile } from 'projen';
 /** @import { Project } from 'projen' */
+
+import { TomlFile } from 'projen';
 
 import { getNodeTarget } from './util/index.js';
 

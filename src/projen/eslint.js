@@ -1,7 +1,9 @@
-/** @import { Project } from 'projen' */
+/**
+ * @import { Project } from 'projen'
+ * @import { MwJsConfigFileOpts } from './js-config.js'
+ */
 
 import { MwJsConfigFile } from './js-config.js';
-/** @import { MwJsConfigFileOpts } from './js-config.js' */
 
 /**
  * @typedef {Object} MwEslintState

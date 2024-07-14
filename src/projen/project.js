@@ -1,32 +1,31 @@
+/**
+ * @import { LicenseOptions, ProjectOptions } from 'projen'
+ * @import { config as tsEslintConfig } from "typescript-eslint"
+ * @import { MwEslintOpts } from './eslint.js'
+ * @import { MwMiseConfigOpts } from './mise.js'
+ * @import { MwPrettierOpts } from './prettier.js'
+ * @import { RenovatebotPreset } from './renovate.js'
+ * @import { MwTsConfigOpts } from './typescript.js'
+ */
+
 import { join } from 'node:path';
 import { License, Project, SampleFile, vscode } from 'projen';
-/** @import { LicenseOptions, ProjectOptions } from 'projen' */
-/** @import { config as tsEslintConfig } from "typescript-eslint" */
 
 import { MwEslint } from './eslint.js';
-/** @import { MwEslintOpts } from './eslint.js' */
 import { MwMiseConfig } from './mise.js';
-/** @import { MwMiseConfigOpts } from './mise.js' */
 import { MwPrettier } from './prettier.js';
-/** @import { MwPrettierOpts } from './prettier.js' */
 import { getRenovatebotOptions } from './renovate.js';
-/** @import { RenovatebotPreset } from './renovate.js' */
 import { MwTsConfig } from './typescript.js';
-/** @import { MwTsConfigOpts } from './typescript.js' */
 import { genFilePath, setMjs } from './util/index.js';
 
 /**
  * @typedef {Object} MwCustomConfigFile
  * @prop {ReturnType<tsEslintConfig>} eslint
  * @prop {Record<string, unknown>} prettier
- */
-
-/**
+ *
  * @typedef {Object} MwProjectTsConfig
  * @prop {boolean} [excludeGenFiles]
- */
-
-/**
+ *
  * @typedef {Pick<MwEslintOpts, 'preset'> & Partial<Pick<MwEslintOpts, 'customConfig' | 'ignores' >>} EslintOpts
  *
  * @typedef {Object} MwProjectOpts

@@ -1,5 +1,9 @@
 // @ts-nocheck
 
+// general ESLint v9 tracking issue:
+// https://github.com/eslint/eslint/issues/18391
+
+import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommended-natural';
@@ -7,7 +11,7 @@ import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
 import reactJsx from 'eslint-plugin-react/configs/jsx-runtime.js';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
-import hooksPlugin from 'eslint-plugin-react-hooks';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import solidRecommended from 'eslint-plugin-solid/dist/configs/typescript.js';
 import globals from 'globals';
 import { config, configs as tsConfigs } from 'typescript-eslint';
@@ -62,7 +66,9 @@ const ts = config({
 
 const react = config({
   extends: [
-    // eslint v9: https://github.com/jsx-eslint/eslint-plugin-react/issues/3699
+    // eslint v9:
+    // - issue: https://github.com/jsx-eslint/eslint-plugin-react/issues/3699
+    // - PR: https://github.com/jsx-eslint/eslint-plugin-react/pull/3727
     reactRecommended,
     reactJsx,
   ],
@@ -76,12 +82,13 @@ const react = config({
   },
   name: 'mw-config/react',
   plugins: {
-    // eslint v9: https://github.com/facebook/react/pull/28773
-    'react-hooks': hooksPlugin,
+    // eslint v9: https://github.com/facebook/react/pull/28773 (official in React 19)
+    // eslint flat config: https://github.com/facebook/react/issues/28313
+    'react-hooks': fixupPluginRules(reactHooksPlugin),
   },
   rules: {
     ...rules.react,
-    ...hooksPlugin.configs.recommended.rules,
+    ...reactHooksPlugin.configs.recommended.rules,
   },
   settings: {
     react: {
