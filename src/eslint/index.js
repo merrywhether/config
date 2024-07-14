@@ -5,7 +5,7 @@
 
 import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
-import importPlugin from 'eslint-plugin-import';
+import importXPlugin from 'eslint-plugin-import-x';
 import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommended-natural';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
@@ -35,13 +35,12 @@ const base = config({
   },
   name: 'mw-config/base',
   plugins: {
-    // eslint flat: https://github.com/import-js/eslint-plugin-import/issues/2556
-    // eslint v9: https://github.com/import-js/eslint-plugin-import/issues/2948
-    import: importPlugin,
+    // ts-eslint@8: https://github.com/un-ts/eslint-plugin-import-x/pull/112
+    'import-x': importXPlugin,
   },
   rules: {
     ...rules.eslint,
-    ...rules.import,
+    ...rules.importX,
   },
 });
 
