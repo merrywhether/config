@@ -18,9 +18,13 @@ const eslintRules = {
 
 // https://github.com/un-ts/eslint-plugin-import-x
 const importXRules = {
+  // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/first.md
   'import-x/first': 'error',
+  // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/newline-after-import.md
   'import-x/newline-after-import': 'error',
+  // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-duplicates.md
   'import-x/no-duplicates': ['error', { 'prefer-inline': true }],
+  // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-useless-path-segments.md
   'import-x/no-useless-path-segments': ['error'],
 };
 
@@ -58,30 +62,17 @@ const tsTypeRules = {
   '@typescript-eslint/switch-exhaustiveness-check': 'error',
 };
 
+// https://eslint-react.xyz/docs/rules/overview
 const reactRules = {
-  'react/hook-use-state': 'error',
-  'react/jsx-boolean-value': 'error',
-  'react/jsx-no-constructed-context-values': 'error',
-  'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
-  'react/jsx-pascal-case': 'error',
-  'react/no-children-prop': 'off',
-  'react/no-invalid-html-attribute': 'error',
-  'react/prop-types': 'off',
-  'react/self-closing-comp': 'error',
-};
-
-const solidReactRules = {
-  'react/jsx-boolean-value': 'error',
-  'react/jsx-no-target-blank': 'error',
-  'react/jsx-pascal-case': 'error',
-  'react/no-unescaped-entities': 'error',
+  '@eslint-react/naming-convention/filename-extension': 'error',
+  '@eslint-react/naming-convention/use-state': 'error',
+  '@eslint-react/prefer-shorthand-boolean': 'error',
 };
 
 export const rules = {
   eslint: eslintRules,
   importX: importXRules,
   react: reactRules,
-  solidReact: solidReactRules,
   tsBase: tsBaseRules,
   tsType: tsTypeRules,
 };

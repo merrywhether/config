@@ -5,14 +5,12 @@
 
 import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
+import reactPlugin from '@eslint-react/eslint-plugin';
 import importXPlugin from 'eslint-plugin-import-x';
 import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommended-natural';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
-import reactPlugin from 'eslint-plugin-react';
-import reactJsx from 'eslint-plugin-react/configs/jsx-runtime.js';
-import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import solidRecommended from 'eslint-plugin-solid/dist/configs/typescript.js';
+import solidPlugin from 'eslint-plugin-solid';
 import globals from 'globals';
 import { config, configs as tsConfigs } from 'typescript-eslint';
 
@@ -35,7 +33,7 @@ const base = config({
   },
   name: 'mw-config/base',
   plugins: {
-    // ts-eslint@8: https://github.com/un-ts/eslint-plugin-import-x/pull/112
+    // ts-eslint v8: https://github.com/un-ts/eslint-plugin-import-x/pull/112
     'import-x': importXPlugin,
   },
   rules: {
@@ -65,20 +63,10 @@ const ts = config({
 
 const react = config({
   extends: [
-    // eslint v9:
-    // - issue: https://github.com/jsx-eslint/eslint-plugin-react/issues/3699
-    // - PR: https://github.com/jsx-eslint/eslint-plugin-react/pull/3727
-    reactRecommended,
-    reactJsx,
+    // ts-eslint v8: https://github.com/Rel1cx/eslint-react/issues/563
+    reactPlugin.configs.recommended,
   ],
   files: allFiles,
-  languageOptions: {
-    parserOptions: {
-      ecmaFeatures: {
-        jsx: true,
-      },
-    },
-  },
   name: 'mw-config/react',
   plugins: {
     // eslint v9: https://github.com/facebook/react/pull/28773 (official in React 19)
@@ -89,34 +77,12 @@ const react = config({
     ...rules.react,
     ...reactHooksPlugin.configs.recommended.rules,
   },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
 });
 
 const solid = config({
-  extends: [solidRecommended],
+  extends: [solidPlugin.configs.typescript],
   files: allFiles,
-  languageOptions: {
-    parserOptions: {
-      ecmaFeatures: {
-        jsx: true,
-      },
-    },
-  },
   name: 'mw-config/solid',
-  plugins: {
-    react: reactPlugin,
-  },
-  // we add a few useful JSX rules from React
-  rules: rules.solidReact,
-  settings: {
-    react: {
-      version: 'latest',
-    },
-  },
 });
 
 // prettier always last
