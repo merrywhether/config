@@ -7,7 +7,7 @@ import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
 import reactPlugin from '@eslint-react/eslint-plugin';
 import importXPlugin from 'eslint-plugin-import-x';
-import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommended-natural';
+import perfectionist from 'eslint-plugin-perfectionist';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import solidPlugin from 'eslint-plugin-solid';
@@ -20,7 +20,7 @@ const tsFiles = ['**/*.{ts,tsx,mtsx}'];
 const allFiles = ['**/*.{js,mjs,cjs,jsx,mjsx}', ...tsFiles];
 
 const base = config({
-  extends: [perfectionistNatural],
+  extends: [perfectionist.configs['recommended-natural']],
   files: allFiles,
   languageOptions: {
     globals: {
