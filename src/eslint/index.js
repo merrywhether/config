@@ -61,10 +61,7 @@ const ts = config({
 });
 
 const react = config({
-  extends: [
-    // ts-eslint v8: https://github.com/Rel1cx/eslint-react/issues/563
-    reactPlugin.configs.recommended,
-  ],
+  extends: [reactPlugin.configs.recommended],
   files: allFiles,
   name: 'mw-config/react',
   plugins: {
