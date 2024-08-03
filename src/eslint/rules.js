@@ -43,7 +43,6 @@ const tsBaseRules = {
     'error',
     { allowShortCircuit: true, enforceForJSX: true },
   ],
-  'no-unused-expressions': 'off',
 };
 
 const tsTypeRules = {
@@ -57,7 +56,6 @@ const tsTypeRules = {
   ],
   '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
   '@typescript-eslint/no-unnecessary-condition': 'error',
-  '@typescript-eslint/only-throw-error': 'error',
   '@typescript-eslint/prefer-reduce-type-parameter': 'error',
   '@typescript-eslint/switch-exhaustiveness-check': 'error',
 };
