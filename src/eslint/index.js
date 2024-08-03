@@ -44,14 +44,13 @@ const base = config({
 
 const ts = config({
   extends: [
-    // eslint v9: https://github.com/typescript-eslint/typescript-eslint/issues/8211
     ...tsConfigs.recommendedTypeChecked,
     ...tsConfigs.stylisticTypeChecked,
   ],
   files: tsFiles,
   languageOptions: {
     parserOptions: {
-      project: true,
+      projectService: true,
     },
   },
   name: 'mw-config/ts',
