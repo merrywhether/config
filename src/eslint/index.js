@@ -33,7 +33,6 @@ const base = config({
   },
   name: 'mw-config/base',
   plugins: {
-    // ts-eslint v8: https://github.com/un-ts/eslint-plugin-import-x/pull/112
     'import-x': importXPlugin,
   },
   rules: {
