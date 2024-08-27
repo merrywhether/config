@@ -45,8 +45,8 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1(@types/eslint@8.56.11)(eslint-config-prettier@9.1.0(eslint@9.9.1))(eslint@9.9.1)(prettier@3.3.3)
       eslint-plugin-react-hooks:
-        specifier: ^4.6.2
-        version: 4.6.2(eslint@9.9.1)
+        specifier: ^5.1.0-rc-eb3ad065-20240822
+        version: 5.1.0-rc-fb9a90fa48-20240614(eslint@9.9.1)
       eslint-plugin-solid:
         specifier: ^0.14.2
         version: 0.14.2(eslint@9.9.1)(typescript@5.5.4)
@@ -455,11 +455,11 @@ packages:
       typescript:
         optional: true
 
-  eslint-plugin-react-hooks@4.6.2:
-    resolution: {integrity: sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==}
+  eslint-plugin-react-hooks@5.1.0-rc-fb9a90fa48-20240614:
+    resolution: {integrity: sha512-xsiRwaDNF5wWNC4ZHLut+x/YcAxksUd9Rizt7LaEn3bV8VyYRpXnRJQlLOfYaVy9esk4DFP4zPPnoNVjq5Gc0w==}
     engines: {node: '>=10'}
     peerDependencies:
-      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
+      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
 
   eslint-plugin-react-naming-convention@1.12.2:
     resolution: {integrity: sha512-ywjQTTUqFHHFY9lOYip4HM9CNtAuG5Cpjc2RWjvI8XZzSbon8+6zP8hwL68JWrosS4DiUY+F9rjCC5gcQLLaHA==}
@@ -1459,7 +1459,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-hooks@4.6.2(eslint@9.9.1):
+  eslint-plugin-react-hooks@5.1.0-rc-fb9a90fa48-20240614(eslint@9.9.1):
     dependencies:
       eslint: 9.9.1
 
