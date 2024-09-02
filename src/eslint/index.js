@@ -75,7 +75,7 @@ const react = config({
 });
 
 const solid = config({
-  extends: [solidPlugin.configs.typescript],
+  extends: [solidPlugin.configs['flat/typescript']],
   files: allFiles,
   name: 'mw-config/solid',
 });
