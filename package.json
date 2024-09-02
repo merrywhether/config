@@ -54,8 +54,8 @@
     "@eslint-react/eslint-plugin": "^1.12.4",
     "@eslint/compat": "^1.1.1",
     "@eslint/js": "^9.9.1",
-    "@typescript-eslint/eslint-plugin": "^8.3.0",
-    "@typescript-eslint/parser": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
     "command-line-args": "^6.0.0",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
@@ -70,7 +70,7 @@
     "projen": "^0.86.6",
     "semver": "^7.6.3",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.3.0"
+    "typescript-eslint": "^8.4.0"
   },
   "peerDependencies": {
     "@styled/typescript-styled-plugin": "^1.0.1"
