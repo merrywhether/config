@@ -58,7 +58,7 @@ export class MwProject extends Project {
     renovatebotPreset,
     typescript: {
       excludeGenFiles: tsExcludeGenFiles,
-      include: tsInclude = [],
+      include: tsInclude,
       ...typescript
     } = {},
     useMjs,
@@ -120,9 +120,9 @@ export class MwProject extends Project {
 
     if (!tsExcludeGenFiles) {
       if (this.customConfigFile) {
-        tsInclude.unshift(this.customConfigFile);
+        tsInclude?.unshift(this.customConfigFile);
       }
-      tsInclude.unshift(
+      tsInclude?.unshift(
         genFilePath('.projenrc.js'),
         mwEslint.filePath,
         mwPrettier.filePath,
@@ -131,7 +131,7 @@ export class MwProject extends Project {
 
     new MwTsConfig(this, {
       ...typescript,
-      include: tsInclude,
+      include: tsInclude ?? [],
     });
   }
 
