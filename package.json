@@ -85,5 +85,5 @@
     "@types/react": "^18.3.5",
     "@types/semver": "^7.5.8"
   },
-  "packageManager": "pnpm@9.10.0"
+  "packageManager": "pnpm@9.11.0"
 }
