@@ -62,7 +62,7 @@
     "eslint-plugin-import-x": "^4.2.1",
     "eslint-plugin-perfectionist": "^3.6.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react-hooks": "^5.1.0-rc-eb3ad065-20240822",
+    "eslint-plugin-react-hooks": "^5.1.0-rc-e740d4b1-20240919",
     "eslint-plugin-solid": "^0.14.3",
     "globals": "^15.9.0",
     "knitwork": "^1.1.0",
@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.16.5",
-    "@types/react": "^18.3.5",
+    "@types/react": "^18.3.8",
     "@types/semver": "^7.5.8"
   },
   "packageManager": "pnpm@9.11.0"
