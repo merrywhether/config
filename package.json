@@ -59,7 +59,7 @@
     "command-line-args": "^6.0.0",
     "eslint": "^9.11.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import-x": "^4.2.1",
+    "eslint-plugin-import-x": "^4.3.0",
     "eslint-plugin-perfectionist": "^3.6.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc-e740d4b1-20240919",
