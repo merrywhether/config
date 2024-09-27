@@ -45,7 +45,7 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1(@types/eslint@8.56.11)(eslint-config-prettier@9.1.0(eslint@9.11.1))(eslint@9.11.1)(prettier@3.3.3)
       eslint-plugin-react-hooks:
-        specifier: ^5.1.0-rc-fb9a90fa48-20240614
+        specifier: ^5.1.0-rc-3edc000d-20240926
         version: 5.1.0-rc-fb9a90fa48-20240614(eslint@9.11.1)
       eslint-plugin-solid:
         specifier: ^0.14.3
