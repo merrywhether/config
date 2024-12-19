@@ -36,8 +36,8 @@ importers:
         specifier: ^9.1.0
         version: 9.1.0(eslint@9.12.0)
       eslint-plugin-import-x:
-        specifier: ^4.3.1
-        version: 4.3.1(eslint@9.12.0)(typescript@5.6.3)
+        specifier: ^4.6.0
+        version: 4.6.0(eslint@9.12.0)(typescript@5.6.3)
       eslint-plugin-perfectionist:
         specifier: ^3.9.1
         version: 3.9.1(eslint@9.12.0)(typescript@5.6.3)
@@ -205,6 +205,9 @@ packages:
 
   '@styled/typescript-styled-plugin@1.0.1':
     resolution: {integrity: sha512-4n9uYJiui4hqGIEMvs/u7sfjbs1/84shYt2Fxcm0JQbvUGfuFhtsqVG5y1hSvw5kTwdpIe4rbXMMOwVHcuAh1g==}
+
+  '@types/doctrine@0.0.9':
+    resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
 
   '@types/eslint@8.56.11':
     resolution: {integrity: sha512-sVBpJMf7UPo/wGecYOpk2aQya2VUGeHhe38WG7/mN5FufNSubf5VT9Uh9Uyp8/eLJpu1/tuhJ/qTo4mhSB4V4Q==}
@@ -444,8 +447,8 @@ packages:
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
 
-  eslint-plugin-import-x@4.3.1:
-    resolution: {integrity: sha512-5TriWkXulDl486XnYYRgsL+VQoS/7mhN/2ci02iLCuL7gdhbiWxnsuL/NTcaKY9fpMgsMFjWZBtIGW7pb+RX0g==}
+  eslint-plugin-import-x@4.6.0:
+    resolution: {integrity: sha512-hDdeNZWnu5Kv/AUk0rf12Ub1yjLQTPvj38Ar4oipYuPo5gy2gonLcF0mCuOMlMgjT8+8A1KYug/IsxuMi8tSMQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -1209,6 +1212,8 @@ snapshots:
       vscode-languageserver-textdocument: 1.0.11
       vscode-languageserver-types: 3.17.5
 
+  '@types/doctrine@0.0.9': {}
+
   '@types/eslint@8.56.11':
     dependencies:
       '@types/estree': 1.0.6
@@ -1476,8 +1481,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import-x@4.3.1(eslint@9.12.0)(typescript@5.6.3):
+  eslint-plugin-import-x@4.6.0(eslint@9.12.0)(typescript@5.6.3):
     dependencies:
+      '@types/doctrine': 0.0.9
+      '@typescript-eslint/scope-manager': 8.14.0
       '@typescript-eslint/utils': 8.14.0(eslint@9.12.0)(typescript@5.6.3)
       debug: 4.3.4
       doctrine: 3.0.0
