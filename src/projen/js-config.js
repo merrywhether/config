@@ -33,6 +33,20 @@ export class MwJsConfigFile extends SourceCode {
     this.type = type;
   }
 
+  renderBody() {}
+
+  renderExportHead() {}
+
+  renderExportTail() {}
+
+  synthesize() {
+    this.#renderImports();
+
+    this.renderBody();
+
+    this.#renderExport();
+  }
+
   #renderExport() {
     this.line(`export default ${this.type === 'eslint' ? '[' : '{'}`);
     this.open();
@@ -60,19 +74,5 @@ export class MwJsConfigFile extends SourceCode {
       this.line(genImportString('./mw.config.js', 'customConfig'));
     }
     this.line();
-  }
-
-  renderBody() {}
-
-  renderExportHead() {}
-
-  renderExportTail() {}
-
-  synthesize() {
-    this.#renderImports();
-
-    this.renderBody();
-
-    this.#renderExport();
   }
 }

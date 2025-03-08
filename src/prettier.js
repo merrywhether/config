@@ -1,7 +1,7 @@
 export default {
   experimentalOperatorPosition: 'start',
   experimentalTernaries: true,
-  objectWrapping: 'collapse',
+  objectWrap: 'collapse',
   proseWrap: 'always',
   singleQuote: true,
 };

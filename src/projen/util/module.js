@@ -6,24 +6,10 @@ import { genImport } from 'knitwork';
 let useMjs = false;
 
 /**
- * @param {boolean} setUseMjs
- */
-export function setMjs(setUseMjs) {
-  useMjs = setUseMjs;
-}
-
-/**
  * @param {string} filePath
  */
 export function genFilePath(filePath) {
   return useMjs ? filePath.replace(/\.js$/, '.mjs') : filePath;
-}
-
-/**
- * @param {string} specifier
- */
-function testFilePath(specifier) {
-  return specifier.match(/^\.\/.+?\.js$/);
 }
 
 /**
@@ -38,4 +24,18 @@ export function genImportString(specifier, imports) {
     imports,
     { singleQuotes: true },
   );
+}
+
+/**
+ * @param {boolean} setUseMjs
+ */
+export function setMjs(setUseMjs) {
+  useMjs = setUseMjs;
+}
+
+/**
+ * @param {string} specifier
+ */
+function testFilePath(specifier) {
+  return specifier.match(/^\.\/.+?\.js$/);
 }

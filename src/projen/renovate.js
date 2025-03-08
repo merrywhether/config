@@ -25,9 +25,7 @@ const renovateAppOptions = {
       ...renovateCommonOptions.overrideConfig.extends,
       'group:allNonMajor',
     ],
-    lockFileMaintenance: {
-      enabled: false,
-    },
+    lockFileMaintenance: { enabled: false },
   },
   scheduleInterval: ['before 6:00am on Friday every 4 weeks'],
 };
@@ -35,9 +33,7 @@ const renovateAppOptions = {
 /** @type {RenovatebotOptions} */
 const renovatePackageOptions = {
   overrideConfig: {
-    patch: {
-      automerge: true,
-    },
+    patch: { automerge: true },
     rebaseWhen: 'behind-base-branch',
   },
 };

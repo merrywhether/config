@@ -129,10 +129,7 @@ export class MwProject extends Project {
       );
     }
 
-    new MwTsConfig(this, {
-      ...typescript,
-      include: tsInclude ?? [],
-    });
+    new MwTsConfig(this, { ...typescript, include: tsInclude ?? [] });
   }
 
   preSynthesize() {
