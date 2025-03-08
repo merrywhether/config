@@ -48,8 +48,8 @@ importers:
         specifier: ^5.1.0-rc-0751fac7-20241002
         version: 5.1.0-rc-fb9a90fa48-20240614(eslint@9.12.0)
       eslint-plugin-solid:
-        specifier: ^0.14.4
-        version: 0.14.4(eslint@9.12.0)(typescript@5.8.2)
+        specifier: ^0.14.5
+        version: 0.14.5(eslint@9.12.0)(typescript@5.8.2)
       globals:
         specifier: ^15.13.0
         version: 15.13.0
@@ -549,11 +549,12 @@ packages:
       typescript:
         optional: true
 
-  eslint-plugin-solid@0.14.4:
-    resolution: {integrity: sha512-uWsNA2okBgwBRPxjsQ7DxlRksq1EKdMhwQlViHdkkRDLnWqwnZEjQASWeckZ0DI24sVzPeETJhPv1BWKKiu99A==}
+  eslint-plugin-solid@0.14.5:
+    resolution: {integrity: sha512-nfuYK09ah5aJG/oEN6P1qziy1zLgW4PDWe75VNPi4CEFYk1x2AEqwFeQfEPR7gNn0F2jOeqKhx2E+5oNCOBYWQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
+      typescript: '>=4.8.4'
 
   eslint-scope@8.1.0:
     resolution: {integrity: sha512-14dSvlhaVhKKsa9Fx1l8A17s7ah7Ef7wCakJ10LYk6+GYmP9yDti2oq2SEwcyndt6knfcZyhyxwY3i9yL78EQw==}
@@ -1638,7 +1639,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-solid@0.14.4(eslint@9.12.0)(typescript@5.8.2):
+  eslint-plugin-solid@0.14.5(eslint@9.12.0)(typescript@5.8.2):
     dependencies:
       '@typescript-eslint/utils': 8.14.0(eslint@9.12.0)(typescript@5.8.2)
       eslint: 9.12.0
@@ -1647,9 +1648,9 @@ snapshots:
       kebab-case: 1.0.2
       known-css-properties: 0.30.0
       style-to-object: 1.0.6
+      typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
-      - typescript
 
   eslint-scope@8.1.0:
     dependencies:
