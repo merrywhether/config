@@ -2,7 +2,4 @@
 /** @import { MwCustomConfigFile } from '@merrywhether/config' */
 
 /** @type {MwCustomConfigFile} */
-export default {
-  eslint: [],
-  prettier: {},
-};
+export default { eslint: [], prettier: {} };

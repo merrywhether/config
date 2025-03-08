@@ -19,11 +19,7 @@ export class MwMiseConfig extends TomlFile {
   constructor(project, { autodetect = true, version }) {
     super(project, '.mise.toml', {
       committed: true,
-      obj: {
-        tools: {
-          node: autodetect ? getNodeTarget(version) : version,
-        },
-      },
+      obj: { tools: { node: autodetect ? getNodeTarget(version) : version } },
     });
   }
 }

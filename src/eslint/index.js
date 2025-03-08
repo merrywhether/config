@@ -22,23 +22,11 @@ const allFiles = ['**/*.{js,mjs,cjs,jsx,mjsx}', ...tsFiles];
 const base = config({
   extends: [perfectionist.configs['recommended-natural']],
   files: allFiles,
-  languageOptions: {
-    globals: {
-      ...globals.browser,
-      ...globals.node,
-    },
-  },
-  linterOptions: {
-    reportUnusedDisableDirectives: 'error',
-  },
+  languageOptions: { globals: { ...globals.browser, ...globals.node } },
+  linterOptions: { reportUnusedDisableDirectives: 'error' },
   name: 'mw-config/base',
-  plugins: {
-    'import-x': importXPlugin,
-  },
-  rules: {
-    ...rules.eslint,
-    ...rules.importX,
-  },
+  plugins: { 'import-x': importXPlugin },
+  rules: { ...rules.eslint, ...rules.importX },
 });
 
 const ts = config({
@@ -47,16 +35,9 @@ const ts = config({
     ...tsConfigs.stylisticTypeChecked,
   ],
   files: tsFiles,
-  languageOptions: {
-    parserOptions: {
-      projectService: true,
-    },
-  },
+  languageOptions: { parserOptions: { projectService: true } },
   name: 'mw-config/ts',
-  rules: {
-    ...rules.tsBase,
-    ...rules.tsType,
-  },
+  rules: { ...rules.tsBase, ...rules.tsType },
 });
 
 const react = config({
@@ -68,10 +49,7 @@ const react = config({
     // eslint flat config: https://github.com/facebook/react/issues/28313
     'react-hooks': fixupPluginRules(reactHooksPlugin),
   },
-  rules: {
-    ...rules.react,
-    ...reactHooksPlugin.configs.recommended.rules,
-  },
+  rules: { ...rules.react, ...reactHooksPlugin.configs.recommended.rules },
 });
 
 const solid = config({

@@ -2,13 +2,8 @@ import { MwProject } from '@merrywhether/config';
 
 const project = new MwProject({
   commitGenerated: true,
-  eslint: {
-    ignores: ['@types'],
-    preset: 'react',
-  },
-  gitIgnoreOptions: {
-    ignorePatterns: ['@types'],
-  },
+  eslint: { ignores: ['@types'], preset: 'react' },
+  gitIgnoreOptions: { ignorePatterns: ['@types'] },
   name: '@merrywhether/config',
   projenCommand: 'pn pj',
   renovatebotOptions: {
