@@ -27,7 +27,7 @@ jobs:
       - name: Generate types
         run: pnpm build:types
       - name: Typecheck
-        run: pnpm typecheck
+        run: pnpm tc
       - name: ESLint
         if: ${{ always() }}
         run: pnpm lint:es
