@@ -3,9 +3,9 @@
 // general ESLint v9 tracking issue:
 // https://github.com/eslint/eslint/issues/18391
 
+import reactPlugin from '@eslint-react/eslint-plugin';
 import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
-import reactPlugin from '@eslint-react/eslint-plugin';
 import importXPlugin from 'eslint-plugin-import-x';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
