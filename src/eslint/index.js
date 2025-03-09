@@ -1,6 +1,8 @@
 // general ESLint v9 tracking issue:
 // https://github.com/eslint/eslint/issues/18391
 
+/** @import { ConfigArray } from 'typescript-eslint' */
+
 import reactPlugin from '@eslint-react/eslint-plugin';
 import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
@@ -61,6 +63,7 @@ const solid = config({
 });
 
 // prettier always last
+/** @type  {Record<string, ConfigArray>} */
 export default {
   base: config([js.configs.recommended, ...base, prettierRecommended]),
   react: config([
