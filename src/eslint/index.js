@@ -64,7 +64,7 @@ const solid = config({
 
 // prettier always last
 /** @type  {Record<string, ConfigArray>} */
-export default {
+const configs = {
   base: config([js.configs.recommended, ...base, prettierRecommended]),
   react: config([
     js.configs.recommended,
@@ -87,3 +87,5 @@ export default {
     prettierRecommended,
   ]),
 };
+
+export default configs;
