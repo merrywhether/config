@@ -69,8 +69,12 @@ const tsTypeRules = {
 // https://eslint-react.xyz/docs/rules/overview
 /** @type {Linter.RulesRecord} */
 const reactRules = {
+  '@eslint-react/naming-convention/context-name': 'error',
   '@eslint-react/naming-convention/filename-extension': 'error',
   '@eslint-react/naming-convention/use-state': 'error',
+  '@eslint-react/no-context-provider': 'error', // react 19
+  '@eslint-react/no-forward-ref': 'error', // react 19
+  '@eslint-react/no-use-context': 'error', // react 19
   '@eslint-react/prefer-shorthand-boolean': 'error',
 };
 
