@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 // general ESLint v9 tracking issue:
 // https://github.com/eslint/eslint/issues/18391
 
@@ -9,6 +7,7 @@ import js from '@eslint/js';
 import importXPlugin from 'eslint-plugin-import-x';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
+// @ts-expect-error: no types yet
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import solidPlugin from 'eslint-plugin-solid';
 import globals from 'globals';
@@ -23,7 +22,10 @@ const base = config({
   extends: [perfectionist.configs['recommended-natural']],
   files: allFiles,
   languageOptions: { globals: { ...globals.browser, ...globals.node } },
-  linterOptions: { reportUnusedDisableDirectives: 'error' },
+  linterOptions: {
+    reportUnusedDisableDirectives: 'error',
+    reportUnusedInlineConfigs: 'error',
+  },
   name: 'mw-config/base',
   plugins: { 'import-x': importXPlugin },
   rules: { ...rules.eslint, ...rules.importX },
@@ -60,20 +62,25 @@ const solid = config({
 
 // prettier always last
 export default {
-  base: [js.configs.recommended, ...base, prettierRecommended],
-  react: [
+  base: config([js.configs.recommended, ...base, prettierRecommended]),
+  react: config([
     js.configs.recommended,
     ...base,
     ...ts,
     ...react,
     prettierRecommended,
-  ],
-  solid: [
+  ]),
+  solid: config([
     js.configs.recommended,
     ...base,
     ...ts,
     ...solid,
     prettierRecommended,
-  ],
-  typescript: [js.configs.recommended, ...base, ...ts, prettierRecommended],
+  ]),
+  typescript: config([
+    js.configs.recommended,
+    ...base,
+    ...ts,
+    prettierRecommended,
+  ]),
 };
