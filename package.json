@@ -68,7 +68,7 @@
     "knitwork": "^1.2.0",
     "prettier": "^3.5.3",
     "projen": "^0.91.14",
-    "semver": "^7.6.3",
+    "semver": "^7.7.1",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.26.0"
   },
