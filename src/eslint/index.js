@@ -4,13 +4,11 @@
 /** @import { ConfigArray } from 'typescript-eslint' */
 
 import reactPlugin from '@eslint-react/eslint-plugin';
-import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
 import importXPlugin from 'eslint-plugin-import-x';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
-// @ts-expect-error: no types yet
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import { configs as reactHooksConfigs } from 'eslint-plugin-react-hooks';
 import solidPlugin from 'eslint-plugin-solid';
 import globals from 'globals';
 import { config, configs as tsConfigs } from 'typescript-eslint';
@@ -45,15 +43,13 @@ const ts = config({
 });
 
 const react = config({
-  extends: [reactPlugin.configs.recommended],
+  extends: [
+    reactPlugin.configs.recommended,
+    reactHooksConfigs['recommended-latest'],
+  ],
   files: allFiles,
   name: 'mw-config/react',
-  plugins: {
-    // eslint v9: https://github.com/facebook/react/pull/28773 (official in React 19)
-    // eslint flat config: https://github.com/facebook/react/issues/28313
-    'react-hooks': fixupPluginRules(reactHooksPlugin),
-  },
-  rules: { ...rules.react, ...reactHooksPlugin.configs.recommended.rules },
+  rules: { ...rules.react },
 });
 
 const solid = config({
