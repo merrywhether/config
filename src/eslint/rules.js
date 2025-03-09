@@ -1,4 +1,7 @@
+/** @import { Linter } from 'eslint' */
+
 // https://eslint.org/docs/latest/rules/
+/** @type {Linter.RulesRecord} */
 const eslintRules = {
   eqeqeq: ['error', 'always', { null: 'ignore' }],
   // https://eslint.org/docs/latest/rules/no-unused-expressions
@@ -17,6 +20,7 @@ const eslintRules = {
 };
 
 // https://github.com/un-ts/eslint-plugin-import-x
+/** @type {Linter.RulesRecord} */
 const importXRules = {
   // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/first.md
   'import-x/first': 'error',
@@ -29,6 +33,7 @@ const importXRules = {
 };
 
 // https://typescript-eslint.io/rules/
+/** @type {Linter.RulesRecord} */
 const tsBaseRules = {
   '@typescript-eslint/consistent-type-imports': [
     'error',
@@ -45,6 +50,7 @@ const tsBaseRules = {
   ],
 };
 
+/** @type {Linter.RulesRecord} */
 const tsTypeRules = {
   '@typescript-eslint/consistent-type-exports': [
     'error',
@@ -61,6 +67,7 @@ const tsTypeRules = {
 };
 
 // https://eslint-react.xyz/docs/rules/overview
+/** @type {Linter.RulesRecord} */
 const reactRules = {
   '@eslint-react/naming-convention/filename-extension': 'error',
   '@eslint-react/naming-convention/use-state': 'error',
