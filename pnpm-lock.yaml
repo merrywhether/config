@@ -11,9 +11,6 @@ importers:
       '@eslint-react/eslint-plugin':
         specifier: ^1.16.1
         version: 1.16.1(eslint@9.22.0)(typescript@5.8.2)
-      '@eslint/compat':
-        specifier: ^1.2.7
-        version: 1.2.7(eslint@9.22.0)
       '@eslint/js':
         specifier: ^9.22.0
         version: 9.22.0
@@ -137,15 +134,6 @@ packages:
 
   '@eslint-react/var@1.16.1':
     resolution: {integrity: sha512-CZ1fMQPkr60pwx8PLHsn75cl1Ovw/GHo2v6nhdWyhW8VhbBwJ1d1VdjSxPZjHJ4KCZFTuVVunWn7W9gDZmK+ow==}
-
-  '@eslint/compat@1.2.7':
-    resolution: {integrity: sha512-xvv7hJE32yhegJ8xNAnb62ggiAwTYHBpUCWhRxEj/ksvgDJuSXfoDkBcRYaYNFiJ+jH0IE3K16hd+xXzhBgNbg==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      eslint: ^9.10.0
-    peerDependenciesMeta:
-      eslint:
-        optional: true
 
   '@eslint/config-array@0.19.2':
     resolution: {integrity: sha512-GNKqxfHG2ySmJOBSHg7LxeUx4xpuCoFjacmlCoYWEbaPXLwvfIjixRI12xCQZeULksQb23uiA8F40w5TojpV7w==}
@@ -1091,10 +1079,6 @@ snapshots:
       - eslint
       - supports-color
       - typescript
-
-  '@eslint/compat@1.2.7(eslint@9.22.0)':
-    optionalDependencies:
-      eslint: 9.22.0
 
   '@eslint/config-array@0.19.2':
     dependencies:
