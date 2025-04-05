@@ -68,7 +68,7 @@
     "prettier": "^3.5.3",
     "projen": "^0.91.18",
     "semver": "^7.7.1",
-    "typescript": "^5.8.2",
+    "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.0"
   },
   "peerDependencies": {
