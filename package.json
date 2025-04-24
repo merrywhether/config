@@ -59,7 +59,7 @@
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-import-x": "^4.10.6",
-    "eslint-plugin-perfectionist": "^4.11.0",
+    "eslint-plugin-perfectionist": "^4.12.2",
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-solid": "^0.14.5",
