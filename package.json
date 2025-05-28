@@ -81,7 +81,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.23",
-    "@types/react": "^19.1.5",
+    "@types/react": "^19.1.6",
     "@types/semver": "^7.7.0"
   },
   "packageManager": "pnpm@10.11.0"
