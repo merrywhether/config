@@ -80,7 +80,7 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^22.15.24",
+    "@types/node": "^22.15.29",
     "@types/react": "^19.1.6",
     "@types/semver": "^7.7.0"
   },
