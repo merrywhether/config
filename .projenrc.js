@@ -23,8 +23,6 @@ const project = new MwProject({
     },
     include: ['src', 'scripts', 'playground'],
   },
-  // pnpm 10 stopped populating this env var?
-  useMjs: false,
 });
 
 project.synth();

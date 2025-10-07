@@ -84,7 +84,7 @@ export class MwProject extends Project {
       ),
     });
 
-    setMjs(useMjs ?? process.env.npm_package_type !== 'module');
+    setMjs(useMjs);
 
     this.customConfigFile =
       eslint.customConfig || prettier.customConfig ?
