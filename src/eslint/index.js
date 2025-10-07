@@ -8,7 +8,7 @@ import js from '@eslint/js';
 import importXPlugin from 'eslint-plugin-import-x';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
-import { configs as reactHooksConfigs } from 'eslint-plugin-react-hooks';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import solidPlugin from 'eslint-plugin-solid';
 import globals from 'globals';
 import { config, configs as tsConfigs } from 'typescript-eslint';
@@ -45,7 +45,8 @@ const ts = config({
 const react = config({
   extends: [
     reactPlugin.configs.recommended,
-    reactHooksConfigs['recommended-latest'],
+    // @ts-expect-error: misconfigured types in package
+    reactHooksPlugin.configs['recommended-latest'],
   ],
   files: allFiles,
   name: 'mw-config/react',
