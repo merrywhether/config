@@ -1,3 +1,4 @@
+import { detectPackageType } from '@merrywhether/config/package-type';
 import { constants, copyFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { cwd } from 'node:process';
@@ -8,17 +9,15 @@ const sourcePath = join(
   'sample/.projenrc.js',
 );
 
-const extension = process.env.npm_package_type === 'module' ? 'js' : 'mjs';
-
-const targetPath = join(
-  process.env.INIT_CWD ?? cwd(),
-  `.projenrc.${extension}`,
-);
+const packageType = detectPackageType();
+const extension = packageType === 'module' ? 'js' : 'mjs';
+const targetDir = process.env.INIT_CWD ?? cwd();
+const targetPath = join(targetDir, `.projenrc.${extension}`);
 
 try {
   copyFileSync(sourcePath, targetPath, constants.COPYFILE_EXCL);
   console.info(
-    `@merrywhether/config ready for package type ${process.env.npm_package_type}!\nConsider adding '"pj": "node .projenrc.${extension}"' to package.json.\n`,
+    `@merrywhether/config ready for package type ${packageType}!\nConsider adding '"pj": "node .projenrc.${extension}"' to package.json.\n`,
   );
 } catch (e) {
   if (e instanceof Error && 'code' in e && e.code === 'EEXIST') {

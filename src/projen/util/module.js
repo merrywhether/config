@@ -1,5 +1,7 @@
 import { genImport } from 'knitwork';
 
+import { detectPackageType } from './package-type.js';
+
 // Docs: https://github.com/unjs/knitwork
 
 // TODO: solve with context-like system
@@ -27,10 +29,10 @@ export function genImportString(specifier, imports) {
 }
 
 /**
- * @param {boolean} setUseMjs
+ * @param {boolean} [override] set to override autodetection
  */
-export function setMjs(setUseMjs) {
-  useMjs = setUseMjs;
+export function setMjs(override) {
+  useMjs = override ?? detectPackageType() !== 'module';
 }
 
 /**

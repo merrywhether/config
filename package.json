@@ -23,6 +23,7 @@
       "types": "./@types/prettier.d.ts",
       "default": "./src/prettier.js"
     },
+    "./package-type": "./src/projen/util/package-type.js",
     "./ts-base": "./src/ts/base.json",
     "./ts-solid": "./src/ts/solid.json",
     "./ts-styled": "./src/ts/styled.json"
