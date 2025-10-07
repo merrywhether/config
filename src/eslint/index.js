@@ -5,20 +5,21 @@
 
 import reactPlugin from '@eslint-react/eslint-plugin';
 import js from '@eslint/js';
-import importXPlugin from 'eslint-plugin-import-x';
+import { importX } from 'eslint-plugin-import-x';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import solidPlugin from 'eslint-plugin-solid';
+import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import { config, configs as tsConfigs } from 'typescript-eslint';
+import { configs as tsConfigs } from 'typescript-eslint';
 
 import { rules } from './rules.js';
 
 const tsFiles = ['**/*.{ts,tsx,mtsx}'];
 const allFiles = ['**/*.{js,mjs,cjs,jsx,mjsx}', ...tsFiles];
 
-const base = config({
+const base = defineConfig({
   extends: [perfectionist.configs['recommended-natural']],
   files: allFiles,
   languageOptions: { globals: { ...globals.browser, ...globals.node } },
@@ -27,11 +28,12 @@ const base = config({
     reportUnusedInlineConfigs: 'error',
   },
   name: 'mw-config/base',
-  plugins: { 'import-x': importXPlugin },
+  // @ts-expect-error: plugin type mismatch
+  plugins: { 'import-x': importX },
   rules: { ...rules.eslint, ...rules.importX },
 });
 
-const ts = config({
+const ts = defineConfig({
   extends: [
     ...tsConfigs.recommendedTypeChecked,
     ...tsConfigs.stylisticTypeChecked,
@@ -42,18 +44,25 @@ const ts = config({
   rules: { ...rules.tsBase, ...rules.tsType },
 });
 
-const react = config({
+const reactCommon = defineConfig({
   extends: [
     reactPlugin.configs.recommended,
     // @ts-expect-error: misconfigured types in package
     reactHooksPlugin.configs['recommended-latest'],
   ],
   files: allFiles,
-  name: 'mw-config/react',
+  name: 'mw-config/react-common',
   rules: { ...rules.react },
 });
 
-const solid = config({
+const reactTypeChecked = defineConfig({
+  extends: [reactPlugin.configs['recommended-type-checked']],
+  files: tsFiles,
+  name: 'mw-config/react-type-checked',
+});
+
+const solid = defineConfig({
+  // @ts-expect-error: plugin type mismatch
   extends: [solidPlugin.configs['flat/typescript']],
   files: allFiles,
   name: 'mw-config/solid',
@@ -62,22 +71,23 @@ const solid = config({
 // prettier always last
 /** @type  {Record<string, ConfigArray>} */
 const configs = {
-  base: config([js.configs.recommended, ...base, prettierRecommended]),
-  react: config([
+  base: defineConfig([js.configs.recommended, ...base, prettierRecommended]),
+  react: defineConfig([
     js.configs.recommended,
     ...base,
     ...ts,
-    ...react,
+    ...reactCommon,
+    ...reactTypeChecked,
     prettierRecommended,
   ]),
-  solid: config([
+  solid: defineConfig([
     js.configs.recommended,
     ...base,
     ...ts,
     ...solid,
     prettierRecommended,
   ]),
-  typescript: config([
+  typescript: defineConfig([
     js.configs.recommended,
     ...base,
     ...ts,
