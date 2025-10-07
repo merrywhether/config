@@ -10,6 +10,14 @@
     "config:recommended",
     "helpers:pinGitHubActionDigests"
   ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "npm"
+      ],
+      "minimumReleaseAge": "1 day"
+    }
+  ],
   "commitMessageAction": "Renovate",
   "dependencyDashboard": true,
   "postUpdateOptions": [
