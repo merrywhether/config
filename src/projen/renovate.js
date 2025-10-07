@@ -10,8 +10,12 @@ const renovateCommonOptions = {
     extends: ['config:recommended', 'helpers:pinGitHubActionDigests'],
     // unsetting the default ignoreDeps from projen
     ignoreDeps: undefined,
-    // unsetting the default packageRules from projen
-    packageRules: undefined,
+    // override the default packageRules from projen
+    // https://github.com/projen/projen/blob/main/src/renovatebot.ts
+    packageRules: [
+      // https://docs.renovatebot.com/configuration-options/#prevent-holding-broken-npm-packages
+      { matchDatasources: ['npm'], minimumReleaseAge: '1 day' },
+    ],
     postUpdateOptions: ['pnpmDedupe'],
     rangeStrategy: 'bump',
     timezone: 'America/Los_Angeles',
