@@ -40,7 +40,7 @@
     "clean": "rm -rf @types *.tsbuildinfo",
     "fix": "pnpm lint:es:fix && pnpm lint:md:fix",
     "lint": "pnpm lint:es && pnpm lint:md",
-    "lint:es": "eslint './'",
+    "lint:es": "eslint .",
     "lint:es:fix": "pnpm lint:es --fix",
     "lint:md": "prettier '**/*.md' --check",
     "lint:md:fix": "prettier '**/*.md' --write",

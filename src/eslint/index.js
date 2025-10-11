@@ -47,8 +47,7 @@ const ts = defineConfig({
 const reactCommon = defineConfig({
   extends: [
     reactPlugin.configs.recommended,
-    // @ts-expect-error: misconfigured types in package
-    reactHooksPlugin.configs['recommended-latest'],
+    reactHooksPlugin.configs.flat['recommended-latest'],
   ],
   files: allFiles,
   name: 'mw-config/react-common',
