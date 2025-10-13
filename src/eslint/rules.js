@@ -14,6 +14,8 @@ const eslintRules = {
   'prefer-const': 'error',
   // https://eslint.org/docs/latest/rules/prefer-template
   'prefer-template': 'error',
+  // https://eslint.org/docs/latest/rules/preserve-caught-error
+  'preserve-caught-error': 'error',
   // https://eslint.org/docs/latest/rules/symbol-description
   'symbol-description': 'error',
   'valid-typeof': ['error', { requireStringLiterals: true }],
