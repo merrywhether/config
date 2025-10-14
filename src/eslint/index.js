@@ -46,7 +46,7 @@ const ts = defineConfig({
 
 const reactCommon = defineConfig({
   extends: [
-    reactPlugin.configs.recommended,
+    reactPlugin.configs.strict,
     reactHooksPlugin.configs.flat['recommended-latest'],
   ],
   files: allFiles,
@@ -55,7 +55,7 @@ const reactCommon = defineConfig({
 });
 
 const reactTypeChecked = defineConfig({
-  extends: [reactPlugin.configs['recommended-type-checked']],
+  extends: [reactPlugin.configs['strict-type-checked']],
   files: tsFiles,
   name: 'mw-config/react-type-checked',
 });
