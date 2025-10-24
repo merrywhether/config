@@ -57,8 +57,8 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2
       projen:
-        specifier: ^0.98.3
-        version: 0.98.3(constructs@10.3.0)
+        specifier: ^0.98.4
+        version: 0.98.4(constructs@10.3.0)
       semver:
         specifier: ^7.7.3
         version: 7.7.3
@@ -1032,8 +1032,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  projen@0.98.3:
-    resolution: {integrity: sha512-zGGQcDzB2C1uzur6DMsHmA3FK52GsbZEaZYGIKHE/sdgTL/sMA0zlToLtR/hLi1QEpE/KBxr4E6MDTCJI4NvyA==}
+  projen@0.98.4:
+    resolution: {integrity: sha512-v3o7ueUV+J6eRUmEZcg1UdmH1t/nRUrY737iugm9f4AH4v7GVGqDEDd4dIa80hCreIUPruXtUBpyl82h8d7NdA==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     peerDependencies:
@@ -2300,7 +2300,7 @@ snapshots:
 
   prettier@3.6.2: {}
 
-  projen@0.98.3(constructs@10.3.0):
+  projen@0.98.4(constructs@10.3.0):
     dependencies:
       constructs: 10.3.0
 
