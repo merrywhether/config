@@ -7,12 +7,9 @@ export const TestComponent: FC = () => {
     <div>
       <h1>Test Component</h1>
       {state}
-      <button
-        children="Change state"
-        disabled
-        onClick={() => setState('new state')}
-        type="submit"
-      />
+      <button disabled onClick={() => setState('new state')} type="submit">
+        Change state
+      </button>
     </div>
   );
 };
