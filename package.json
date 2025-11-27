@@ -52,7 +52,7 @@
     "node": ">=24.11.1"
   },
   "dependencies": {
-    "@eslint-react/eslint-plugin": "^2.3.7",
+    "@eslint-react/eslint-plugin": "^2.3.9",
     "@eslint/js": "^9.39.1",
     "@typescript-eslint/eslint-plugin": "^8.47.0",
     "@typescript-eslint/parser": "^8.47.0",
