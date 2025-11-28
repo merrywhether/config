@@ -57,7 +57,7 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2
       projen:
-        specifier: ^0.98.25
+        specifier: ^0.98.26
         version: 0.98.26(constructs@10.3.0)
       semver:
         specifier: ^7.7.3
