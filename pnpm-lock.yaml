@@ -70,7 +70,7 @@ importers:
         version: 8.49.0(eslint@9.39.1)(typescript@5.9.3)
     devDependencies:
       '@types/node':
-        specifier: ^24.10.2
+        specifier: ^24.10.3
         version: 24.10.3
       '@types/react':
         specifier: ^19.2.7
