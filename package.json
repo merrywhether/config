@@ -53,11 +53,11 @@
   },
   "dependencies": {
     "@eslint-react/eslint-plugin": "^2.3.13",
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^9.39.2",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
     "command-line-args": "^6.0.1",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import-x": "^4.16.1",
     "eslint-plugin-perfectionist": "^4.15.1",
