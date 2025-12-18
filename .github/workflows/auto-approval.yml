@@ -4,11 +4,19 @@ on:
   pull_request:
     types:
       - opened
+      - reopened
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   check:
     name: 'check author'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    timeout-minutes: 5
 
     steps:
       - name: Approve if author is me

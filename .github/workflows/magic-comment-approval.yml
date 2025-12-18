@@ -5,17 +5,22 @@ on:
     types:
       - created
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     name: 'look for comment'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    timeout-minutes: 5
 
     steps:
       - name: Approve if my magic comment
         id: check_comment
-        if:
-          ${{ github.event.comment.user.login == 'merrywhether' &&
-          contains(github.event.comment.body, 'Approved') }}
+        if: ${{ github.event.issue.pull_request != null && github.event.comment.user.login == 'merrywhether' && (contains(github.event.comment.body, 'Approved') || contains(github.event.comment.body, 'approved')) }}
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
