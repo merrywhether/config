@@ -1,0 +1,78 @@
+name: Transitive Dependencies
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: update
+    runs-on: ubuntu-latest
+    concurrency:
+      group: transitive-deps
+      cancel-in-progress: true
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
+        with:
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
+        with:
+          cache: "pnpm"
+          node-version: "24.12.0"
+
+      - name: Install
+        run: pnpm install --ignore-scripts --frozen-lockfile
+
+      - name: Prepare branch
+        id: prepare_branch
+        run: |
+          # base off latest main to avoid race conditions
+          git fetch origin main
+          git checkout -B main origin/main
+          BRANCH="transitive/$(date +%Y-%m-%d)-${GITHUB_RUN_NUMBER}"
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          git checkout -b "$BRANCH"
+
+      - name: Update dependencies
+        run: pnpm up
+
+      - name: Check for lockfile changes
+        id: check_changes
+        run: |
+          # detect modified pnpm lockfile only
+          if git status --porcelain --untracked-files=no | awk '{print $2}' | grep -q 'pnpm-lock.yaml'; then
+            echo "no_changes=false" >> $GITHUB_OUTPUT
+            echo "changed_files=pnpm-lock.yaml" >> $GITHUB_OUTPUT
+          else
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push lockfile
+        if: steps.check_changes.outputs.no_changes == 'false'
+        run: |
+          git config user.name mergewhether
+          git config user.email bot@risto.io
+          git add pnpm-lock.yaml
+          git commit -m "chore: update pnpm lockfile (transitive deps)" || { git status --porcelain; echo "Commit failed: expected lockfile changes but commit did not create a commit"; exit 1; }
+          git push origin "${{ steps.prepare_branch.outputs.branch }}"
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.no_changes == 'false'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update transitive dependencies"
+          branch: "${{ steps.prepare_branch.outputs.branch }}"
+          title: "Update transitive dependencies"
+          body: "This PR updates transitive dependencies to their latest versions."
+          labels: "dependencies"
