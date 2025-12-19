@@ -12,7 +12,7 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import solidPlugin from 'eslint-plugin-solid';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import { configs as tsConfigs } from 'typescript-eslint';
+import { configs as tsConfigs, parser as tsParser } from 'typescript-eslint';
 
 import { rules } from './rules.js';
 
@@ -22,7 +22,10 @@ const allFiles = ['**/*.{js,mjs,cjs,jsx,mjsx}', ...tsFiles];
 const base = defineConfig({
   extends: [perfectionist.configs['recommended-natural']],
   files: allFiles,
-  languageOptions: { globals: { ...globals.browser, ...globals.node } },
+  languageOptions: {
+    globals: { ...globals.browser, ...globals.node },
+    parser: tsParser,
+  },
   linterOptions: {
     reportUnusedDisableDirectives: 'error',
     reportUnusedInlineConfigs: 'error',
