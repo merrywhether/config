@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   check:
-    name: 'propagate node upgrade'
+    name: "propagate node upgrade"
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,7 +21,6 @@ jobs:
         with:
           # https://medium.com/prompt/trigger-another-github-workflow-without-using-a-personal-access-token-f594c21373ef
           ssh-key: ${{ secrets.COMMIT_KEY }}
-        # https://github.com/marketplace/actions/setup-node-js-environment
       - name: Setup pnpm
         uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
         with:
@@ -29,8 +28,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
         with:
-          cache: 'pnpm'
-          node-version: '24.12.0'
+          cache: "pnpm"
+          node-version: "24.12.0"
       - name: Install
         run: pnpm install --ignore-scripts --frozen-lockfile
       - name: Update Node

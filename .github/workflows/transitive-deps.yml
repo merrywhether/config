@@ -17,8 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
+          # https://medium.com/prompt/trigger-another-github-workflow-without-using-a-personal-access-token-f594c21373ef
+          ssh-key: ${{ secrets.COMMIT_KEY }}
       - name: Setup pnpm
         uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
         with:
