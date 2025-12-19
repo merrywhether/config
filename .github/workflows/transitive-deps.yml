@@ -49,12 +49,13 @@ jobs:
       - name: Check for lockfile changes
         id: check_changes
         run: |
-          # detect modified pnpm lockfile only
-          if git status --porcelain --untracked-files=no | awk '{print $2}' | grep -q 'pnpm-lock.yaml'; then
+          # fetch latest main and compare pnpm-lock.yaml against origin/main to avoid creating PRs if main already contains the same changes
+          git fetch origin main
+          if git diff --quiet origin/main -- pnpm-lock.yaml; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+          else
             echo "no_changes=false" >> $GITHUB_OUTPUT
             echo "changed_files=pnpm-lock.yaml" >> $GITHUB_OUTPUT
-          else
-            echo "no_changes=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Commit and push lockfile
