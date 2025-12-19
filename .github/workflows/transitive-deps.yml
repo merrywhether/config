@@ -33,66 +33,18 @@ jobs:
       - name: Install
         run: pnpm install --ignore-scripts --frozen-lockfile
 
-      - name: Prepare branch
-        id: prepare_branch
-        run: |
-          # base off latest main to avoid race conditions
-          git fetch origin main
-          git checkout -B main origin/main
-          BRANCH="transitive/$(date +%Y-%m-%d)-${GITHUB_RUN_NUMBER}"
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
-          git checkout -b "$BRANCH"
-
       - name: Update dependencies
         run: pnpm up
 
       - name: Check for lockfile changes
         id: check_changes
         run: |
-          echo "=== Git status after pnpm up ==="
-          git status --porcelain
-          echo "=== Diff against origin/main (first 50 lines) ==="
-          git diff origin/main -- pnpm-lock.yaml | head -50
-          # fetch latest main and compare pnpm-lock.yaml against origin/main to avoid creating PRs if main already contains the same changes
           git fetch origin main
           if git diff --quiet origin/main -- pnpm-lock.yaml; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
-            echo "::notice::No changes detected in pnpm-lock.yaml vs origin/main; skipping commit and PR"
+            echo "::notice::No changes detected in pnpm-lock.yaml vs origin/main; skipping PR"
           else
             echo "no_changes=false" >> $GITHUB_OUTPUT
-            echo "changed_files=pnpm-lock.yaml" >> $GITHUB_OUTPUT
-            echo "::notice::Changes detected in pnpm-lock.yaml; will create PR on branch ${{ steps.prepare_branch.outputs.branch }}"
-          fi
-
-      - name: Commit and push lockfile
-        if: steps.check_changes.outputs.no_changes == 'false'
-        run: |
-          git config user.name mergewhether
-          git config user.email bot@risto.io
-          echo "=== Current branch and status before add ==="
-          git branch -v
-          git status --short
-          git add pnpm-lock.yaml
-          echo "=== Status after add (should show staged) ==="
-          git diff --cached --stat
-          git commit -m "chore: update pnpm lockfile (transitive deps)" || { git status --porcelain; echo "Commit failed: expected lockfile changes but commit did not create a commit"; exit 1; }
-          echo "=== Branch state after commit ==="
-          git log --oneline -3
-          git diff origin/main -- pnpm-lock.yaml | head -20
-          echo "=== Pushing to origin/${{ steps.prepare_branch.outputs.branch }} ==="
-          git push origin "${{ steps.prepare_branch.outputs.branch }}"
-
-      - name: Verify pushed branch differs from main
-        if: steps.check_changes.outputs.no_changes == 'false'
-        run: |
-          git fetch origin main "${{ steps.prepare_branch.outputs.branch }}"
-          echo "=== Checking remote branch vs main ==="
-          if git diff --quiet origin/main origin/${{ steps.prepare_branch.outputs.branch }} -- pnpm-lock.yaml; then
-            echo "::error::Remote branch pnpm-lock.yaml is identical to main!"
-            git --no-pager log --oneline -5 origin/main origin/${{ steps.prepare_branch.outputs.branch }}
-            exit 1
-          else
-            echo "::notice::Remote branch differs from main; proceeding with PR"
           fi
 
       - name: Create Pull Request
@@ -100,8 +52,12 @@ jobs:
         uses: peter-evans/create-pull-request@98357b18bf14b5342f975ff684046ec3b2a07725 # v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Update transitive dependencies"
-          branch: "${{ steps.prepare_branch.outputs.branch }}"
+          add-paths: pnpm-lock.yaml
+          committer: "mergewhether <bot@risto.io>"
+          author: "mergewhether <bot@risto.io>"
+          commit-message: "chore: update pnpm lockfile (transitive deps)"
+          branch: transitive
+          branch-suffix: timestamp
           base: main
           title: "Update transitive dependencies"
           body: "This PR updates transitive dependencies to their latest versions."
