@@ -2,9 +2,9 @@ name: Static Analysis
 
 on:
   push:
-    branches: [main]
+    branches: [main, transitive**]
     paths-ignore:
-      - '.github/**'
+      - ".github/**"
   pull_request:
     branches: [main]
 
@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   check:
-    name: 'analyze'
+    name: "analyze"
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,8 +29,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
         with:
-          cache: 'pnpm'
-          node-version: '24.12.0'
+          cache: "pnpm"
+          node-version: "24.12.0"
       - name: Install
         run: pnpm install
       - name: Generate types
