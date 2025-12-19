@@ -73,6 +73,19 @@ jobs:
           git commit -m "chore: update pnpm lockfile (transitive deps)" || { git status --porcelain; echo "Commit failed: expected lockfile changes but commit did not create a commit"; exit 1; }
           git push origin "${{ steps.prepare_branch.outputs.branch }}"
 
+      - name: Verify pushed branch differs from main
+        if: steps.check_changes.outputs.no_changes == 'false'
+        run: |
+          git fetch origin main "${{ steps.prepare_branch.outputs.branch }}"
+          echo "=== Checking remote branch vs main ==="
+          if git diff --quiet origin/main origin/${{ steps.prepare_branch.outputs.branch }} -- pnpm-lock.yaml; then
+            echo "::error::Remote branch pnpm-lock.yaml is identical to main!"
+            git --no-pager log --oneline -5 origin/main origin/${{ steps.prepare_branch.outputs.branch }}
+            exit 1
+          else
+            echo "::notice::Remote branch differs from main; proceeding with PR"
+          fi
+
       - name: Create Pull Request
         if: steps.check_changes.outputs.no_changes == 'false'
         uses: peter-evans/create-pull-request@98357b18bf14b5342f975ff684046ec3b2a07725 # v8
