@@ -69,8 +69,17 @@ jobs:
         run: |
           git config user.name mergewhether
           git config user.email bot@risto.io
+          echo "=== Current branch and status before add ==="
+          git branch -v
+          git status --short
           git add pnpm-lock.yaml
+          echo "=== Status after add (should show staged) ==="
+          git diff --cached --stat
           git commit -m "chore: update pnpm lockfile (transitive deps)" || { git status --porcelain; echo "Commit failed: expected lockfile changes but commit did not create a commit"; exit 1; }
+          echo "=== Branch state after commit ==="
+          git log --oneline -3
+          git diff origin/main -- pnpm-lock.yaml | head -20
+          echo "=== Pushing to origin/${{ steps.prepare_branch.outputs.branch }} ==="
           git push origin "${{ steps.prepare_branch.outputs.branch }}"
 
       - name: Verify pushed branch differs from main
