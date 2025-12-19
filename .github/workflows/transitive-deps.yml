@@ -49,13 +49,19 @@ jobs:
       - name: Check for lockfile changes
         id: check_changes
         run: |
+          echo "=== Git status after pnpm up ==="
+          git status --porcelain
+          echo "=== Diff against origin/main (first 50 lines) ==="
+          git diff origin/main -- pnpm-lock.yaml | head -50
           # fetch latest main and compare pnpm-lock.yaml against origin/main to avoid creating PRs if main already contains the same changes
           git fetch origin main
           if git diff --quiet origin/main -- pnpm-lock.yaml; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
+            echo "::notice::No changes detected in pnpm-lock.yaml vs origin/main; skipping commit and PR"
           else
             echo "no_changes=false" >> $GITHUB_OUTPUT
             echo "changed_files=pnpm-lock.yaml" >> $GITHUB_OUTPUT
+            echo "::notice::Changes detected in pnpm-lock.yaml; will create PR on branch ${{ steps.prepare_branch.outputs.branch }}"
           fi
 
       - name: Commit and push lockfile
@@ -74,7 +80,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update transitive dependencies"
           branch: "${{ steps.prepare_branch.outputs.branch }}"
-          base: ${{ github.event.repository.default_branch }}
+          base: main
           title: "Update transitive dependencies"
           body: "This PR updates transitive dependencies to their latest versions."
           labels: "dependencies"
