@@ -73,6 +73,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update transitive dependencies"
           branch: "${{ steps.prepare_branch.outputs.branch }}"
+          base: ${{ github.event.repository.default_branch }}
           title: "Update transitive dependencies"
           body: "This PR updates transitive dependencies to their latest versions."
           labels: "dependencies"
