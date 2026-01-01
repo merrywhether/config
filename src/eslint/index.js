@@ -20,7 +20,6 @@ const tsFiles = ['**/*.{ts,tsx,mtsx}'];
 const allFiles = ['**/*.{js,mjs,cjs,jsx,mjsx}', ...tsFiles];
 
 const base = defineConfig({
-  // @ts-expect-error: plugin type mismatch, fixed in next plugin release
   extends: [perfectionist.configs['recommended-natural']],
   files: allFiles,
   languageOptions: { globals: { ...globals.browser, ...globals.node } },
