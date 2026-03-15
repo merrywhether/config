@@ -28,7 +28,6 @@ const base = defineConfig({
     reportUnusedInlineConfigs: 'error',
   },
   name: 'mw-config/base',
-  // @ts-expect-error: plugin type mismatch
   plugins: { 'import-x': importX },
   rules: { ...rules.eslint, ...rules.importX },
 });
