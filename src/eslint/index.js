@@ -45,8 +45,9 @@ const ts = defineConfig({
 
 const reactCommon = defineConfig({
   extends: [
-    reactPlugin.configs.strict,
     reactHooksPlugin.configs.flat['recommended-latest'],
+    reactPlugin.configs.strict,
+    reactPlugin.configs['disable-conflict-eslint-plugin-react-hooks'],
   ],
   files: allFiles,
   name: 'mw-config/react-common',
