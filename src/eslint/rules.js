@@ -71,13 +71,18 @@ const tsTypeRules = {
 // https://eslint-react.xyz/docs/rules/overview
 /** @type {Linter.RulesRecord} */
 const reactRules = {
+  // personal preference
   '@eslint-react/jsx-shorthand-boolean': 'error',
+  // upgrading warn
   '@eslint-react/naming-convention/context-name': 'error',
-  '@eslint-react/naming-convention/filename-extension': 'error',
-  '@eslint-react/naming-convention/use-state': 'error',
+  // <Context> over <Context.Provider>
   '@eslint-react/no-context-provider': 'error', // react 19
+  // ref is now a standard prop
   '@eslint-react/no-forward-ref': 'error', // react 19
+  // use() over useContext()
   '@eslint-react/no-use-context': 'error', // react 19
+  // upgrading warn
+  '@eslint-react/use-state': 'error',
 };
 
 export const rules = {
