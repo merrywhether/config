@@ -4,7 +4,8 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "isolatedDeclarations": false
+    "isolatedDeclarations": false,
+    "types": ["node"],
   },
   "include": [
     ".projenrc.js",
@@ -12,9 +13,7 @@
     "prettier.config.js",
     "src",
     "scripts",
-    "playground"
+    "playground",
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"],
 }
