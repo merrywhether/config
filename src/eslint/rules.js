@@ -71,10 +71,8 @@ const tsTypeRules = {
 // https://eslint-react.xyz/docs/rules/overview
 /** @type {Linter.RulesRecord} */
 const reactRules = {
-  // personal preference
-  '@eslint-react/jsx-shorthand-boolean': 'error',
   // upgrading warn
-  '@eslint-react/naming-convention/context-name': 'error',
+  '@eslint-react/naming-convention-context-name': 'error',
   // <Context> over <Context.Provider>
   '@eslint-react/no-context-provider': 'error', // react 19
   // ref is now a standard prop
