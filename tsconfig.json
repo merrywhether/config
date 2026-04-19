@@ -4,7 +4,10 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "isolatedDeclarations": false
+    "isolatedDeclarations": false,
+    "types": [
+      "node"
+    ]
   },
   "include": [
     ".projenrc.js",
