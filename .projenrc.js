@@ -20,6 +20,7 @@ const project = new MwProject({
       // required for allowJs
       // @ts-expect-error: pending type update in projen
       isolatedDeclarations: false,
+      types: ['node'],
     },
     include: ['src', 'scripts', 'playground'],
   },

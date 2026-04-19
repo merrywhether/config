@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
           cache: 'pnpm'
-          node-version: '24.14.1'
+          node-version: '24.15.0'
           registry-url: https://registry.npmjs.org/
       - name: Install
         run: pnpm install
