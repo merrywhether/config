@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
+      id-token: write
     timeout-minutes: 5
 
     steps:
@@ -34,6 +34,4 @@ jobs:
       - name: Generate types
         run: pnpm build:types
       - name: Publish
-        run: pnpm publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --access public --no-git-checks --provenance
