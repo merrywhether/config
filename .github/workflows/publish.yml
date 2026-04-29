@@ -12,13 +12,15 @@ jobs:
   Publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       id-token: write
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ssh-key: ${{ secrets.COMMIT_KEY }}
       - name: Setup pnpm
         uses: pnpm/action-setup@903f9c1a6ebcba6cf41d87230be49611ac97822e # v6
         with:
@@ -31,6 +33,19 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install
         run: pnpm install
+      - name: Bump version
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          VERSION=${TAG#v}
+          git config user.name mergewhether
+          git config user.email bot@risto.io
+          pnpm version $VERSION --no-git-tag-version
+          git add package.json
+          git commit -m "$VERSION"
+          git push origin HEAD:main
+          git tag -f $TAG HEAD
+          git push origin -f refs/tags/$TAG
       - name: Generate types
         run: pnpm build:types
       - name: Publish
