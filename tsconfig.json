@@ -4,6 +4,7 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
+    "jsx": "react-jsx",
     "types": [
       "node"
     ],

@@ -1,9 +1,32 @@
 #!/usr/bin/env node
 import commandLineArgs from 'command-line-args';
+import { render } from 'ink';
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { cwd } from 'node:process';
+import { fileURLToPath } from 'node:url';
+import { createElement } from 'react';
 
+import { builtinPreset } from '../preset.ts';
 import { loadConfig } from './config-loader.ts';
 import { runFirstRun } from './first-run.ts';
+import { App } from './tui/App.tsx';
+
+function getPackageVersion(): string {
+  try {
+    const pkgPath = join(
+      dirname(fileURLToPath(import.meta.url)),
+      '../../package.json',
+    );
+    const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8')) as {
+      version?: string;
+    };
+    return pkg.version ?? '?';
+  } catch {
+    // could not read package.json
+    return '?';
+  }
+}
 
 const optionDefinitions = [
   { name: 'describe', type: Boolean },
@@ -64,8 +87,18 @@ async function main(): Promise<void> {
     return;
   }
 
-  // TUI not yet implemented (Phase 4)
-  console.log('TUI not yet implemented. Use --describe to inspect config.');
+  // Launch TUI
+  const version = getPackageVersion();
+  render(
+    createElement(App, {
+      configFilepath: result.filepath,
+      cwd: projectCwd,
+      existingFullConfig: result.config,
+      initialConfig: result.config.project,
+      preset: result.config.preset ?? builtinPreset,
+      version,
+    }),
+  );
 }
 
 main().catch((err: unknown) => {
