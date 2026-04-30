@@ -33,20 +33,20 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install
         run: pnpm install
-      - name: Bump version
+      - name: Bump versions
         env:
           TAG: ${{ github.event.release.tag_name }}
         run: |
           VERSION=${TAG#v}
           git config user.name mergewhether
           git config user.email bot@risto.io
-          pnpm version $VERSION --no-git-tag-version
-          git add package.json
+          pnpm -r --filter './packages/*' exec npm version $VERSION --no-git-tag-version
+          git add packages/config/package.json packages/mw-preset/package.json packages/mw-config/package.json
           git commit -m "$VERSION"
           git push origin HEAD:main
           git tag -f $TAG HEAD
           git push origin -f refs/tags/$TAG
-      - name: Generate types
-        run: pnpm build:types
       - name: Publish
-        run: pnpm publish --access public --no-git-checks --provenance
+        run: pnpm -r --filter './packages/*' publish --access public --no-git-checks --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
