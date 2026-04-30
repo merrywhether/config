@@ -1,6 +1,3 @@
-// general ESLint v9 tracking issue:
-// https://github.com/eslint/eslint/issues/18391
-
 import reactPlugin from '@eslint-react/eslint-plugin';
 import js from '@eslint/js';
 import { importX } from 'eslint-plugin-import-x';
