@@ -1,4 +1,4 @@
-import type { MwPreset } from './types.ts';
+import type { MwPreset } from '@merrywhether/config';
 
 export const builtinPreset: MwPreset = {
   metadata: {

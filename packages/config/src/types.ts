@@ -45,6 +45,7 @@ export interface MwLintingConfig {
 
 export interface MwPnpmConfig {
   onlyBuiltDependencies?: string[];
+  packages?: string[];
 }
 
 export interface MwPreset {

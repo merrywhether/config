@@ -14,8 +14,9 @@
     "eslint.config.ts",
     "prettier.config.ts",
     ".projenrc.ts",
-    "src",
-    "scripts",
+    "packages/config/src",
+    "packages/mw-preset/src",
+    "packages/mw-config/src",
     "playground"
   ],
   "exclude": [

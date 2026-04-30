@@ -1,6 +1,6 @@
-import { writeFileSync } from 'node:fs';
+import type { MwConfig, MwProjectConfig } from '@merrywhether/config';
 
-import type { MwConfig, MwProjectConfig } from '../../types.ts';
+import { writeFileSync } from 'node:fs';
 
 export function writeConfigFile(
   filepath: string,

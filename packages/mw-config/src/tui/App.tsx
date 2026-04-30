@@ -1,9 +1,3 @@
-import { Box, Text, useApp, useInput } from 'ink';
-import { execSync } from 'node:child_process';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import React, { useState } from 'react';
-
 import type {
   DepManagementTool,
   FormattingTool,
@@ -12,7 +6,13 @@ import type {
   MwPreset,
   MwProjectConfig,
   TypecheckTool,
-} from '../../types.ts';
+} from '@merrywhether/config';
+
+import { Box, Text, useApp, useInput } from 'ink';
+import { execSync } from 'node:child_process';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import React, { useState } from 'react';
 
 import { updateAgentsMd } from '../agents-md.ts';
 import { detectPackageManager, getSynthCommand } from '../pkg-manager.ts';

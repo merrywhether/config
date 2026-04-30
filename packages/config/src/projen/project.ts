@@ -152,6 +152,7 @@ export class MwProject extends Project {
       ...(pnpm?.onlyBuiltDependencies !== undefined && {
         onlyBuiltDependencies: pnpm.onlyBuiltDependencies,
       }),
+      ...(pnpm?.packages !== undefined && { packages: pnpm.packages }),
     });
 
     this.gitattributes.addAttributes(

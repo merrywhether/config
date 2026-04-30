@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { builtinPreset } from '@merrywhether/mw-preset';
 import commandLineArgs from 'command-line-args';
 import { render } from 'ink';
 import { readFileSync } from 'node:fs';
@@ -7,7 +8,6 @@ import { cwd } from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { createElement } from 'react';
 
-import { builtinPreset } from '../preset.ts';
 import { loadConfig } from './config-loader.ts';
 import { runFirstRun } from './first-run.ts';
 import { App } from './tui/App.tsx';

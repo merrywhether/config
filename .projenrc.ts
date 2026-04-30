@@ -14,7 +14,12 @@ const typecheck: MwTypecheckConfig = {
     jsx: javascript.TypeScriptJsxMode.REACT_JSX,
     types: ['node'],
   },
-  include: ['src', 'scripts', 'playground'],
+  include: [
+    'packages/config/src',
+    'packages/mw-preset/src',
+    'packages/mw-config/src',
+    'playground',
+  ],
   presets: ['base'],
   tool: 'typescript',
 };
@@ -30,7 +35,7 @@ new MwProject({
   gitIgnoreOptions: { ignorePatterns: ['@types'] },
   linting: { presets: ['react'], tool: 'eslint' },
   name,
-  pnpm: { onlyBuiltDependencies: ['unrs-resolver'] },
+  pnpm: { onlyBuiltDependencies: ['unrs-resolver'], packages: ['packages/*'] },
   renovatebotOptions: {
     overrideConfig: {
       // repo requires approvals

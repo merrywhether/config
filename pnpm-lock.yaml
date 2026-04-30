@@ -7,6 +7,33 @@ settings:
 importers:
 
   .:
+    devDependencies:
+      '@merrywhether/config':
+        specifier: workspace:*
+        version: link:packages/config
+      '@types/node':
+        specifier: ^24.12.2
+        version: 24.12.2
+      '@types/react':
+        specifier: ^19.2.14
+        version: 19.2.14
+      eslint:
+        specifier: ^10.2.1
+        version: 10.2.1(jiti@2.6.1)
+      jiti:
+        specifier: ^2.6.1
+        version: 2.6.1
+      prettier:
+        specifier: ^3.8.3
+        version: 3.8.3
+      projen:
+        specifier: ^0.99.52
+        version: 0.99.52(constructs@10.3.0)
+      react:
+        specifier: ^19.2.5
+        version: 19.2.5
+
+  packages/config:
     dependencies:
       '@eslint-react/eslint-plugin':
         specifier: ^4.2.3
@@ -23,9 +50,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.59.1
         version: 8.59.1(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3)
-      command-line-args:
-        specifier: ^6.0.2
-        version: 6.0.2
       eslint:
         specifier: ^10.2.1
         version: 10.2.1(jiti@2.6.1)
@@ -53,24 +77,15 @@ importers:
       globals:
         specifier: ^17.5.0
         version: 17.5.0
-      ink:
-        specifier: ^7.0.1
-        version: 7.0.1(@types/react@19.2.14)(react@19.2.5)
       knitwork:
         specifier: ^1.3.0
         version: 1.3.0
-      lilconfig:
-        specifier: ^3.1.3
-        version: 3.1.3
       prettier:
         specifier: ^3.8.3
         version: 3.8.3
       projen:
         specifier: ^0.99.52
         version: 0.99.52(constructs@10.3.0)
-      react:
-        specifier: ^19.2.5
-        version: 19.2.5
       semver:
         specifier: ^7.7.4
         version: 7.7.4
@@ -84,6 +99,34 @@ importers:
         specifier: ^10.4.0
         version: 10.4.0(eslint@10.2.1(jiti@2.6.1))
     devDependencies:
+      '@types/node':
+        specifier: ^24.12.2
+        version: 24.12.2
+      '@types/semver':
+        specifier: ^7.7.1
+        version: 7.7.1
+
+  packages/mw-config:
+    dependencies:
+      '@merrywhether/config':
+        specifier: workspace:*
+        version: link:../config
+      '@merrywhether/mw-preset':
+        specifier: workspace:*
+        version: link:../mw-preset
+      command-line-args:
+        specifier: ^6.0.2
+        version: 6.0.2
+      ink:
+        specifier: ^7.0.1
+        version: 7.0.1(@types/react@19.2.14)(react@19.2.5)
+      lilconfig:
+        specifier: ^3.1.3
+        version: 3.1.3
+      react:
+        specifier: ^19.2.5
+        version: 19.2.5
+    devDependencies:
       '@types/command-line-args':
         specifier: ^5.2.3
         version: 5.2.3
@@ -93,12 +136,22 @@ importers:
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
-      '@types/semver':
-        specifier: ^7.7.1
-        version: 7.7.1
-      jiti:
-        specifier: ^2.6.1
-        version: 2.6.1
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+
+  packages/mw-preset:
+    dependencies:
+      '@merrywhether/config':
+        specifier: workspace:*
+        version: link:../config
+    devDependencies:
+      '@types/node':
+        specifier: ^24.12.2
+        version: 24.12.2
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
 
 packages:
 

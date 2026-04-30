@@ -1,6 +1,6 @@
-import { lilconfig } from 'lilconfig';
+import type { MwConfig } from '@merrywhether/config';
 
-import type { MwConfig } from '../types.ts';
+import { lilconfig } from 'lilconfig';
 
 export interface ConfigResult {
   config: MwConfig;
