@@ -8,9 +8,11 @@ import perfectionist from 'eslint-plugin-perfectionist';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import solidPlugin from 'eslint-plugin-solid';
+import vuePlugin from 'eslint-plugin-vue';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import { type ConfigArray, configs as tsConfigs } from 'typescript-eslint';
+import vueEslintParser from 'vue-eslint-parser';
 
 import { rules } from './rules.ts';
 
@@ -65,6 +67,15 @@ const solid = defineConfig({
   name: 'mw-config/solid',
 });
 
+const vueFiles = ['**/*.vue'];
+
+const vue = defineConfig({
+  extends: [...vuePlugin.configs['flat/recommended']],
+  files: vueFiles,
+  languageOptions: { parser: vueEslintParser },
+  name: 'mw-config/vue',
+});
+
 // prettier always last
 const configs: Record<string, ConfigArray> = {
   base: defineConfig([js.configs.recommended, ...base, prettierRecommended]),
@@ -87,6 +98,13 @@ const configs: Record<string, ConfigArray> = {
     js.configs.recommended,
     ...base,
     ...ts,
+    prettierRecommended,
+  ]),
+  vue: defineConfig([
+    js.configs.recommended,
+    ...base,
+    ...ts,
+    ...vue,
     prettierRecommended,
   ]),
 };
