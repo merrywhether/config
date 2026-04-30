@@ -33,7 +33,7 @@
     "lint:es:fix": "pnpm lint:es --fix",
     "lint:md": "prettier '**/*.md' --check",
     "lint:md:fix": "prettier '**/*.md' --write",
-    "pj": "node .projenrc.js",
+    "pj": "node .projenrc.ts",
     "tc": "tsc --noEmit"
   },
   "engines": {
@@ -73,7 +73,8 @@
   "devDependencies": {
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
-    "@types/semver": "^7.7.1"
+    "@types/semver": "^7.7.1",
+    "jiti": "^2.6.1"
   },
   "packageManager": "pnpm@10.33.2"
 }

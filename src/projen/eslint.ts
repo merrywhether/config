@@ -7,17 +7,29 @@ export type MwEslintOpts = MwEslintState
 
 interface MwEslintState {
   ignores?: string[];
-  preset: 'base' | 'react' | 'solid' | 'typescript';
+  presets?: string[];
 }
+
+/** Priority order for eslint preset resolution (highest index wins). */
+const PRESET_PRIORITY = [
+  'base',
+  'typescript',
+  'vue',
+  'solid',
+  'react',
+] as const;
 
 export class MwEslint
   extends MwJsConfigFile
-  implements Required<Omit<MwEslintState, 'preset'>>
+  implements Required<Omit<MwEslintState, 'presets'>>
 {
   ignores: string[];
 
-  constructor(project: Project, { ignores = [], ...opts }: MwEslintOpts) {
-    super(project, { ...opts, type: 'eslint' });
+  constructor(
+    project: Project,
+    { ignores = [], presets = ['typescript'], ...opts }: MwEslintOpts,
+  ) {
+    super(project, { ...opts, preset: resolvePreset(presets), type: 'eslint' });
     this.ignores = ignores;
     this.ignores.unshift('.cache/**', this.filePath);
   }
@@ -35,4 +47,14 @@ export class MwEslint
     this.close();
     this.line(`},`);
   }
+}
+
+function resolvePreset(presets: string[]): string {
+  let resolved = 'base';
+  for (const candidate of PRESET_PRIORITY) {
+    if (presets.includes(candidate)) {
+      resolved = candidate;
+    }
+  }
+  return resolved;
 }

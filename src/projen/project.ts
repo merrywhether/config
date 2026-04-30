@@ -1,56 +1,72 @@
-import {
-  License,
-  type LicenseOptions,
-  Project,
-  type ProjectOptions,
-} from 'projen';
+import { License, Project, type ProjectOptions } from 'projen';
 
-import { MwEslint, type MwEslintOpts } from './eslint.ts';
-import { MwMiseConfig, type MwMiseConfigOpts } from './mise.ts';
-import { MwPrettier, type MwPrettierOpts } from './prettier.ts';
-import { getRenovatebotOptions, type RenovatebotPreset } from './renovate.ts';
+import type {
+  MwDepManagementConfig,
+  MwFormattingConfig,
+  MwLintingConfig,
+  MwPnpmConfig,
+  MwTypecheckConfig,
+} from '../types.ts';
+
+import { MwEslint } from './eslint.ts';
+import { MwMiseConfig } from './mise.ts';
+import { MwPnpmWorkspace } from './pnpm-workspace.ts';
+import { MwPrettier } from './prettier.ts';
+import { getRenovatebotOptions } from './renovate.ts';
 import { MwTsConfig, type MwTsConfigOpts } from './typescript.ts';
-import { genFilePath, setMjs } from './util/index.ts';
+import { setMjs } from './util/index.ts';
 
 export interface MwProjectOpts {
-  eslint: EslintOpts;
-  license?: '_skip_' | LicenseOptions;
-  mise?: MwMiseConfigOpts;
-  prettier?: Pick<MwPrettierOpts, 'customConfig'>;
-  renovatebotPreset?: RenovatebotPreset;
-  typescript?: MwProjectTsConfig & MwTsConfigOpts;
+  copyright?: string;
+  depManagement?: MwDepManagementConfig;
+  /** Extra ESLint ignore patterns (escape hatch). */
+  eslintIgnores?: string[];
+  formatting?: MwFormattingConfig;
+  gitIgnoreOptions?: ProjectOptions['gitIgnoreOptions'];
+  /** Reserved for future use. */
+  ignorePatterns?: boolean;
+  license?: false | string;
+  linting?: MwLintingConfig;
+  mise?: false | string;
+  name: string;
+  pnpm?: MwPnpmConfig;
+  renovatebotOptions?: ProjectOptions['renovatebotOptions'];
+  typecheck?: MwTypecheckConfig;
   /** set to override autodetection */
   useMjs?: boolean;
-}
-
-type EslintOpts = Partial<Pick<MwEslintOpts, 'customConfig' | 'ignores'>>
-  & Pick<MwEslintOpts, 'preset'>;
-
-interface MwProjectTsConfig {
-  excludeGenFiles?: boolean;
 }
 
 export class MwProject extends Project {
   readonly customConfigFile: string | undefined;
 
   constructor({
-    eslint: { ignores: eslintIgnores = [], ...eslint },
+    copyright = 'Risto Keravuori',
+    depManagement = { tool: null },
+    eslintIgnores = [],
+    formatting = { tool: 'prettier' },
     gitIgnoreOptions,
-    license = { copyrightOwner: 'Risto Keravuori', spdx: 'MIT' },
-    mise = { version: 'lts' },
-    prettier = {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    ignorePatterns: _ignorePatterns, // reserved for future use
+    license = 'MIT',
+    linting = { tool: 'eslint' },
+    mise = 'lts',
+    name,
+    pnpm,
     renovatebotOptions = {},
-    renovatebotPreset,
-    typescript: {
-      excludeGenFiles: tsExcludeGenFiles,
-      include: tsInclude,
-      ...typescript
-    } = {},
+    typecheck = { presets: ['base'], tool: 'typescript' },
     useMjs,
     ...opts
-  }: MwProjectOpts & Omit<ProjectOptions, 'renovatebot'>) {
+  }: MwProjectOpts & Omit<ProjectOptions, 'name' | 'renovatebot'>) {
+    const enableRenovate =
+      depManagement.tool === 'renovate' && !!depManagement.preset;
+    const renovatePreset =
+      depManagement.tool === 'renovate' ?
+        (depManagement.preset as 'app' | 'package' | undefined)
+      : undefined;
+
     super({
       ...opts,
+      commitGenerated: true,
       gitIgnoreOptions: {
         ...gitIgnoreOptions,
         ignorePatterns: [
@@ -61,45 +77,82 @@ export class MwProject extends Project {
           '.DS_Store',
         ],
       },
-      renovatebot: !!renovatebotPreset,
-      renovatebotOptions: getRenovatebotOptions(
-        renovatebotPreset,
-        renovatebotOptions,
-      ),
+      name,
+      renovatebot: enableRenovate,
+      ...(enableRenovate && {
+        renovatebotOptions: getRenovatebotOptions(
+          renovatePreset,
+          renovatebotOptions,
+        ),
+      }),
     });
 
     setMjs(useMjs);
 
-    this.customConfigFile =
-      (eslint.customConfig ?? prettier.customConfig) ?
-        genFilePath('mw.config.js')
-      : undefined;
+    const hasCustomConfig =
+      !!(linting.tool === 'eslint' && linting.customConfig)
+      || !!(formatting.tool === 'prettier' && formatting.customConfig);
 
-    const mwPrettier = new MwPrettier(this, prettier);
+    this.customConfigFile = hasCustomConfig ? 'mw.config.ts' : undefined;
 
-    const mwEslint = new MwEslint(this, {
-      ...eslint,
-      ignores: [mwPrettier.filePath, ...eslintIgnores],
+    const mwPrettier =
+      formatting.tool === 'prettier' ?
+        new MwPrettier(this, {
+          ...(formatting.customConfig !== undefined && {
+            customConfig: formatting.customConfig,
+          }),
+        })
+      : null;
+
+    const mwEslint =
+      linting.tool === 'eslint' ?
+        new MwEslint(this, {
+          ...(linting.customConfig !== undefined && {
+            customConfig: linting.customConfig,
+          }),
+          ignores:
+            mwPrettier ?
+              [mwPrettier.filePath, ...eslintIgnores]
+            : eslintIgnores,
+          ...(linting.presets !== undefined && { presets: linting.presets }),
+        })
+      : null;
+
+    if (license !== false) {
+      new License(this, { copyrightOwner: copyright, spdx: license });
+    }
+
+    if (mise !== false) {
+      new MwMiseConfig(this, { version: mise });
+    }
+
+    if (typecheck.tool === 'typescript') {
+      const tsInclude: string[] = [...(typecheck.include ?? [])];
+
+      // Prepend generated config files so they are type-checked
+      const genFiles: string[] = [];
+      if (mwEslint) genFiles.push(mwEslint.filePath);
+      if (mwPrettier) genFiles.push(mwPrettier.filePath);
+      genFiles.push('.projenrc.ts');
+      if (this.customConfigFile) genFiles.push(this.customConfigFile);
+      tsInclude.unshift(...genFiles);
+
+      new MwTsConfig(this, {
+        include: tsInclude,
+        ...(typecheck.compilerOptions !== undefined ?
+          { compilerOptions: typecheck.compilerOptions }
+        : {}),
+        ...(typecheck.presets !== undefined ?
+          { presets: typecheck.presets }
+        : {}),
+      } satisfies Record<string, unknown> as MwTsConfigOpts);
+    }
+
+    new MwPnpmWorkspace(this, {
+      ...(pnpm?.onlyBuiltDependencies !== undefined && {
+        onlyBuiltDependencies: pnpm.onlyBuiltDependencies,
+      }),
     });
-
-    if (license !== '_skip_') {
-      new License(this, license);
-    }
-
-    new MwMiseConfig(this, mise);
-
-    if (!tsExcludeGenFiles) {
-      if (this.customConfigFile) {
-        tsInclude?.unshift(this.customConfigFile);
-      }
-      tsInclude?.unshift(
-        genFilePath('.projenrc.js'),
-        mwEslint.filePath,
-        mwPrettier.filePath,
-      );
-    }
-
-    new MwTsConfig(this, { ...typescript, include: tsInclude ?? [] });
 
     this.gitattributes.addAttributes(
       '/pnpm-lock.yaml',
@@ -109,6 +162,6 @@ export class MwProject extends Project {
 
   override preSynthesize(): void {
     // default task in Project doesn't have body
-    this.defaultTask?.reset('node .projenrc.js');
+    this.defaultTask?.reset('node .projenrc.ts');
   }
 }

@@ -1,3 +1,4 @@
+import type { javascript } from 'projen';
 import type { config as tsEslintConfig } from 'typescript-eslint';
 
 export type DepManagementTool = 'dependabot' | 'renovate';
@@ -95,6 +96,7 @@ export interface MwToolDef {
 }
 
 export interface MwTypecheckConfig {
+  compilerOptions?: javascript.TypescriptConfigOptions['compilerOptions'];
   include?: string[];
   presets?: string[];
   tool: null | TypecheckTool;
