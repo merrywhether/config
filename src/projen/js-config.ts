@@ -1,0 +1,79 @@
+import { type Project, SourceCode, type SourceCodeOptions } from 'projen';
+
+import { genFilePath, genImportString } from './util/index.ts';
+
+export type MwJsConfigFileOpts = MwJsConfigFileState & SourceCodeOptions;
+
+export interface MwJsConfigFileState {
+  customConfig?: boolean;
+  preset?: string;
+  type: 'eslint' | 'prettier';
+}
+
+export class MwJsConfigFile
+  extends SourceCode
+  implements Required<MwJsConfigFileState>
+{
+  customConfig: boolean;
+  readonly filePath: string;
+  preset: string;
+  type: 'eslint' | 'prettier';
+
+  constructor(
+    project: Project,
+    { customConfig = false, preset, type, ...opts }: MwJsConfigFileOpts,
+  ) {
+    const filePath = genFilePath(`${type}.config.js`);
+    super(project, filePath, opts);
+    this.filePath = filePath;
+    this.customConfig = customConfig;
+    this.preset = preset ?? '';
+    this.type = type;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  renderBody(): void {}
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  renderExportHead(): void {}
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  renderExportTail(): void {}
+
+  synthesize(): void {
+    this.#renderImports();
+
+    this.renderBody();
+
+    this.#renderExport();
+  }
+
+  #renderExport(): void {
+    this.line(`export default ${this.type === 'eslint' ? '[' : '{'}`);
+    this.open();
+
+    this.renderExportHead();
+
+    this.line(`...config${this.preset ? `.${this.preset}` : ''},`);
+    if (this.customConfig) {
+      this.line(`...customConfig.${this.type},`);
+    }
+
+    this.renderExportTail();
+
+    this.close();
+    this.line(`${this.type === 'eslint' ? ']' : '}'};`);
+    this.line();
+  }
+
+  #renderImports(): void {
+    this.line(`// ${this.marker}`);
+    this.line();
+
+    this.line(genImportString(`@merrywhether/config/${this.type}`, 'config'));
+    if (this.customConfig) {
+      this.line(genImportString('./mw.config.js', 'customConfig'));
+    }
+    this.line();
+  }
+}

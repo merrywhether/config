@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { cwd } from 'node:process';
 import { coerce } from 'semver';
 
-export function getNodeTarget(fallback = 'lts') {
+export function getNodeTarget(fallback = 'lts'): string {
   const engines = coerce(process.env.npm_package_engines_node);
   if (engines) {
     return engines.version;
