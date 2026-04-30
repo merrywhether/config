@@ -6,6 +6,11 @@
   "bin": {
     "mw-config": "./src/index.ts"
   },
+  "files": [
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
   "exports": {
     ".": "./src/index.ts"
   },

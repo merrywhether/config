@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Built-in preset for @merrywhether/config",
   "type": "module",
+  "files": [
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
   "exports": {
     ".": "./src/index.ts"
   },
@@ -13,7 +18,7 @@
     "node": ">=24.15.0"
   },
   "peerDependencies": {
-    "@merrywhether/config": "workspace:*"
+    "@merrywhether/config": ">=6"
   },
   "devDependencies": {
     "@types/node": "^24.12.2",
