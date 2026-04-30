@@ -4,9 +4,9 @@ import { cwd } from 'node:process';
 
 /**
  * Detects the package type from environment variables or package.json
- * @returns {string} The package type ('module' or 'commonjs')
+ * @returns The package type ('module' or 'commonjs')
  */
-export function detectPackageType() {
+export function detectPackageType(): string {
   // Check environment variables
   let packageType =
     process.env.PNPM_PACKAGE_TYPE ?? process.env.npm_package_type;
@@ -17,7 +17,7 @@ export function detectPackageType() {
       const targetDir = process.env.INIT_CWD ?? cwd();
       const pkg = JSON.parse(
         readFileSync(join(targetDir, 'package.json'), 'utf-8'),
-      );
+      ) as { type?: string };
       packageType = pkg.type;
     } catch {
       // Ignore errors reading package.json

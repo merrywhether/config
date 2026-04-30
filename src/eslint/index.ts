@@ -1,8 +1,6 @@
 // general ESLint v9 tracking issue:
 // https://github.com/eslint/eslint/issues/18391
 
-/** @import { ConfigArray } from 'typescript-eslint' */
-
 import reactPlugin from '@eslint-react/eslint-plugin';
 import js from '@eslint/js';
 import { importX } from 'eslint-plugin-import-x';
@@ -12,9 +10,9 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import solidPlugin from 'eslint-plugin-solid';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import { configs as tsConfigs } from 'typescript-eslint';
+import { type ConfigArray, configs as tsConfigs } from 'typescript-eslint';
 
-import { rules } from './rules.js';
+import { rules } from './rules.ts';
 
 const tsFiles = ['**/*.{ts,tsx,mtsx}'];
 const allFiles = ['**/*.{js,mjs,cjs,jsx,mjsx}', ...tsFiles];
@@ -68,8 +66,7 @@ const solid = defineConfig({
 });
 
 // prettier always last
-/** @type  {Record<string, ConfigArray>} */
-const configs = {
+const configs: Record<string, ConfigArray> = {
   base: defineConfig([js.configs.recommended, ...base, prettierRecommended]),
   react: defineConfig([
     js.configs.recommended,
