@@ -33,8 +33,6 @@ jobs:
           node-version: "24.15.0"
       - name: Install
         run: pnpm install
-      - name: Generate types
-        run: pnpm build:types
       - name: Typecheck
         run: pnpm tc
       - name: ESLint

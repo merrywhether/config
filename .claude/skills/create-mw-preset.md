@@ -5,12 +5,13 @@ Teaches Claude Code how to scaffold a new `@merrywhether/config` preset package.
 ## Overview
 
 A preset package (`MwPreset`) declares what tooling configurations are available
-and provides their implementations. Consumer projects import a preset and pass it
-to `defineConfig` to override the built-in defaults.
+and provides their implementations. Consumer projects import a preset and pass
+it to `defineConfig` to override the built-in defaults.
 
 ## When to create a preset
 
 Create a preset package when you need to:
+
 - Share a custom ESLint/TypeScript/Prettier configuration across multiple
   repositories
 - Override the built-in tool defaults for an organisation
@@ -43,10 +44,7 @@ const preset: MwPreset = {
           selectionMode: 'multi',
           default: ['typescript'],
           presets: {
-            base: {
-              label: 'Base',
-              description: 'JS fundamentals',
-            },
+            base: { label: 'Base', description: 'JS fundamentals' },
             typescript: {
               label: 'TypeScript',
               description: 'TypeScript-eslint recommended',
@@ -101,12 +99,15 @@ interface MwCategoryDef<TTools extends string> {
 interface MwToolDef {
   label: string;
   selectionMode: 'single' | 'multi';
-  default: string | string[];          // string[] when selectionMode is 'multi'
-  presets: Record<string, {
-    label: string;
-    description: string;
-    peerDeps?: string[];               // TUI warns if these are not installed
-  }>;
+  default: string | string[]; // string[] when selectionMode is 'multi'
+  presets: Record<
+    string,
+    {
+      label: string;
+      description: string;
+      peerDeps?: string[]; // TUI warns if these are not installed
+    }
+  >;
 }
 ```
 
@@ -117,19 +118,15 @@ interface MwToolDef {
   "name": "@my-org/mw-preset",
   "version": "1.0.0",
   "type": "module",
-  "exports": {
-    ".": "./src/index.ts"
-  },
-  "peerDependencies": {
-    "@merrywhether/config": ">=6"
-  }
+  "exports": { ".": "./src/index.ts" },
+  "peerDependencies": { "@merrywhether/config": ">=6" }
 }
 ```
 
 ## Validating the preset
 
-Use the `validatePreset` utility from `@merrywhether/config` to verify the preset
-passes all shape checks. Call it in your CI or test setup:
+Use the `validatePreset` utility from `@merrywhether/config` to verify the
+preset passes all shape checks. Call it in your CI or test setup:
 
 ```typescript
 import { validatePreset } from '@merrywhether/config';
@@ -147,6 +144,7 @@ console.log('Preset valid ✓');
 ```
 
 Add this as a `validate` script in your `package.json`:
+
 ```json
 "scripts": {
   "validate": "node --input-type=module --eval 'import(\"./scripts/validate.ts\")'",

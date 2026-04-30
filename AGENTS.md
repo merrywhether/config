@@ -104,8 +104,9 @@ playground/         # Manual test files (not published)
 
 ## Projen-managed Files
 
-The following files at the **root** are **auto-generated** by projen (`pnpm pj`).
-Do **not** edit them directly — edit `.projenrc.ts` and re-run `pnpm pj`:
+The following files at the **root** are **auto-generated** by projen
+(`pnpm pj`). Do **not** edit them directly — edit `.projenrc.ts` and re-run
+`pnpm pj`:
 
 - `eslint.config.ts`
 - `prettier.config.ts`
@@ -187,5 +188,5 @@ pnpm pj && git diff --exit-code
 ```
 
 This re-synthesizes all projen-managed files and verifies nothing unintended
-changed. If there's a diff, inspect it and either accept it (commit) or fix
-the source.
+changed. If there's a diff, inspect it and either accept it (commit) or fix the
+source.
