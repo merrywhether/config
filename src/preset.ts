@@ -133,7 +133,7 @@ export const builtinPreset: MwPreset = {
         mise: {
           default: 'lts',
           label: 'mise',
-          presets: {},
+          presets: { lts: { description: 'Latest LTS release', label: 'LTS' } },
           selectionMode: 'single',
         },
       },

@@ -80,10 +80,19 @@ const reactRules: Linter.RulesRecord = {
   '@eslint-react/use-state': 'error',
 };
 
+// https://eslint.vuejs.org/rules/
+const vueRules: Linter.RulesRecord = {
+  'vue/block-lang': ['error', { script: { lang: 'ts' } }],
+  'vue/component-api-style': ['error', ['script-setup']],
+  'vue/define-macros-order': 'error',
+  'vue/prefer-define-options': 'error',
+};
+
 export const rules = {
   eslint: eslintRules,
   importX: importXRules,
   react: reactRules,
   tsBase: tsBaseRules,
   tsType: tsTypeRules,
+  vue: vueRules,
 };

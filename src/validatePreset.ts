@@ -32,6 +32,17 @@ export function validatePreset(preset: MwPreset): ValidatePresetResult {
         );
       }
 
+      // Validate default references valid preset keys
+      const defaults =
+        Array.isArray(tool.default) ? tool.default : [tool.default];
+      for (const d of defaults) {
+        if (!(d in tool.presets)) {
+          errors.push(
+            `${categoryName}.${toolName}: default "${d}" is not a key in presets`,
+          );
+        }
+      }
+
       // Validate presets have required fields
       for (const [presetName, presetDef] of Object.entries(tool.presets)) {
         if (!presetDef.label) {

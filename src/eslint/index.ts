@@ -8,13 +8,18 @@ import solidPlugin from 'eslint-plugin-solid';
 import vuePlugin from 'eslint-plugin-vue';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import { type ConfigArray, configs as tsConfigs } from 'typescript-eslint';
+import {
+  type ConfigArray,
+  configs as tsConfigs,
+  parser as tsParser,
+} from 'typescript-eslint';
 import vueEslintParser from 'vue-eslint-parser';
 
 import { rules } from './rules.ts';
 
 const tsFiles = ['**/*.{ts,tsx,mtsx}'];
 const allFiles = ['**/*.{js,mjs,cjs,jsx,mjsx}', ...tsFiles];
+const vueFiles = ['**/*.vue'];
 
 const base = defineConfig({
   extends: [perfectionist.configs['recommended-natural']],
@@ -64,13 +69,32 @@ const solid = defineConfig({
   name: 'mw-config/solid',
 });
 
-const vueFiles = ['**/*.vue'];
+// Vue: extend base/TS to .vue files, add parser + vue-specific rules
+const vueBase = defineConfig({
+  extends: base,
+  files: vueFiles,
+  name: 'mw-config/vue-base',
+});
+
+const vueTs = defineConfig({
+  extends: ts,
+  files: vueFiles,
+  name: 'mw-config/vue-ts',
+});
 
 const vue = defineConfig({
   extends: [...vuePlugin.configs['flat/recommended']],
   files: vueFiles,
-  languageOptions: { parser: vueEslintParser },
+  languageOptions: {
+    parser: vueEslintParser,
+    parserOptions: {
+      extraFileExtensions: ['.vue'],
+      parser: tsParser,
+      projectService: true,
+    },
+  },
   name: 'mw-config/vue',
+  rules: { ...rules.vue },
 });
 
 // prettier always last
@@ -101,6 +125,8 @@ const configs: Record<string, ConfigArray> = {
     js.configs.recommended,
     ...base,
     ...ts,
+    ...vueBase,
+    ...vueTs,
     ...vue,
     prettierRecommended,
   ]),
