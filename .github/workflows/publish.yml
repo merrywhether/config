@@ -46,7 +46,5 @@ jobs:
           git push origin HEAD:main
           git tag -f $TAG HEAD
           git push origin -f refs/tags/$TAG
-      - name: Generate types
-        run: pnpm build:types
       - name: Publish
         run: pnpm publish --access public --no-git-checks --provenance
