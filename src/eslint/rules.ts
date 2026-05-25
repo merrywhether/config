@@ -1,8 +1,7 @@
-/** @import { Linter } from 'eslint' */
+import type { Linter } from 'eslint';
 
 // https://eslint.org/docs/latest/rules/
-/** @type {Linter.RulesRecord} */
-const eslintRules = {
+const eslintRules: Linter.RulesRecord = {
   eqeqeq: ['error', 'always', { null: 'ignore' }],
   // https://eslint.org/docs/latest/rules/no-unused-expressions
   'no-unused-expressions': [
@@ -22,8 +21,7 @@ const eslintRules = {
 };
 
 // https://github.com/un-ts/eslint-plugin-import-x
-/** @type {Linter.RulesRecord} */
-const importXRules = {
+const importXRules: Linter.RulesRecord = {
   // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/first.md
   'import-x/first': 'error',
   // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/newline-after-import.md
@@ -35,8 +33,7 @@ const importXRules = {
 };
 
 // https://typescript-eslint.io/rules/
-/** @type {Linter.RulesRecord} */
-const tsBaseRules = {
+const tsBaseRules: Linter.RulesRecord = {
   '@typescript-eslint/consistent-type-imports': [
     'error',
     { fixStyle: 'inline-type-imports' },
@@ -52,8 +49,7 @@ const tsBaseRules = {
   ],
 };
 
-/** @type {Linter.RulesRecord} */
-const tsTypeRules = {
+const tsTypeRules: Linter.RulesRecord = {
   '@typescript-eslint/consistent-type-exports': [
     'error',
     { fixMixedExportsWithInlineTypeSpecifier: true },
@@ -69,8 +65,7 @@ const tsTypeRules = {
 };
 
 // https://eslint-react.xyz/docs/rules/overview
-/** @type {Linter.RulesRecord} */
-const reactRules = {
+const reactRules: Linter.RulesRecord = {
   // upgrading warn
   '@eslint-react/naming-convention-context-name': 'error',
   // <Context> over <Context.Provider>

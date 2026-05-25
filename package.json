@@ -4,26 +4,15 @@
   "description": "Common config files for @merrywhether projects",
   "type": "module",
   "files": [
-    "@types/",
-    "scripts/",
     "src/",
     "LICENSE",
     "README.md"
   ],
   "exports": {
-    ".": {
-      "types": "./@types/projen/index.d.ts",
-      "default": "./src/projen/index.js"
-    },
-    "./eslint": {
-      "types": "./@types/eslint/index.d.ts",
-      "default": "./src/eslint/index.js"
-    },
-    "./prettier": {
-      "types": "./@types/prettier.d.ts",
-      "default": "./src/prettier.js"
-    },
-    "./package-type": "./src/projen/util/package-type.js",
+    ".": "./src/projen/index.ts",
+    "./eslint": "./src/eslint/index.ts",
+    "./prettier": "./src/prettier.ts",
+    "./package-type": "./src/projen/util/package-type.ts",
     "./ts-base": "./src/ts/base.json",
     "./ts-solid": "./src/ts/solid.json",
     "./ts-styled": "./src/ts/styled.json"
@@ -36,8 +25,7 @@
   "license": "MIT",
   "homepage": "https://github.com/merrywhether/config#readme",
   "scripts": {
-    "build:types": "tsc -p tsconfig.build.json",
-    "clean": "rm -rf @types *.tsbuildinfo",
+    "clean": "rm -rf *.tsbuildinfo",
     "fix": "pnpm lint:es:fix && pnpm lint:md:fix",
     "lint": "pnpm lint:es && pnpm lint:md",
     "lint:es": "eslint .",
@@ -45,7 +33,6 @@
     "lint:md": "prettier '**/*.md' --check",
     "lint:md:fix": "prettier '**/*.md' --write",
     "pj": "node .projenrc.js",
-    "postinstall": "node scripts/postinstall.mjs",
     "tc": "tsc --noEmit"
   },
   "engines": {
