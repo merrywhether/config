@@ -1,7 +1,14 @@
-/** @import { RenovatebotOptions } from 'projen' */
+import type { RenovatebotOptions } from 'projen';
 
-/** @type {RenovatebotOptions} */
-const renovateCommonOptions = {
+export type RenovatebotPreset = 'app' | 'package' | undefined;
+
+type OverrideConfig = Record<string, unknown> & { extends?: string[] };
+
+type RenovatebotOptionsTyped = Omit<RenovatebotOptions, 'overrideConfig'> & {
+  overrideConfig?: OverrideConfig;
+};
+
+const renovateCommonOptions: RenovatebotOptionsTyped = {
   ignoreProjen: false,
   labels: ['dependencies'],
   overrideConfig: {
@@ -22,11 +29,10 @@ const renovateCommonOptions = {
   },
 };
 
-/** @type {RenovatebotOptions} */
-const renovateAppOptions = {
+const renovateAppOptions: RenovatebotOptionsTyped = {
   overrideConfig: {
     extends: [
-      ...renovateCommonOptions.overrideConfig.extends,
+      ...(renovateCommonOptions.overrideConfig?.extends ?? []),
       'group:allNonMajor',
     ],
     lockFileMaintenance: { enabled: false },
@@ -34,22 +40,17 @@ const renovateAppOptions = {
   scheduleInterval: ['before 6:00am on Friday every 4 weeks'],
 };
 
-/** @type {RenovatebotOptions} */
-const renovatePackageOptions = {
+const renovatePackageOptions: RenovatebotOptionsTyped = {
   overrideConfig: {
     patch: { automerge: true },
     rebaseWhen: 'behind-base-branch',
   },
 };
 
-/**
- * @typedef {'app' | 'package' | undefined} RenovatebotPreset
- *
- * @param {RenovatebotPreset} preset
- * @param {RenovatebotOptions} renovateCustomOptions
- * @returns {RenovatebotOptions}
- */
-export function getRenovatebotOptions(preset, renovateCustomOptions) {
+export function getRenovatebotOptions(
+  preset: RenovatebotPreset,
+  renovateCustomOptions: RenovatebotOptions,
+): RenovatebotOptions {
   const renovatePresetOptions =
     preset === 'app' ? renovateAppOptions : renovatePackageOptions;
 
@@ -60,7 +61,7 @@ export function getRenovatebotOptions(preset, renovateCustomOptions) {
     overrideConfig: {
       ...renovateCommonOptions.overrideConfig,
       ...renovatePresetOptions.overrideConfig,
-      ...renovateCustomOptions.overrideConfig,
+      ...(renovateCustomOptions.overrideConfig as OverrideConfig | undefined),
     },
   };
 }
