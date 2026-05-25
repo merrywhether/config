@@ -1,4 +1,9 @@
+allowBuilds:
+  unrs-resolver: true
+
 minimumReleaseAge: 1440
+
+confirmModulesPurge: false
 
 onlyBuiltDependencies:
   - unrs-resolver
