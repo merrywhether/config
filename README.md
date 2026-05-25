@@ -2,8 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40merrywhether%2Fconfig.svg)](https://www.npmjs.com/package/%40merrywhether%2Fconfig)
 [![Renovate dashboard](https://img.shields.io/badge/dependencies%20by-renovate-%231A1F6C?logo=renovatebot)](https://app.renovatebot.com/dashboard)
-[![Lint Status](https://github.com/merrywhether/config/actions/workflows/lint.yml/badge.svg)](https://github.com/merrywhether/config/actions/workflows/lint.yml?query=branch%3Amain)
-[![Version](https://img.shields.io/badge/version++-black?logo=npm)](https://github.com/merrywhether/config/actions/workflows/version.yml)
+[![Static Analysis](https://github.com/merrywhether/config/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/merrywhether/config/actions/workflows/static-analysis.yml?query=branch%3Amain)
 
 Common config files for &#64;merrywhether projects
 

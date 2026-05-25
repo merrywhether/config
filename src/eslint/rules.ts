@@ -22,6 +22,8 @@ const eslintRules: Linter.RulesRecord = {
 
 // https://github.com/un-ts/eslint-plugin-import-x
 const importXRules: Linter.RulesRecord = {
+  // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/extensions.md
+  'import-x/extensions': ['error', 'ignorePackages'],
   // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/first.md
   'import-x/first': 'error',
   // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/newline-after-import.md

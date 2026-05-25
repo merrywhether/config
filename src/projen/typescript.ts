@@ -5,18 +5,20 @@ export type MwTsConfigOpts = MwTsConfigState
 
 export interface MwTsConfigState {
   extends?: string | string[];
-  /** _skip_ prevents adding default extension */
-  preset?: '_skip_' | 'base' | 'solid' | 'styled';
+  /** _skip_ prevents adding default extensions */
+  presets?: '_skip_'[] | ('base' | 'solid' | 'styled' | 'vue')[];
 }
 
 export class MwTsConfig extends javascript.TypescriptConfig {
   constructor(
     project: Project,
-    { extends: _extends = [], preset = 'base', ...opts }: MwTsConfigOpts,
+    { extends: _extends = [], presets = ['base'], ...opts }: MwTsConfigOpts,
   ) {
     const extendsArr = Array.isArray(_extends) ? _extends : [_extends];
-    if (preset !== '_skip_') {
-      extendsArr.unshift(`@merrywhether/config/ts-${preset}`);
+    if (!(presets as string[]).includes('_skip_')) {
+      for (const preset of [...presets].reverse()) {
+        extendsArr.unshift(`@merrywhether/config/ts-${preset}`);
+      }
     }
 
     super(project, {

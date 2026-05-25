@@ -100,6 +100,11 @@ export class MwProject extends Project {
     }
 
     new MwTsConfig(this, { ...typescript, include: tsInclude ?? [] });
+
+    this.gitattributes.addAttributes(
+      '/pnpm-lock.yaml',
+      'linguist-generated=true',
+    );
   }
 
   override preSynthesize(): void {
