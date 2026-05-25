@@ -10,7 +10,8 @@ project type (`MwProject`) that scaffolds and manages config files in downstream
 projects.
 
 The package is `"type": "module"` (ESM only). Node >=24.12.0 is required (see
-`.mise.toml`). Package manager is **pnpm**.
+`.mise.toml`). Package manager is **pnpm**. Types ship as `.ts` source (Node's
+native type stripping).
 
 ---
 
@@ -20,12 +21,6 @@ The package is `"type": "module"` (ESM only). Node >=24.12.0 is required (see
 
 ```sh
 pnpm install
-```
-
-### Build (generate declaration types)
-
-```sh
-pnpm build:types   # tsc -p tsconfig.build.json → @types/
 ```
 
 ### Type-check (no emit)
@@ -59,7 +54,7 @@ pnpm pj            # node .projenrc.js  (alias: pn pj)
 ### CI equivalent (full check)
 
 ```sh
-pnpm build:types && pnpm tc && pnpm lint:es && pnpm lint:md
+pnpm tc && pnpm lint:es && pnpm lint:md
 ```
 
 > **Note:** There are no automated tests in this repo. Correctness is verified
@@ -73,16 +68,12 @@ pnpm build:types && pnpm tc && pnpm lint:es && pnpm lint:md
 
 ```
 src/
-  eslint/       # ESLint config compositions (index.js, rules.js)
+  eslint/       # ESLint config compositions (index.ts, rules.ts)
   ts/           # TypeScript base JSON configs (base, solid, styled)
   projen/       # MwProject projen component and helpers
     util/       # Module/node/package-type utilities
-    sample/     # Template files copied on postinstall
-  prettier.js   # Prettier config export
-scripts/
-  postinstall.mjs   # Copies sample .projenrc.js on install
+  prettier.ts   # Prettier config export
 playground/         # Manual test files (not published)
-@types/             # Generated declaration files (gitignored, built by pnpm build:types)
 .projenrc.js        # Projen config for this repo itself
 ```
 
@@ -106,9 +97,9 @@ edit them directly — edit `.projenrc.js` and re-run `pnpm pj`:
 
 ### Language & Module Format
 
-- All source files are **ESM** (`.js`, `.mjs`, `.ts`, `.tsx`).
-- Use `.js` extensions in import specifiers (even when importing `.ts` source),
-  matching `verbatimModuleSyntax` and Node's ESM resolution.
+- All source files are **TypeScript** (`.ts`, `.tsx`).
+- Use `.ts` extensions in import specifiers, matching Node's native type
+  stripping and ESM resolution.
 - Node built-ins must use the `node:` prefix:
   `import { join } from 'node:path'`.
 
@@ -116,12 +107,6 @@ edit them directly — edit `.projenrc.js` and re-run `pnpm pj`:
 
 - Explicit return types are required on all functions — write them intentionally
   rather than relying on inference or auto-insertion.
-- In `.js` files, use JSDoc for type annotations (`@param`, `@returns`,
-  `@typedef`, `@import`). The `@import` tag is the preferred way to import types
-  in JSDoc files:
-  ```js
-  /** @import { Foo } from './foo.js' */
-  ```
 
 ### Imports & Formatting
 
@@ -149,16 +134,15 @@ that is correct; let the tools handle style.
 
 1. Create a class in `src/projen/` extending a projen base (e.g., `SourceCode`,
    `TomlFile`, `Component`).
-2. Export it from `src/projen/index.js`.
-3. Wire it into `MwProject` in `src/projen/project.js` if it should be included
+2. Export it from `src/projen/index.ts`.
+3. Wire it into `MwProject` in `src/projen/project.ts` if it should be included
    by default.
-4. Re-run `pnpm build:types` to regenerate declarations, then `pnpm tc` to
-   verify types.
+4. Re-run `pnpm tc` to verify types.
 
 ## Modifying ESLint or Prettier Config
 
-- ESLint rules live in `src/eslint/rules.js` — add to the appropriate rules
+- ESLint rules live in `src/eslint/rules.ts` — add to the appropriate rules
   object (eslint, importX, tsBase, tsType, react).
-- Config presets are composed in `src/eslint/index.js`.
-- Prettier config lives in `src/prettier.js`.
+- Config presets are composed in `src/eslint/index.ts`.
+- Prettier config lives in `src/prettier.ts`.
 - After changes, run `pnpm fix` in this repo.
