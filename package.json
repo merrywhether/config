@@ -37,7 +37,7 @@
     "tc": "tsc --noEmit"
   },
   "engines": {
-    "node": ">=24.16.0"
+    "node": ">=24.18.0"
   },
   "dependencies": {
     "@eslint-react/eslint-plugin": "^5.9.0",
