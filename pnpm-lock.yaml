@@ -61,7 +61,7 @@ importers:
         version: 3.9.5
       projen:
         specifier: ^0.101.11
-        version: 0.101.11(constructs@10.3.0)
+        version: 0.101.11(constructs@10.6.0)
       semver:
         specifier: ^7.8.5
         version: 7.8.5
@@ -555,9 +555,8 @@ packages:
   compare-versions@6.1.1:
     resolution: {integrity: sha512-4hm4VPpIecmlg59CHXnRDnqGplJFrbLG4aFEl5vl6cK1u76ws3LLvX7ikFnTDl5vo39sjWD6AaDPYodJp/NNHg==}
 
-  constructs@10.3.0:
-    resolution: {integrity: sha512-vbK8i3rIb/xwZxSpTjz3SagHn1qq9BChLEfy5Hf6fB3/2eFbrwt2n9kHwQcS0CPTRBesreeAcsJfMq2229FnbQ==}
-    engines: {node: '>= 16.14.0'}
+  constructs@10.6.0:
+    resolution: {integrity: sha512-TxHOnBO5zMo/G76ykzGF/wMpEHu257TbWiIxP9K0Yv/+t70UzgBQiTqjkAsWOPC6jW91DzJI0+ehQV6xDRNBuQ==}
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
@@ -1673,7 +1672,7 @@ snapshots:
 
   compare-versions@6.1.1: {}
 
-  constructs@10.3.0: {}
+  constructs@10.6.0: {}
 
   convert-source-map@2.0.0: {}
 
@@ -2110,9 +2109,9 @@ snapshots:
 
   prettier@3.9.5: {}
 
-  projen@0.101.11(constructs@10.3.0):
+  projen@0.101.11(constructs@10.6.0):
     dependencies:
-      constructs: 10.3.0
+      constructs: 10.6.0
 
   punycode@2.3.1: {}
 
