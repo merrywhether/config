@@ -6,7 +6,7 @@ export type MwTsConfigOpts = MwTsConfigState
 export interface MwTsConfigState {
   extends?: string | string[];
   /** _skip_ prevents adding default extends */
-  presets?: '_skip_'[] | ('base' | 'solid' | 'styled' | 'vue')[];
+  presets?: '_skip_'[] | ('base' | 'solid' | 'vue')[];
 }
 
 export class MwTsConfig extends javascript.TypescriptConfig {

@@ -66,9 +66,5 @@ with the following changes:
 The base configuration has all of the strictest settings enabled and targets
 `esnext`.
 
-When the `styled` option is selected,
-[`@styled/typescript-styled-plugin`](https://github.com/styled-components/typescript-styled-plugin)
-is added.
-
 When the `solid` option is selected, the `jsxImportSource` is appropriately
 updated.
