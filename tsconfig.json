@@ -13,6 +13,7 @@
     ".projenrc.js",
     "eslint.config.js",
     "prettier.config.js",
+    "mw.config.js",
     "src",
     "scripts",
     "playground"
