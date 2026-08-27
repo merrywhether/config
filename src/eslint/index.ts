@@ -4,7 +4,7 @@ import { importX } from 'eslint-plugin-import-x';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import solidPlugin from 'eslint-plugin-solid';
+import solidV2Strict from 'eslint-plugin-solid/configs/v2-strict';
 import vuePlugin from 'eslint-plugin-vue';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
@@ -64,9 +64,15 @@ const reactTypeChecked = defineConfig({
 
 const solid = defineConfig({
   // @ts-expect-error: plugin type mismatch
-  extends: [solidPlugin.configs['flat/typescript']],
+  extends: [solidV2Strict],
   files: allFiles,
   name: 'mw-config/solid',
+});
+
+const solidTs = defineConfig({
+  files: tsFiles,
+  name: 'mw-config/solid-ts',
+  rules: { ...rules.solidTs },
 });
 
 // Vue: extend base/TS to .vue files, add parser + vue-specific rules
@@ -113,6 +119,7 @@ const configs: Record<string, ConfigArray> = {
     ...base,
     ...ts,
     ...solid,
+    ...solidTs,
     prettierRecommended,
   ]),
   typescript: defineConfig([

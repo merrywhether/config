@@ -80,6 +80,13 @@ const reactRules: Linter.RulesRecord = {
   '@eslint-react/use-state': 'error',
 };
 
+// https://github.com/solidjs-community/eslint-plugin-solid
+// V2-specific extracts from eslint-plugin-solid/configs/typescript
+const solidTsRules: Linter.RulesRecord = {
+  'solid/jsx-no-undef': ['error', { typescriptEnabled: true }],
+  'solid/no-unknown-namespaces': 'off',
+};
+
 // https://eslint.vuejs.org/rules/
 const vueRules: Linter.RulesRecord = {
   'vue/block-lang': ['error', { script: { lang: 'ts' } }],
@@ -92,6 +99,7 @@ export const rules = {
   eslint: eslintRules,
   importX: importXRules,
   react: reactRules,
+  solidTs: solidTsRules,
   tsBase: tsBaseRules,
   tsType: tsTypeRules,
   vue: vueRules,

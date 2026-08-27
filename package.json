@@ -73,7 +73,8 @@
   "devDependencies": {
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
-    "@types/semver": "^7.8.0"
+    "@types/semver": "^7.8.0",
+    "solid-js": "^1.9.15"
   },
   "packageManager": "pnpm@11.24.0"
 }
