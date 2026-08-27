@@ -147,11 +147,6 @@ export const builtinPreset: MwPreset = {
           presets: {
             base: { description: 'Core strict settings', label: 'Base' },
             solid: { description: 'Solid-specific additions', label: 'Solid' },
-            styled: {
-              description: 'styled-components additions',
-              label: 'Styled',
-              peerDeps: ['@styled/typescript-styled-plugin'],
-            },
             vue: {
               description: 'Adds @vue/typescript-plugin, includes **/*.vue',
               label: 'Vue',

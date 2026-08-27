@@ -15,7 +15,6 @@
     "./package-type": "./src/projen/util/package-type.ts",
     "./ts-base": "./src/ts/base.json",
     "./ts-solid": "./src/ts/solid.json",
-    "./ts-styled": "./src/ts/styled.json",
     "./ts-vue": "./src/ts/vue.json"
   },
   "repository": {
@@ -61,14 +60,6 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.68.0",
     "vue-eslint-parser": "^10.4.1"
-  },
-  "peerDependencies": {
-    "@styled/typescript-styled-plugin": "^1.0.1"
-  },
-  "peerDependenciesMeta": {
-    "@styled/typescript-styled-plugin": {
-      "optional": true
-    }
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

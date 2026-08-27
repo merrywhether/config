@@ -69,7 +69,7 @@ pnpm tc && pnpm lint:es && pnpm lint:md
 ```
 src/
   eslint/       # ESLint config compositions (index.ts, rules.ts)
-  ts/           # TypeScript base JSON configs (base, solid, styled)
+  ts/           # TypeScript base JSON configs (base, solid, vue)
   projen/       # MwProject projen component and helpers
     util/       # Module/node/package-type utilities
   prettier.ts   # Prettier config export
