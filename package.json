@@ -67,5 +67,5 @@
     "@types/semver": "^7.8.0",
     "solid-js": "^1.9.15"
   },
-  "packageManager": "pnpm@11.24.0"
+  "packageManager": "pnpm@11.25.0"
 }
