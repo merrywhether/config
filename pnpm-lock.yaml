@@ -45,8 +45,8 @@ importers:
         specifier: ^0.17.0
         version: 0.17.0(eslint@10.9.1)(typescript@6.0.3)
       eslint-plugin-vue:
-        specifier: ^10.10.0
-        version: 10.10.0(@typescript-eslint/parser@8.68.0(eslint@10.9.1)(typescript@6.0.3))(eslint@10.9.1)(vue-eslint-parser@10.4.1(eslint@10.9.1))
+        specifier: ^10.11.0
+        version: 10.11.0(@typescript-eslint/parser@8.68.0(eslint@10.9.1)(typescript@6.0.3))(eslint@10.9.1)(vue-eslint-parser@10.4.1(eslint@10.9.1))
       globals:
         specifier: ^17.11.0
         version: 17.11.0
@@ -702,8 +702,8 @@ packages:
       eslint: ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4'
 
-  eslint-plugin-vue@10.10.0:
-    resolution: {integrity: sha512-dL9x9rBHqqNcByWiLOHK6L0SB97V82/NC0cZRn9cXPjM7pCuWlpQQP9bFH4vjBv80ej1ZpzAkuD8zWH1o9bZbA==}
+  eslint-plugin-vue@10.11.0:
+    resolution: {integrity: sha512-fGt38SsaPCZ2FmA3bX/3vOW2qdsPNx0/9x+7Aab6NMX++PhynMtK4LWC4vzXgfQBCqpUAler18H38GA+NBAd0Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       '@stylistic/eslint-plugin': ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
@@ -1842,7 +1842,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-vue@10.10.0(@typescript-eslint/parser@8.68.0(eslint@10.9.1)(typescript@6.0.3))(eslint@10.9.1)(vue-eslint-parser@10.4.1(eslint@10.9.1)):
+  eslint-plugin-vue@10.11.0(@typescript-eslint/parser@8.68.0(eslint@10.9.1)(typescript@6.0.3))(eslint@10.9.1)(vue-eslint-parser@10.4.1(eslint@10.9.1)):
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.9.1)
       eslint: 10.9.1
