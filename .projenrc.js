@@ -18,7 +18,6 @@ const project = new MwProject({
       allowJs: true,
       checkJs: true,
       // required for allowJs
-      // @ts-expect-error: pending type update in projen
       isolatedDeclarations: false,
       types: ['node'],
     },
