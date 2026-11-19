@@ -1,4 +1,4 @@
-/** @jsxImportSource solid-js */
+/** @jsxImportSource @solidjs/web */
 import { type Component, createSignal } from 'solid-js';
 
 export const TestComponent: Component = () => {
