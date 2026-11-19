@@ -55,7 +55,7 @@
     "globals": "^17.14.0",
     "knitwork": "^1.3.0",
     "prettier": "^3.10.1",
-    "projen": "^0.105.3",
+    "projen": "^0.105.4",
     "semver": "^7.8.6",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.73.0",
