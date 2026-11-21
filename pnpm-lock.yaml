@@ -241,7 +241,7 @@ importers:
     devDependencies:
       '@solidjs/web':
         specifier: 2.0.3
-        version: 2.0.3(solid-js@2.0.0)
+        version: 2.0.3(solid-js@2.0.3)
       '@types/node':
         specifier: ^26.6.6
         version: 26.6.6
@@ -252,8 +252,8 @@ importers:
         specifier: ^7.8.0
         version: 7.8.0
       solid-js:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.0.3
+        version: 2.0.3
 
 packages:
 
@@ -510,8 +510,8 @@ packages:
     resolution: {integrity: sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  '@solidjs/signals@2.0.0':
-    resolution: {integrity: sha512-jrcT6XTVvsYRpesRp0At/mSUnsWr6jiprK8C93Oat56B8n7X9BMSe58Rxl6qSZUhBN0L+sxm8GzeO7HdhBXvDw==}
+  '@solidjs/signals@2.0.3':
+    resolution: {integrity: sha512-M6+kiJflqSvJRHRcmdsdIXpPLPkQrY817zWKKfxZ3z3ZRE5eEtddtWPrDXY4IM1Wz3zAqG+3Fx/HQIkAtpRwnA==}
     engines: {node: '>=22.12.0'}
 
   '@solidjs/web@2.0.3':
@@ -1300,8 +1300,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  solid-js@2.0.0:
-    resolution: {integrity: sha512-9zN4uH2OQeQAYbF4BmIzoaa+L5Hb8Dp6kkP6ZXobHQ1FZVICdmzREPDVDBJY7umzdAE8D6zbFfWhxGtagkyslA==}
+  solid-js@2.0.3:
+    resolution: {integrity: sha512-XOHstv+GAJjfcSGZU9xfX5q6Mbqmv72IcdWh2JuMx3KvBbfpQPdy/Yl00A1ouk7A0etjqhNe799CPdr6i7koWg==}
     engines: {node: '>=22.12.0'}
 
   stable-hash-x@0.2.0:
@@ -1732,14 +1732,14 @@ snapshots:
 
   '@pkgr/core@0.3.6': {}
 
-  '@solidjs/signals@2.0.0': {}
+  '@solidjs/signals@2.0.3': {}
 
-  '@solidjs/web@2.0.3(solid-js@2.0.0)':
+  '@solidjs/web@2.0.3(solid-js@2.0.3)':
     dependencies:
       csstype: 3.2.3
       seroval: 1.8.2
       seroval-plugins: 1.8.0(seroval@1.8.2)
-      solid-js: 2.0.0
+      solid-js: 2.0.3
 
   '@tybys/wasm-util@0.10.3':
     dependencies:
@@ -2471,9 +2471,9 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  solid-js@2.0.0:
+  solid-js@2.0.3:
     dependencies:
-      '@solidjs/signals': 2.0.0
+      '@solidjs/signals': 2.0.3
       seroval: 1.8.2
       seroval-plugins: 1.8.0(seroval@1.8.2)
 
