@@ -209,8 +209,8 @@ importers:
         specifier: ^7.1.1
         version: 7.1.1(eslint@10.15.0)
       eslint-plugin-solid:
-        specifier: ^0.20.0
-        version: 0.20.0(eslint@10.15.0)
+        specifier: ^0.20.1
+        version: 0.20.1(eslint@10.15.0)
       eslint-plugin-vue:
         specifier: ^10.12.1
         version: 10.12.1(@typescript-eslint/parser@8.73.0(eslint@10.15.0)(typescript@6.0.3))(eslint@10.15.0)(vue-eslint-parser@10.4.2(eslint@10.15.0))
@@ -947,8 +947,8 @@ packages:
       eslint:
         optional: true
 
-  eslint-plugin-solid@0.20.0:
-    resolution: {integrity: sha512-+cA9Yz+ON+Sr3sfl2RJePrPDXZmIAleS3D6W5rRuP/BKRqnt2DcSXi2YMFi52oClWGoOfBl29FdtLere7qoJUQ==}
+  eslint-plugin-solid@0.20.1:
+    resolution: {integrity: sha512-HPBVDgkGCOqXpfMQUyMP273AXo/VUwm/hqvTWWovVSJKPBzrKhq7w04Yn0PtTgj9g+7ZdlcAAJ9dwgBGeJQ4Gg==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       eslint: ^9.0.0 || ^10.0.0
@@ -2179,7 +2179,7 @@ snapshots:
       - '@typescript/native'
       - supports-color
 
-  eslint-plugin-solid@0.20.0(eslint@10.15.0):
+  eslint-plugin-solid@0.20.1(eslint@10.15.0):
     dependencies:
       eslint-visitor-keys: 3.4.3
       estraverse: 5.3.0
