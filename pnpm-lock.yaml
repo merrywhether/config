@@ -240,8 +240,8 @@ importers:
         version: 10.4.2(eslint@10.15.0)
     devDependencies:
       '@solidjs/web':
-        specifier: 2.0.3
-        version: 2.0.3(solid-js@2.0.3)
+        specifier: 2.0.4
+        version: 2.0.4(solid-js@2.0.3)
       '@types/node':
         specifier: ^26.6.6
         version: 26.6.6
@@ -514,11 +514,11 @@ packages:
     resolution: {integrity: sha512-M6+kiJflqSvJRHRcmdsdIXpPLPkQrY817zWKKfxZ3z3ZRE5eEtddtWPrDXY4IM1Wz3zAqG+3Fx/HQIkAtpRwnA==}
     engines: {node: '>=22.12.0'}
 
-  '@solidjs/web@2.0.3':
-    resolution: {integrity: sha512-XYl9JGOtQ8yJSZRnd6uC+5gYXsYvnIRNxhn89m+F1v6D4d4ZFdTJY2Lq/8XJ3YcjckkCrK/mNfd3kIiqqgnG7w==}
+  '@solidjs/web@2.0.4':
+    resolution: {integrity: sha512-E7bEnI/+z5Lj8fthibMbud8zXbdn5fc0/QJpC4kruxmVIwj/FyrkgiMVqfBmILjaYtKXD3QNEZCKyTV3agbH5A==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
-      solid-js: ^2.0.3
+      solid-js: ^2.0.4
 
   '@tybys/wasm-util@0.10.3':
     resolution: {integrity: sha512-F3fo1MYrRJYL3zER0OUOmkutjr1Vp23m7OsSgp7nq4SP6OqX6C/56XFIPAl5bt3zaBRjmW7SGz3u/6LwFpYcOg==}
@@ -1734,7 +1734,7 @@ snapshots:
 
   '@solidjs/signals@2.0.3': {}
 
-  '@solidjs/web@2.0.3(solid-js@2.0.3)':
+  '@solidjs/web@2.0.4(solid-js@2.0.3)':
     dependencies:
       csstype: 3.2.3
       seroval: 1.8.2
