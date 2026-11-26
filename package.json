@@ -64,7 +64,7 @@
   "devDependencies": {
     "@solidjs/web": "2.0.3",
     "@types/node": "^26.6.6",
-    "@types/react": "^19.3.0",
+    "@types/react": "^19.3.3",
     "@types/semver": "^7.8.0",
     "solid-js": "^2.0.3"
   },
